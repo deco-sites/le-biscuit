@@ -3,6 +3,7 @@ import type { Image } from "deco-sites/std/components/types.ts";
 import type { EditableProps as SearchbarProps } from "deco-sites/fashion/components/search/Searchbar.tsx";
 import type { LoaderReturnType } from "$live/types.ts";
 import type { Product, Suggestion } from "deco-sites/std/commerce/types.ts";
+import type { Image as LiveImage } from "deco-sites/std/components/types.ts";
 
 import Alert from "./Alert.tsx";
 import Navbar from "./Navbar.tsx";
@@ -26,7 +27,7 @@ export interface NavItem {
 }
 
 export interface Props {
-  alerts: string[];
+  alert: {image: LiveImage, path: string};
   /** @title Search Bar */
   searchbar?: SearchbarProps;
   /**
@@ -49,7 +50,7 @@ export interface Props {
 
 function Header(
   {
-    alerts,
+    alert,
     searchbar: _searchbar,
     products,
     navItems = [],
@@ -60,7 +61,7 @@ function Header(
   return (
     <header style={{ height: headerHeight }}>
       <div class="bg-base-100 fixed w-full z-50">
-        <Alert alerts={alerts} />
+        <Alert image={alert.image} path={alert.path}/>
         <Navbar items={navItems} searchbar={searchbar} />
       </div>
 
