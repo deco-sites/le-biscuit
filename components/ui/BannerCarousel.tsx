@@ -17,16 +17,8 @@ export interface Banner {
   mobile: LiveImage;
   /** @description Image's alt text */
   alt: string;
-  action?: {
-    /** @description when user clicks on the image, go to this link */
-    href: string;
-    /** @description Image text title */
-    title: string;
-    /** @description Image text subtitle */
-    subTitle: string;
-    /** @description Button label */
-    label: string;
-  };
+  /** @description when user clicks on the image, go to this link */
+  href: string;
 }
 
 export interface Props {
@@ -47,26 +39,26 @@ function BannerItem({ image, lcp }: { image: Banner; lcp?: boolean }) {
     alt,
     mobile,
     desktop,
-    action,
+    href,
   } = image;
 
   return (
-    <div class="relative h-[600px] min-w-[100vw] overflow-y-hidden">
-      <a href={action?.href ?? "#"} aria-label={action?.label}>
-        <Picture class="w-full" preload={lcp}>
+    <div class="relative min-w-[100vw] overflow-y-hidden  rounded-lg">
+      <a href={href} class=" rounded-lg">
+        <Picture class="w-full rounded-lg object-contain" preload={lcp}>
           <Source
             media="(max-width: 767px)"
             fetchPriority={lcp ? "high" : "auto"}
             src={mobile}
-            width={360}
-            height={600}
+            width={423}
+            height={287}
           />
           <Source
             media="(min-width: 768px)"
             fetchPriority={lcp ? "high" : "auto"}
             src={desktop}
-            width={1440}
-            height={600}
+            width={1280}
+            height={343}
           />
           <img
             class="object-cover w-full sm:h-full"
@@ -75,20 +67,6 @@ function BannerItem({ image, lcp }: { image: Banner; lcp?: boolean }) {
             alt={alt}
           />
         </Picture>
-        {action && (
-          <div
-            class="absolute top-0 bottom-0 m-auto left-0 right-0 sm:right-auto sm:left-[12%] max-h-min max-w-[235px] flex flex-col gap-4 p-4 rounded"
-            style={{ backdropFilter: "blur(8px)" }}
-          >
-            <Text variant="heading-1" tone="base-100">
-              {action.title}
-            </Text>
-            <Text variant="heading-3" tone="base-100">
-              {action.subTitle}
-            </Text>
-            <Button variant="outline">{action.label}</Button>
-          </div>
-        )}
       </a>
     </div>
   );
@@ -96,58 +74,41 @@ function BannerItem({ image, lcp }: { image: Banner; lcp?: boolean }) {
 
 function ProgressiveDots({ images, interval = 0 }: Props) {
   return (
-    <>
-      <style
-        dangerouslySetInnerHTML={{
-          __html: `
-          @property --dot-progress {
-            syntax: '<percentage>';
-            inherits: false;
-            initial-value: 0%;
-          }
-          `,
-        }}
-      >
-      </style>
-      <SliderDots class="col-span-full gap-4 z-10 row-start-4">
-        {images?.map((_) => (
-          <div class="py-6">
-            <div
-              class="w-16 sm:w-20 h-0.5 rounded group-disabled:animate-progress bg-gradient-to-r from-base-100 from-[length:var(--dot-progress)] to-[rgba(255,255,255,0.4)] to-[length:var(--dot-progress)]"
-              style={{ animationDuration: `${interval}s` }}
-            />
-          </div>
-        ))}
-      </SliderDots>
-    </>
+    <SliderDots class="col-span-full w-min sm:bg-[#f5f5f5] sm:px-2 sm:rounded-full self-center justify-self-center gap-2  z-10 row-start-5 lg:row-start-4 overflow-hidden lg:h-[18px] lg:self-end">
+      {images?.map((_) => (
+        <div>
+          <div class="w-[6px] h-[6px] sm:w-[10px] sm:h-[10px] rounded border border-[#ec1b2f] sm:border-0 sm:bg-[#dadada] group-disabled:bg-[#ec1b2f]" />
+        </div>
+      ))}
+    </SliderDots>
   );
 }
 
 function Controls() {
   return (
     <>
-      <div class="flex items-center justify-center z-10 col-start-1 row-start-2">
+      <div class="hidden absolute w-[43px] h-[43px] bg-[#FFFFFFE6] border-[0.5px] border-[#dadada] rounded-full -left-3 lg:flex items-center justify-center z-10 justify-self-start col-start-1 row-start-2">
         <Button
           variant="icon"
           data-slide="prev"
           aria-label="Previous item"
         >
           <Icon
-            class="text-base-100"
+            class="text-[#babcbe]"
             size={20}
             id="ChevronLeft"
             strokeWidth={3}
           />
         </Button>
       </div>
-      <div class="flex items-center justify-center z-10 col-start-3 row-start-2">
+      <div class="hidden absolute w-[43px] h-[43px] bg-[#FFFFFFE6] border-[0.5px] border-[#dadada] rounded-full -right-3 lg:flex items-center justify-center z-10 justify-self-end col-start-3 row-start-2">
         <Button
           variant="icon"
           data-slide="next"
           aria-label="Next item"
         >
           <Icon
-            class="text-base-100"
+            class="text-[#babcbe]"
             size={20}
             id="ChevronRight"
             strokeWidth={3}
@@ -162,21 +123,23 @@ function BannerCarousel({ images, preload, interval }: Props) {
   const id = useId();
 
   return (
-    <div
-      id={id}
-      class="grid grid-cols-[48px_1fr_48px] sm:grid-cols-[120px_1fr_120px] grid-rows-[1fr_48px_1fr_48px]"
-    >
-      <Slider class="col-span-full row-span-full scrollbar-none gap-6">
-        {images?.map((image, index) => (
-          <BannerItem image={image} lcp={index === 0 && preload} />
-        ))}
-      </Slider>
+    <div class="w-full lg:bg-[#f5f5f5] flex justify-center">
+      <div
+        id={id}
+        class="rounded-lg relative grid px-4 sm:px-6 grid-cols-[48px_1fr_48px] sm:grid-cols-[120px_1fr_120px] grid-rows-[1fr_48px_1fr_48px_22px] lg:grid-rows-[1fr_48px_1fr_48px] max-w-[1280px] xl:px-0"
+      >
+        <Slider class="col-span-full row-start-1 row-end-5 lg:row-span-full  scrollbar-none gap-6 rounded-lg">
+          {images?.map((image, index) => (
+            <BannerItem image={image} lcp={index === 0 && preload} />
+          ))}
+        </Slider>
 
-      <Controls />
+        <Controls />
 
-      <ProgressiveDots images={images} interval={interval} />
+        <ProgressiveDots images={images} interval={interval} />
 
-      <SliderControllerJS rootId={id} interval={interval && interval * 1e3} />
+        <SliderControllerJS rootId={id} interval={interval && interval * 1e3} />
+      </div>
     </div>
   );
 }

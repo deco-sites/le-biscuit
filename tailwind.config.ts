@@ -1,6 +1,6 @@
 // Daisi UI theme
 export const theme = {
-  "primary": "hsl(180 100% 10%)",
+  "primary": "#ec1b2f",
   "secondary": "hsl(0 39% 39%)",
   "accent": "hsl(150 100% 50%)",
   "neutral": "hsl(0 0% 20%)",
