@@ -1,6 +1,6 @@
 // Daisi UI theme
 export const theme = {
-  "primary": "#ec1b2f",
+  "primary": "#ed1b2f",
   "red-icon": "#f15766",
   "camp-grey": "#f5f5f5",
   "grey-icon": "#444444",
@@ -20,6 +20,14 @@ export default {
   content: ["./**/*.tsx"],
   theme: {
     extend: {
+      colors:{
+        "primary": "#ed1b2f",
+        "red-icon": "#f15766",
+        "camp-grey": "#f5f5f5",
+        "grey-icon": "#444444",
+        "bottom-green": "#27ae60",
+        "blue-text-discount": "#006ca1",
+      },
       fontSize: {
         "heading-1": ["56px", "67.2px"],
         "heading-2": ["24px", "28.8px"],
