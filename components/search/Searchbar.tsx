@@ -139,21 +139,21 @@ function Searchbar({
             aria-controls="search-suggestion"
             autocomplete="off"
           />
-            <button
-              type="submit"
-              class="bg-primary h-[40px] w-[37px] flex items-center justify-center"
-              aria-label="Search"
-              htmlFor="searchbar"
-              tabIndex={-1}
-            >
-              <Icon
-                class="text-white"
-                id="MagnifyingGlass"
-                width={20}
-                height={20}
-                strokeWidth={0.01}
-              />
-            </button>
+          <button
+            type="submit"
+            class="bg-primary h-[40px] w-[37px] flex items-center justify-center"
+            aria-label="Search"
+            htmlFor="searchbar"
+            tabIndex={-1}
+          >
+            <Icon
+              class="text-white"
+              id="MagnifyingGlass"
+              width={20}
+              height={20}
+              strokeWidth={0.01}
+            />
+          </button>
         </form>
         {variant === "desktop" && <CloseButton />}
       </div>

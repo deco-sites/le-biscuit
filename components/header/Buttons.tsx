@@ -84,7 +84,11 @@ function CartButton() {
         });
       }}
     >
-      <Image src="https://lebiscuit.vtexassets.com/assets/vtex/assets-builder/lebiscuit.le-store/1.2.114/svg/geral/blackfriday/__sacola___45bace8e1e0e1ea2778a5e7600d4cacb.svg" width={24} height={24}/>
+      <Image
+        src="https://lebiscuit.vtexassets.com/assets/vtex/assets-builder/lebiscuit.le-store/1.2.114/svg/geral/blackfriday/__sacola___45bace8e1e0e1ea2778a5e7600d4cacb.svg"
+        width={24}
+        height={24}
+      />
       {totalItems && (
         <span class="absolute text-[9px] right-0 top-0 rounded-full bg-secondary text-secondary-content w-4 h-4 flex items-center justify-center">
           {totalItems}

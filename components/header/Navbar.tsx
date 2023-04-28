@@ -6,7 +6,6 @@ import type { Image as LiveImage } from "deco-sites/std/components/types.ts";
 import { useUI } from "../../sdk/useUI.ts";
 import Text from "deco-sites/fashion/components/ui/Text.tsx";
 
-
 import NavItem from "./NavItem.tsx";
 import { navbarHeight } from "./constants.ts";
 import HeaderSearchMenu from "deco-sites/fashion/islands/HeaderSearchMenu.tsx";
@@ -42,8 +41,16 @@ function Navbar({ items, searchbar, image }: {
           </a>
 
           <div class="flex gap-2">
-            <Image src="https://lebiscuit.vtexassets.com/assets/vtex/assets-builder/lebiscuit.le-store/1.2.114/svg/geral/blackfriday/__central___5ffa5a472896c28ee84ebd15c89b7a82.svg" width={30} height={30}/>
-            <Image src="https://lebiscuit.vtexassets.com/assets/vtex/assets-builder/lebiscuit.le-store/1.2.114/svg/geral/blackfriday/__login___55e0d0a6a008b5c070b32233488787b1.svg" width={24} height={24}/>
+            <Image
+              src="https://lebiscuit.vtexassets.com/assets/vtex/assets-builder/lebiscuit.le-store/1.2.114/svg/geral/blackfriday/__central___5ffa5a472896c28ee84ebd15c89b7a82.svg"
+              width={30}
+              height={30}
+            />
+            <Image
+              src="https://lebiscuit.vtexassets.com/assets/vtex/assets-builder/lebiscuit.le-store/1.2.114/svg/geral/blackfriday/__login___55e0d0a6a008b5c070b32233488787b1.svg"
+              width={24}
+              height={24}
+            />
             <HeaderButton variant="cart" />
           </div>
         </div>
@@ -56,40 +63,72 @@ function Navbar({ items, searchbar, image }: {
       <div class="hidden lg:flex flex-col border-b border-base-200 w-full pr-3">
         <div class="h-[70px] flex flex-row items-center">
           <div class="flex-none w-44 bg-primary h-[55px] flex items-center self-start rounded-br-full">
-            <a href="/" aria-label="Store logo" class="block px-4 py-3 w-[160px] ">
+            <a
+              href="/"
+              aria-label="Store logo"
+              class="block px-4 py-3 w-[160px] "
+            >
               <Image src={image.desktop} alt="logo" width={114} height={21} />
             </a>
           </div>
-            <HeaderSearchMenu searchbar={searchbar} />
-            <div class="flex gap-2">
-              <div class="flex items-center gap-2">
-                <Image src="https://lebiscuit.vtexassets.com/assets/vtex.file-manager-graphql/images/d7838ef6-cbea-4c52-9a3b-e04a76a4fca3___225f8a774cc2394aae97d166fd42e0c5.svg" width={30} height={30}/>
-                <Text class="!text-[10px] !leading-[14px] w-max font-medium">Ver ofertas na região</Text>
-              </div>
-              <div class="flex items-center gap-2">
-                <Image src="https://lebiscuit.vtexassets.com/assets/vtex/assets-builder/lebiscuit.le-store/1.2.114/svg/geral/blackfriday/__central___5ffa5a472896c28ee84ebd15c89b7a82.svg" width={30} height={30}/>
-                <Text class="!text-[10px] !leading-[14px] w-max font-medium">Central de atendimento</Text>
-              </div>
-              <div class="flex items-center gap-2">
-                <Image src="https://lebiscuit.vtexassets.com/assets/vtex/assets-builder/lebiscuit.le-store/1.2.114/svg/geral/blackfriday/__pedidos___59107f5918142e12d5b5534aa5350583.svg" width={30} height={30}/>
-                <Text class="!text-[10px] !leading-[14px] w-max font-medium">Meus pedidos</Text>
-              </div>
-              <div class="flex items-center gap-2">
-                <Image src="https://lebiscuit.vtexassets.com/assets/vtex/assets-builder/lebiscuit.le-store/1.2.114/svg/geral/blackfriday/__login___55e0d0a6a008b5c070b32233488787b1.svg" width={24} height={24}/>
-                <Text class="!text-[10px] !leading-[14px] w-max font-medium">Olá! Entrar</Text>
-              </div>
-              <div class="flex items-center gap-2">
-                <HeaderButton variant="cart" />
-                <Text class="!text-[10px] !leading-[14px] w-max font-medium">Minha sacola</Text>
-              </div>
+          <HeaderSearchMenu searchbar={searchbar} />
+          <div class="flex gap-2">
+            <div class="flex items-center gap-2">
+              <Image
+                src="https://lebiscuit.vtexassets.com/assets/vtex.file-manager-graphql/images/d7838ef6-cbea-4c52-9a3b-e04a76a4fca3___225f8a774cc2394aae97d166fd42e0c5.svg"
+                width={30}
+                height={30}
+              />
+              <Text class="!text-[10px] !leading-[14px] w-max font-medium">
+                Ver ofertas na região
+              </Text>
             </div>
+            <div class="flex items-center gap-2">
+              <Image
+                src="https://lebiscuit.vtexassets.com/assets/vtex/assets-builder/lebiscuit.le-store/1.2.114/svg/geral/blackfriday/__central___5ffa5a472896c28ee84ebd15c89b7a82.svg"
+                width={30}
+                height={30}
+              />
+              <Text class="!text-[10px] !leading-[14px] w-max font-medium">
+                Central de atendimento
+              </Text>
+            </div>
+            <div class="flex items-center gap-2">
+              <Image
+                src="https://lebiscuit.vtexassets.com/assets/vtex/assets-builder/lebiscuit.le-store/1.2.114/svg/geral/blackfriday/__pedidos___59107f5918142e12d5b5534aa5350583.svg"
+                width={30}
+                height={30}
+              />
+              <Text class="!text-[10px] !leading-[14px] w-max font-medium">
+                Meus pedidos
+              </Text>
+            </div>
+            <div class="flex items-center gap-2">
+              <Image
+                src="https://lebiscuit.vtexassets.com/assets/vtex/assets-builder/lebiscuit.le-store/1.2.114/svg/geral/blackfriday/__login___55e0d0a6a008b5c070b32233488787b1.svg"
+                width={24}
+                height={24}
+              />
+              <Text class="!text-[10px] !leading-[14px] w-max font-medium">
+                Olá! Entrar
+              </Text>
+            </div>
+            <div class="flex items-center gap-2">
+              <HeaderButton variant="cart" />
+              <Text class="!text-[10px] !leading-[14px] w-max font-medium">
+                Minha sacola
+              </Text>
+            </div>
+          </div>
         </div>
         <div class="flex flex-row items-center px-5 pb-2 justify-between">
           <div class="flex items-center gap-[10px]">
             <div class="!bg-[#ed1b2f] rounded h-[32px] w-[32px] flex items-center justify-center">
-                <HeaderButton variant="menu" />
+              <HeaderButton variant="menu" />
             </div>
-            <Text class="text-primary font-semibold">Todos os departamentos</Text>
+            <Text class="text-primary font-semibold">
+              Todos os departamentos
+            </Text>
           </div>
           <div class="flex-auto flex justify-around">
             {items.map((item) => <NavItem item={item} />)}

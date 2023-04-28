@@ -20,7 +20,7 @@ export default {
   content: ["./**/*.tsx"],
   theme: {
     extend: {
-      colors:{
+      colors: {
         "primary": "#ed1b2f",
         "red-icon": "#f15766",
         "camp-grey": "#f5f5f5",
