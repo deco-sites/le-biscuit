@@ -9,6 +9,7 @@ import { useVariantPossibilities } from "deco-sites/fashion/sdk/useVariantPossib
 import type { Product } from "deco-sites/std/commerce/types.ts";
 import ButtonSendEvent from "deco-sites/fashion/components/ButtonSendEvent.tsx";
 import { mapProductToAnalyticsItem } from "deco-sites/std/commerce/utils/productToAnalyticsItem.ts";
+import Icon from "deco-sites/fashion/components/ui/Icon.tsx";
 
 /**
  * A simple, inplace sku selector to be displayed once the user hovers the product card
@@ -65,10 +66,10 @@ function ProductCard({ product, preload, itemListName }: Props) {
     <div
       data-deco="view-product"
       id={`product-card-${productID}`}
-      class="w-full group"
+      class="flex-col w-[240px] h-[430px] relative justify-around content-center text-start rounded-lg border border-camp-grey group"
     >
       <a href={url} aria-label="product link">
-        <div class="relative w-full">
+        <div class="flex relative h-[200px] justify-center">
           <div class="absolute top-0 right-0">
             <WishlistIcon
               productId={isVariantOf?.productGroupID}
@@ -80,51 +81,42 @@ function ProductCard({ product, preload, itemListName }: Props) {
             src={front.url!}
             alt={front.alternateName}
             width={200}
-            height={279}
-            class="rounded w-full group-hover:hidden"
+            height={200}
+            class="rounded w-full group-hover:block "
             preload={preload}
             loading={preload ? "eager" : "lazy"}
             sizes="(max-width: 640px) 50vw, 20vw"
           />
-          <Image
-            src={back?.url ?? front.url!}
-            alt={back?.alternateName ?? front.alternateName}
-            width={200}
-            height={279}
-            class="rounded w-full hidden group-hover:block"
-            sizes="(max-width: 640px) 50vw, 20vw"
-          />
-          {seller && (
-            <div
-              class="absolute bottom-0 hidden sm:group-hover:flex flex-col gap-2 w-full p-2 bg-opacity-10"
-              style={{
-                backgroundColor: "rgba(255, 255, 255, 0.2)",
-                backdropFilter: "blur(2px)",
+
+          <div
+            class="absolute bottom-0 hidden sm:group-hover:flex flex-col gap-2 w-full p-2 bg-opacity-10"
+            style={{
+              backgroundColor: "rgba(255, 255, 255, 0.2)",
+              backdropFilter: "blur(2px)",
+            }}
+          >
+            <Sizes {...product} />
+            {/* FIXME: Understand why fresh breaks rendering this component */}
+            <ButtonSendEvent
+              as="a"
+              href={product.url}
+              event={{
+                name: "select_item",
+                params: {
+                  item_list_name: itemListName,
+                  items: [
+                    mapProductToAnalyticsItem({
+                      product,
+                      price,
+                      listPrice,
+                    }),
+                  ],
+                },
               }}
             >
-              <Sizes {...product} />
-              {/* FIXME: Understand why fresh breaks rendering this component */}
-              <ButtonSendEvent
-                as="a"
-                href={product.url}
-                event={{
-                  name: "select_item",
-                  params: {
-                    item_list_name: itemListName,
-                    items: [
-                      mapProductToAnalyticsItem({
-                        product,
-                        price,
-                        listPrice,
-                      }),
-                    ],
-                  },
-                }}
-              >
-                Visualizar Produto
-              </ButtonSendEvent>
-            </div>
-          )}
+              Visualizar Produto
+            </ButtonSendEvent>
+          </div>
         </div>
 
         <div class="flex flex-col gap-1 py-2">
@@ -135,6 +127,10 @@ function ProductCard({ product, preload, itemListName }: Props) {
             {name}
           </Text>
           <div class="flex items-center gap-2">
+            <div class="text-center flex-row items-center justify-center bg-camp-grey text-blue-text-discount text-xs h-[20px] w-[50px] rounded-[4px] p-1">
+              <Icon id="ArrowDown" width={10} height={10} strokeWidth={2} />
+              %16
+            </div>
             <Text class="line-through" variant="list-price" tone="base-300">
               {formatPrice(listPrice, offers!.priceCurrency!)}
             </Text>

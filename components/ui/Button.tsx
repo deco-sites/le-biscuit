@@ -21,6 +21,7 @@ const variants = {
     "h-9 px-3 rounded bg-base-100 text-primary border-transparent hover:bg-primary-content active:opacity-90 disabled:opacity-75 focus:outline-none",
   icon:
     "h-9 w-9 rounded bg-transparent text-primary border-transparent hover:bg-primary-content active:opacity-90 disabled:opacity-75 focus:outline-none rounded-full",
+  green: "bg-bottom-green rounded-lg flex h-[45px] p-[8px] text-white ",
 };
 
 const Button = forwardRef<HTMLButtonElement, Props>(({
