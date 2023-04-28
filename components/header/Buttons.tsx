@@ -3,6 +3,7 @@ import Button from "deco-sites/fashion/components/ui/Button.tsx";
 import { useUI } from "deco-sites/fashion/sdk/useUI.ts";
 import { useCart } from "deco-sites/std/commerce/vtex/hooks/useCart.ts";
 import { AnalyticsEvent } from "deco-sites/std/commerce/types.ts";
+import Image from "deco-sites/std/components/Image.tsx";
 
 declare global {
   interface Window {
@@ -39,7 +40,13 @@ function MenuButton() {
         displayMenu.value = true;
       }}
     >
-      <Icon id="Bars3" width={20} height={20} strokeWidth={0.01} />
+      <Icon
+        id="Bars4"
+        class="text-black lg:max-w-[20px]"
+        width={28}
+        height={20}
+        strokeWidth={0.01}
+      />
     </Button>
   );
 }
@@ -77,7 +84,11 @@ function CartButton() {
         });
       }}
     >
-      <Icon id="ShoppingCart" width={20} height={20} strokeWidth={2} />
+      <Image
+        src="https://lebiscuit.vtexassets.com/assets/vtex/assets-builder/lebiscuit.le-store/1.2.114/svg/geral/blackfriday/__sacola___45bace8e1e0e1ea2778a5e7600d4cacb.svg"
+        width={24}
+        height={24}
+      />
       {totalItems && (
         <span class="absolute text-[9px] right-0 top-0 rounded-full bg-secondary text-secondary-content w-4 h-4 flex items-center justify-center">
           {totalItems}
