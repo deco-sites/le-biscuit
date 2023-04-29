@@ -66,11 +66,38 @@ function ProductCard({ product, preload, itemListName }: Props) {
     <div
       data-deco="view-product"
       id={`product-card-${productID}`}
-      class="flex-col w-[240px] h-[430px] relative py-5 content-center text-start rounded-lg border border-camp-grey group"
+      class="flex-col w-[240px] h-[430px] relative py-5 content-center gap-1 text-start rounded-lg border border-camp-grey group"
     >
       <a href={url} aria-label="product link">
-        <div class="flex h-[200px] w-full justify-center bg-amber-900">
+        <div
+          href={url}
+          class="absolute  hidden sm:group-hover:flex flex-col justify-center content-center gap-2 h-full w-full p-2 "
+        >
+          <Sizes {...product} />
+          {/* FIXME: Understand why fresh breaks rendering this component */}
+          <ButtonSendEvent
+            as="a"
+            href={product.url}
+            event={{
+              name: "select_item",
+              params: {
+                item_list_name: itemListName,
+                items: [
+                  mapProductToAnalyticsItem({
+                    product,
+                    price,
+                    listPrice,
+                  }),
+                ],
+              },
+            }}
+          >
+            Adicionar à sacola
+          </ButtonSendEvent>
+        </div>
+        <div class="flex h-[200px] w-full justify-center">
           <div class="absolute top-0 right-0">
+            {/* icon heart */}
             <WishlistIcon
               productId={isVariantOf?.productGroupID}
               sku={productID}
@@ -82,40 +109,16 @@ function ProductCard({ product, preload, itemListName }: Props) {
             alt={front.alternateName}
             width={200}
             height={200}
-            class="rounded w-full mb-1 "
+            class="rounded  w-full mb-1 "
             preload={preload}
             loading={preload ? "eager" : "lazy"}
             sizes="(max-width: 640px) 50vw, 20vw"
           />
-
-          <div class="absolute  hidden sm:group-hover:flex flex-col justify-center content-center gap-2 h-full w-full p-2 ">
-            <Sizes {...product} />
-            {/* FIXME: Understand why fresh breaks rendering this component */}
-            <ButtonSendEvent
-              as="a"
-              href={product.url}
-              event={{
-                name: "select_item",
-                params: {
-                  item_list_name: itemListName,
-                  items: [
-                    mapProductToAnalyticsItem({
-                      product,
-                      price,
-                      listPrice,
-                    }),
-                  ],
-                },
-              }}
-            >
-              Adicionar à sacola
-            </ButtonSendEvent>
-          </div>
         </div>
 
-        <div class="flex flex-col items-center justify-center gap-1 py-2 ">
+        <div class="flex flex-col items-center justify-center gap-1 py-2">
           <Text
-            class="overflow-hidden text-ellipsis whitespace-break-spaces text-xs  "
+            class="overflow-hidden text-ellipsis whitespace-break-spaces text-xs"
             variant="caption"
           >
             {name}
