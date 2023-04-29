@@ -69,7 +69,7 @@ function ProductCard({ product, preload, itemListName }: Props) {
       class="flex-col w-[240px] h-[430px] relative py-5 content-center text-start rounded-lg border border-camp-grey group"
     >
       <a href={url} aria-label="product link">
-        <div class="flex h-[200px]  justify-center">
+        <div class="flex h-[200px] w-full justify-center bg-amber-900">
           <div class="absolute top-0 right-0">
             <WishlistIcon
               productId={isVariantOf?.productGroupID}
@@ -88,13 +88,7 @@ function ProductCard({ product, preload, itemListName }: Props) {
             sizes="(max-width: 640px) 50vw, 20vw"
           />
 
-          <div
-            class="absolute bottom-0 hidden sm:group-hover:flex flex-col gap-2 w-full p-2 bg-opacity-10"
-            style={{
-              backgroundColor: "rgba(255, 255, 255, 0.2)",
-              backdropFilter: "blur(2px)",
-            }}
-          >
+          <div class="absolute  hidden sm:group-hover:flex flex-col justify-center content-center gap-2 h-full w-full p-2 ">
             <Sizes {...product} />
             {/* FIXME: Understand why fresh breaks rendering this component */}
             <ButtonSendEvent
