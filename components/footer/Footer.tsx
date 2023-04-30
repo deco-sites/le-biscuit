@@ -6,8 +6,6 @@ import Container from "deco-sites/fashion/components/ui/Container.tsx";
 import type { Image as LiveImage } from "deco-sites/std/components/types.ts";
 import Image from "deco-sites/std/components/Image.tsx";
 
-
-
 import Newsletter from "./Newsletter.tsx";
 import type { ComponentChildren } from "preact";
 
@@ -30,7 +28,11 @@ const isIcon = (item: Item): item is IconItem =>
 
 function SectionItem({ item }: { item: Item }) {
   return (
-    <Text variant="caption" tone="primary-content" class="!text-gray-icon !text-base !leading-[22.5px]">
+    <Text
+      variant="caption"
+      tone="primary-content"
+      class="!text-gray-icon !text-base !leading-[22.5px]"
+    >
       {isIcon(item)
         ? (
           <div class="border-base-100 border border-solid py-1.5 px-2.5">
@@ -62,7 +64,7 @@ function FooterContainer(
 
 export interface Props {
   sections?: Section[];
-  socials: LiveImage[]
+  socials: LiveImage[];
 }
 
 function Footer({ sections = [], socials }: Props) {
@@ -74,20 +76,31 @@ function Footer({ sections = [], socials }: Props) {
             <Newsletter />
           </FooterContainer>
         </Container>
-          <div class="w-full h-2 bg-camp-gray" />
+        <div class="w-full h-2 bg-camp-gray" />
         <Container class="w-full flex flex-col ">
           <FooterContainer>
             <div class="flex flex-col gap-[9px] p-2">
-                <Text class="!text-[9px] !leading-[13.5px] font-medium">*RETIRADA EXPRESSA</Text>
-                <Text class="!text-[9px] !leading-[13.5px]">O prazo pode variar conforme dia da semana e horário de funcionamento na loja. Confira as lojas participantes e prazo final antes de finalizar sua compra.
-Prazo começa a ser contado após a aprovação da compra. Sujeito a disponibilidade de estoque na loja.</Text>
-              </div>
+              <Text class="!text-[9px] !leading-[13.5px] font-medium">
+                *RETIRADA EXPRESSA
+              </Text>
+              <Text class="!text-[9px] !leading-[13.5px]">
+                O prazo pode variar conforme dia da semana e horário de
+                funcionamento na loja. Confira as lojas participantes e prazo
+                final antes de finalizar sua compra. Prazo começa a ser contado
+                após a aprovação da compra. Sujeito a disponibilidade de estoque
+                na loja.
+              </Text>
+            </div>
             {/* Desktop view */}
             <ul class="hidden lg:flex flex-row gap-20 px-2 pt-[48px]">
               {sections.map((section) => (
                 <li>
                   <div>
-                    <Text variant="heading-3" tone="primary-content" class="!text-black !text-base">
+                    <Text
+                      variant="heading-3"
+                      tone="primary-content"
+                      class="!text-black !text-base"
+                    >
                       {section.label}
                     </Text>
 
@@ -108,12 +121,31 @@ Prazo começa a ser contado após a aprovação da compra. Sujeito a disponibili
             </ul>
             <div class="hidden lg:flex flex-col self-end items-start pb-2 pt-5 max-w-[320px]">
               <div class="flex gap-4 mb-[22px]">
-                <Image width={131} height={44} alt="app download" src="https://lebiscuit.vtexassets.com/assets/vtex.file-manager-graphql/images/c95e176a-6e93-43e7-8892-d63a65349241___c30f106b2ecf911efe78c9e34cca3a4e.svg" />
-                <Image width={131} height={44} alt="app download" src="https://lebiscuit.vtexassets.com/assets/vtex.file-manager-graphql/images/4ae0af3c-45de-4c5e-9e60-0774adcdf0c9___971446451009eb3aac1946f7592ea248.svg" />
+                <Image
+                  width={131}
+                  height={44}
+                  alt="app download"
+                  src="https://lebiscuit.vtexassets.com/assets/vtex.file-manager-graphql/images/c95e176a-6e93-43e7-8892-d63a65349241___c30f106b2ecf911efe78c9e34cca3a4e.svg"
+                />
+                <Image
+                  width={131}
+                  height={44}
+                  alt="app download"
+                  src="https://lebiscuit.vtexassets.com/assets/vtex.file-manager-graphql/images/4ae0af3c-45de-4c5e-9e60-0774adcdf0c9___971446451009eb3aac1946f7592ea248.svg"
+                />
               </div>
               <Text class="font-bold text-gray-icon">Siga a Le Biscuit</Text>
               <ul class="flex gap-4 my-2">
-                {socials.map(social => <li><Image src={social} width={36} height={36} alt="social icon"/></li>)}
+                {socials.map((social) => (
+                  <li>
+                    <Image
+                      src={social}
+                      width={36}
+                      height={36}
+                      alt="social icon"
+                    />
+                  </li>
+                ))}
               </ul>
             </div>
 
@@ -121,12 +153,31 @@ Prazo começa a ser contado após a aprovação da compra. Sujeito a disponibili
             <>
               <div class="flex flex-col lg:hidden items-center bg-camp-gray pb-2 pt-5">
                 <div class="flex gap-4 mb-[22px]">
-                  <Image width={131} height={44} alt="app download" src="https://lebiscuit.vtexassets.com/assets/vtex.file-manager-graphql/images/c95e176a-6e93-43e7-8892-d63a65349241___c30f106b2ecf911efe78c9e34cca3a4e.svg" />
-                  <Image width={131} height={44} alt="app download" src="https://lebiscuit.vtexassets.com/assets/vtex.file-manager-graphql/images/4ae0af3c-45de-4c5e-9e60-0774adcdf0c9___971446451009eb3aac1946f7592ea248.svg" />
+                  <Image
+                    width={131}
+                    height={44}
+                    alt="app download"
+                    src="https://lebiscuit.vtexassets.com/assets/vtex.file-manager-graphql/images/c95e176a-6e93-43e7-8892-d63a65349241___c30f106b2ecf911efe78c9e34cca3a4e.svg"
+                  />
+                  <Image
+                    width={131}
+                    height={44}
+                    alt="app download"
+                    src="https://lebiscuit.vtexassets.com/assets/vtex.file-manager-graphql/images/4ae0af3c-45de-4c5e-9e60-0774adcdf0c9___971446451009eb3aac1946f7592ea248.svg"
+                  />
                 </div>
                 <Text class="font-bold text-gray-icon">Siga a Le Biscuit</Text>
                 <ul class="flex gap-4 my-2">
-                  {socials.map(social => <li><Image src={social} width={36} height={36} alt="social icon"/></li>)}
+                  {socials.map((social) => (
+                    <li>
+                      <Image
+                        src={social}
+                        width={36}
+                        height={36}
+                        alt="social icon"
+                      />
+                    </li>
+                  ))}
                 </ul>
               </div>
               <ul class="flex flex-col lg:hidden gap-4 pt-10">
@@ -147,7 +198,9 @@ Prazo começa a ser contado após a aprovação da compra. Sujeito a disponibili
 
                         <ul
                           class={`flex ${
-                            isIcon(section.children[0]) ? "flex-row" : "flex-col"
+                            isIcon(section.children[0])
+                              ? "flex-row"
+                              : "flex-col"
                           } gap-2 px-2 pt-2 z-0`}
                         >
                           {section.children.map((item) => (
