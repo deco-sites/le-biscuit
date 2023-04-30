@@ -33,14 +33,14 @@ function Highlights({ highlights = [], title }: Props) {
       <div class="md:hidden py-[18px] px-5 bg-camp-grey flex flex-col items-center">
         <Container
           id={id}
-          class={`grid grid-cols-1 grid-rows-[48px_1fr] max-w-[1320px] relative transition-height duration-500 ease-in`}
+          class={`grid grid-cols-1 grid-rows-[48px_1fr] max-w-[1320px] relative transition-height duration-500 ease-in ${ open.value ? "max-h-full" : "max-h-[315px]"}`}
         >
           <h2 class="">
             <Text variant="heading-2">{title}</Text>
           </h2>
           <div
             class={`flex flex-wrap justify-between transition-height duration-500 ease-in  overflow-hidden  ${
-              open.value ? "h-full" : "max-h-[272px]"
+              open.value ? "max-h-full" : "max-h-[272px]"
             }`}
           >
             {highlights.map(({ href, src, alt, label }) => (
