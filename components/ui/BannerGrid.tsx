@@ -36,6 +36,16 @@ export interface Props {
     /** @default 4 */
     desktop?: 1 | 2 | 4 | 6 | 8;
   };
+  dimensions?: {
+    mobile: {
+      width: number;
+      height: number;
+    };
+    desktop: {
+      width: number;
+      height: number;
+    };
+  };
   /**
    * @description Item's border radius in px
    */
@@ -88,10 +98,11 @@ export default function BannnerGrid({
   itemsPerLine,
   borderRadius,
   banners = [],
+  dimensions,
 }: Props) {
   return (
-    <Container>
-      <section class="w-full px-4 md:px-0 mx-auto">
+    <Container class="px-2 lg:px-0">
+      <section class="w-full px-4 md:px-0 mx-auto py-4">
         {title &&
           (
             <div class="py-6 md:py-0 md:pb-[40px] flex items-center mt-6">
@@ -118,17 +129,21 @@ export default function BannnerGrid({
                 <Source
                   media="(max-width: 767px)"
                   src={srcMobile}
-                  width={100}
-                  height={100}
+                  width={dimensions?.mobile.width
+                    ? dimensions.mobile.width
+                    : 1000}
                 />
                 <Source
                   media="(min-width: 768px)"
                   src={srcDesktop ? srcDesktop : srcMobile}
-                  width={250}
-                  height={250}
+                  width={dimensions?.desktop.width
+                    ? dimensions.desktop.width
+                    : 250}
                 />
                 <img
-                  class="w-full"
+                  class={`w-full ${
+                    banners.length === 1 ? "sm:max-h-[148px]" : ""
+                  }`}
                   sizes="(max-width: 640px) 100vw, 30vw"
                   src={srcMobile}
                   alt={alt}
