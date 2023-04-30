@@ -62,7 +62,7 @@ export interface Props {
 
 function Footer({ sections = [] }: Props) {
   return (
-    <footer class="w-full bg-primary flex flex-col divide-y divide-primary-content">
+    <footer class="w-full flex flex-col divide-y divide-primary-content">
       <div>
         <Container class="w-full flex flex-col divide-y divide-primary-content">
           <FooterContainer>
@@ -100,9 +100,10 @@ function Footer({ sections = [] }: Props) {
               {sections.map((section) => (
                 <li>
                   <Text variant="body" tone="primary-content">
-                    <details>
-                      <summary>
+                    <details class="group">
+                      <summary class="list-none flex items-center justify-between text-gray-icon">
                         {section.label}
+                        <Icon id="ChevronDown" width={15} height={20} strokeWidth={4} class="transition-all duration-300 group-open:rotate-180 text-gray-icon"/>
                       </summary>
 
                       <ul
