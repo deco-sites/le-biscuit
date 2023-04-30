@@ -103,7 +103,13 @@ function Footer({ sections = [] }: Props) {
                     <details class="group">
                       <summary class="list-none flex items-center justify-between text-gray-icon">
                         {section.label}
-                        <Icon id="ChevronDown" width={15} height={20} strokeWidth={4} class="transition-all duration-300 group-open:rotate-180 text-gray-icon"/>
+                        <Icon
+                          id="ChevronDown"
+                          width={15}
+                          height={20}
+                          strokeWidth={4}
+                          class="transition-all duration-300 group-open:rotate-180 text-gray-icon"
+                        />
                       </summary>
 
                       <ul
