@@ -20,6 +20,9 @@ export default {
   content: ["./**/*.tsx"],
   theme: {
     extend: {
+      transitionProperty: {
+        'height': 'height'
+      },
       colors: {
         "primary": "#ed1b2f",
         "red-icon": "#f15766",
