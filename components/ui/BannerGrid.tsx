@@ -39,13 +39,13 @@ export interface Props {
   dimensions?: {
     mobile: {
       width: number;
-      height: number
+      height: number;
     };
     desktop: {
       width: number;
-      height: number
-    }
-  }
+      height: number;
+    };
+  };
   /**
    * @description Item's border radius in px
    */
@@ -98,7 +98,7 @@ export default function BannnerGrid({
   itemsPerLine,
   borderRadius,
   banners = [],
-  dimensions
+  dimensions,
 }: Props) {
   return (
     <Container class="px-2 lg:px-0">
@@ -125,19 +125,25 @@ export default function BannnerGrid({
                 RADIUS_MOBILE[borderRadius.mobile ?? "none"]
               } ${RADIUS_DESKTOP[borderRadius.desktop ?? "none"]} `}
             >
-              <Picture >
+              <Picture>
                 <Source
                   media="(max-width: 767px)"
                   src={srcMobile}
-                  width={dimensions?.mobile.width ? dimensions.mobile.width : 1000 }
+                  width={dimensions?.mobile.width
+                    ? dimensions.mobile.width
+                    : 1000}
                 />
                 <Source
                   media="(min-width: 768px)"
                   src={srcDesktop ? srcDesktop : srcMobile}
-                  width={dimensions?.desktop.width ? dimensions.desktop.width : 250}
+                  width={dimensions?.desktop.width
+                    ? dimensions.desktop.width
+                    : 250}
                 />
                 <img
-                  class={`w-full ${banners.length === 1 ? 'sm:max-h-[148px]' : '' }`}
+                  class={`w-full ${
+                    banners.length === 1 ? "sm:max-h-[148px]" : ""
+                  }`}
                   sizes="(max-width: 640px) 100vw, 30vw"
                   src={srcMobile}
                   alt={alt}
