@@ -3,7 +3,7 @@ import Image from "deco-sites/std/components/Image.tsx";
 
 function Newsletter() {
   return (
-    <div class="flex flex-col sm:flex-row items-center gap-6 sm:gap-20 bg-white sm:justify-between">
+    <div class="flex flex-col sm:flex-row items-center gap-6 sm:gap-20 bg-white sm:justify-between px-2">
       <div class="flex items-center gap-12">
         <Image
           class="hidden lg:block"
