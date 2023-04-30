@@ -33,7 +33,9 @@ function Highlights({ highlights = [], title }: Props) {
       <div class="md:hidden py-[18px] px-5 bg-camp-grey flex flex-col items-center">
         <Container
           id={id}
-          class={`grid grid-cols-1 grid-rows-[48px_1fr] max-w-[1320px] relative transition-height duration-500 ease-in ${ open.value ? "max-h-full" : "max-h-[315px]"}`}
+          class={`grid grid-cols-1 grid-rows-[48px_1fr] max-w-[1320px] relative transition-height duration-500 ease-in ${
+            open.value ? "max-h-full" : "max-h-[315px]"
+          }`}
         >
           <h2 class="">
             <Text variant="heading-2">{title}</Text>
