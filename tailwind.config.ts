@@ -28,7 +28,7 @@ export default {
         "bottom-green": "#27ae60",
         "blue-text-discount": "#006ca1",
         "dark-red": "#cf040a",
-      "gray-border": "#dadada"
+        "gray-border": "#dadada",
       },
       fontSize: {
         "heading-1": ["56px", "67.2px"],
