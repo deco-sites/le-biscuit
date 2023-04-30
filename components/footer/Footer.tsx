@@ -53,7 +53,7 @@ function FooterContainer(
     children: ComponentChildren;
   },
 ) {
-  return <div class={`py-6 px-4 sm:py-12 sm:px-0 ${_class}`}>{children}</div>;
+  return <div class={`py-6 px-2 sm:py-12 sm:px-0 ${_class}`}>{children}</div>;
 }
 
 export interface Props {
@@ -62,7 +62,7 @@ export interface Props {
 
 function Footer({ sections = [] }: Props) {
   return (
-    <footer class="w-full bg-primary flex flex-col divide-y divide-primary-content">
+    <footer class="w-full flex flex-col divide-y divide-primary-content">
       <div>
         <Container class="w-full flex flex-col divide-y divide-primary-content">
           <FooterContainer>

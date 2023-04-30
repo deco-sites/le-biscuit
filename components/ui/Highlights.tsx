@@ -30,7 +30,7 @@ function Highlights({ highlights = [], title }: Props) {
   const open = useSignal(false);
   return (
     <>
-      <div class="md:hidden py-[18px] px-5 bg-camp-grey flex flex-col items-center">
+      <div class="md:hidden py-[18px] px-5 bg-camp-gray flex flex-col items-center">
         <Container
           id={id}
           class={`grid grid-cols-1 grid-rows-[48px_1fr] max-w-[1320px] relative transition-height duration-500 ease-in ${
@@ -59,7 +59,7 @@ function Highlights({ highlights = [], title }: Props) {
                     height={38}
                   />
                 </div>
-                <Text variant="body" class="text-grey-icon text-sm">
+                <Text variant="body" class="text-gray-icon text-sm">
                   {label}
                 </Text>
               </a>
@@ -67,14 +67,14 @@ function Highlights({ highlights = [], title }: Props) {
           </div>
         </Container>
         <Button
-          class="bg-transparent !text-grey-icon underline"
+          class="bg-transparent !text-gray-icon underline"
           onClick={() => open.value = !open.value}
         >
           {open.value ? "Ver menos" : "Ver mais"}
         </Button>
       </div>
       {/* Desktop version */}
-      <div class="hidden md:block py-[18px] px-5 bg-camp-grey">
+      <div class="hidden md:block py-[18px] px-5 bg-camp-gray">
         <Container
           id={id}
           class="grid grid-cols-1 grid-rows-[48px_1fr] max-w-[1320px] relative"
