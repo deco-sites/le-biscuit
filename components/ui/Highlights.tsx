@@ -20,22 +20,29 @@ export interface Props {
   highlights?: Highlight[];
   title: string;
   /**
-  *@description this text is going to be displayed in red besides the title
-  **/
+   * @description this text is going to be displayed in red besides the title
+   */
   highlightedTitle?: string;
 }
 
 function Highlights({ highlights = [], title }: Props) {
-  const id = useId()
-  const open = useSignal(false)
+  const id = useId();
+  const open = useSignal(false);
   return (
     <>
       <div class="md:hidden py-[18px] px-5 bg-camp-grey flex flex-col items-center">
-        <Container id={id} class={`grid grid-cols-1 grid-rows-[48px_1fr] max-w-[1320px] relative transition-height duration-500 ease-in`}>
+        <Container
+          id={id}
+          class={`grid grid-cols-1 grid-rows-[48px_1fr] max-w-[1320px] relative transition-height duration-500 ease-in`}
+        >
           <h2 class="">
             <Text variant="heading-2">{title}</Text>
           </h2>
-          <div class={`flex flex-wrap justify-between transition-height duration-500 ease-in  overflow-hidden  ${open.value ? "h-full" : "max-h-[272px]"}`}>
+          <div
+            class={`flex flex-wrap justify-between transition-height duration-500 ease-in  overflow-hidden  ${
+              open.value ? "h-full" : "max-h-[272px]"
+            }`}
+          >
             {highlights.map(({ href, src, alt, label }) => (
               <a
                 href={href}
@@ -50,16 +57,26 @@ function Highlights({ highlights = [], title }: Props) {
                     height={38}
                   />
                 </div>
-                <Text variant="body" class="text-grey-icon text-sm">{label}</Text>
+                <Text variant="body" class="text-grey-icon text-sm">
+                  {label}
+                </Text>
               </a>
             ))}
           </div>
         </Container>
-        <Button class="bg-transparent !text-grey-icon underline" onClick={() => open.value = !open.value}>{open.value ? "Ver menos" : "Ver mais"}</Button>
+        <Button
+          class="bg-transparent !text-grey-icon underline"
+          onClick={() => open.value = !open.value}
+        >
+          {open.value ? "Ver menos" : "Ver mais"}
+        </Button>
       </div>
       {/* Desktop version */}
       <div class="hidden md:block py-[18px] px-5 bg-camp-grey">
-        <Container id={id} class="grid grid-cols-1 grid-rows-[48px_1fr] max-w-[1320px] relative">
+        <Container
+          id={id}
+          class="grid grid-cols-1 grid-rows-[48px_1fr] max-w-[1320px] relative"
+        >
           <h2 class="">
             <Text variant="heading-2">{title}</Text>
           </h2>
@@ -95,7 +112,9 @@ function Highlights({ highlights = [], title }: Props) {
                     height={38}
                   />
                 </div>
-                <Text variant="body" class="text-grey-icon text-sm">{label}</Text>
+                <Text variant="body" class="text-grey-icon text-sm">
+                  {label}
+                </Text>
               </a>
             ))}
           </Slider>
@@ -113,8 +132,7 @@ function Highlights({ highlights = [], title }: Props) {
               />
             </Button>
           </div>
-          <SliderControllerJS rootId={id}/>
-
+          <SliderControllerJS rootId={id} />
         </Container>
       </div>
     </>
