@@ -20,6 +20,9 @@ export default {
   content: ["./**/*.tsx"],
   theme: {
     extend: {
+      transitionProperty: {
+        "height": "height",
+      },
       colors: {
         "primary": "#ed1b2f",
         "red-icon": "#f15766",
@@ -127,16 +130,16 @@ export default {
       "scrollbar-black": {
         "scrollbar-width": "auto",
         "scrollbar-color": "#030303 #ffffff",
-  
+
         "&::-webkit-scrollbar": {
           "width": "10px",
           "height": "10px",
         },
-  
+
         "&::-webkit-scrollbar-track": {
           "background": "#ffffff",
         },
-  
+
         "&::-webkit-scrollbar-thumb": {
           "background-color": "#030303",
           "border-radius": "10px",
@@ -146,32 +149,32 @@ export default {
       "scrollbar-black-tranparent-y": {
         "scrollbar-width": "auto",
         "scrollbar-color": "#030303 ",
-  
+
         "&::-webkit-scrollbar": {
           "width": "4px",
           "height": "0px",
         },
-  
+
         "&::-webkit-scrollbar-thumb": {
           "background-color": "#030303",
           "border-radius": "10px",
         },
       },
-  
+
       "scrollbar-black-tranparent-x": {
         "scrollbar-width": "auto",
         "scrollbar-color": "#030303 ",
-  
+
         "&::-webkit-scrollbar": {
           "width": "0px",
           "height": "4px",
         },
-  
+
         "&::-webkit-scrollbar-thumb": {
           "background-color": "#030303",
           "border-radius": "10px",
         },
-      }
-    }
+      },
+    },
   },
 };
