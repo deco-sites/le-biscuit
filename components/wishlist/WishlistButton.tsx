@@ -6,10 +6,10 @@ import { useUser } from "deco-sites/std/commerce/vtex/hooks/useUser.ts";
 import type { WishlistItem } from "deco-sites/std/commerce/vtex/types.ts";
 
 interface Props extends Partial<WishlistItem> {
-  variant?: "icon" | "full";
+  variant?: "icon" | "outline" | "heart" | "full";
 }
 
-function WishlistButton({ variant = "icon", ...item }: Props) {
+function WishlistButton({ variant, ...item }: Props) {
   const user = useUser();
   const { loading, addItem, removeItem, getItem } = useWishlist();
   const listItem = useComputed(() => getItem(item));
@@ -20,7 +20,7 @@ function WishlistButton({ variant = "icon", ...item }: Props) {
 
   return (
     <Button
-      variant={variant === "icon" ? "icon" : "outline"}
+      variant={variant === "icon" ? "icon" : variant}
       loading={fetching.value}
       aria-label="Add to wishlist"
       onClick={async (e) => {
@@ -49,12 +49,16 @@ function WishlistButton({ variant = "icon", ...item }: Props) {
     >
       <Icon
         id="Heart"
-        width={20}
-        height={20}
-        strokeWidth={2}
+        width={30}
+        height={30}
+        strokeWidth={1}
         fill={isInsideWishlist ? "black" : "none"}
       />
-      {variant === "icon" ? null : isInsideWishlist ? "Remover" : "Favoritar"}
+      {variant === "icon" || "heart"
+        ? null
+        : isInsideWishlist
+        ? "Remover"
+        : "Favoritar"}
     </Button>
   );
 }

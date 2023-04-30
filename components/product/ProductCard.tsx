@@ -71,7 +71,7 @@ function ProductCard({ product, preload, itemListName }: Props) {
       <a href={url} aria-label="product link">
         <div
           href={url}
-          class="absolute  hidden sm:group-hover:flex flex-col justify-center content-center gap-2 h-full w-full p-2 "
+          class="absolute  hidden sm:group-hover:flex flex-col justify-center content-center gap-2 h-full w-full pb-5   "
         >
           <Sizes {...product} />
           {/* FIXME: Understand why fresh breaks rendering this component */}
@@ -96,9 +96,10 @@ function ProductCard({ product, preload, itemListName }: Props) {
           </ButtonSendEvent>
         </div>
         <div class="flex h-[200px] w-full justify-center">
-          <div class="absolute top-0 right-0">
+          <div class="absolute top-0 right-0 mr-1 mt-1">
             {/* icon heart */}
             <WishlistIcon
+              variant="heart"
               productId={isVariantOf?.productGroupID}
               sku={productID}
               title={name}
