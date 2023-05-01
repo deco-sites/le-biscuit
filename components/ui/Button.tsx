@@ -24,7 +24,7 @@ const variants = {
   heart: "h-9 w-9 rounded bg-transparent text-primary border-transparent",
 
   green: "bg-bottom-green rounded-lg flex h-[45px] p-[8px] text-white ",
-  full:""
+  full: "",
 };
 
 const Button = forwardRef<HTMLButtonElement, Props>(({

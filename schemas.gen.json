@@ -3268,6 +3268,10 @@
             {
               "type": "string",
               "const": "ArrowDown"
+            },
+            {
+              "type": "string",
+              "const": "Star-Yellow"
             }
           ],
           "type": "string",
@@ -3470,6 +3474,10 @@
             {
               "type": "string",
               "const": "ArrowDown"
+            },
+            {
+              "type": "string",
+              "const": "Star-Yellow"
             }
           ],
           "type": "string",
