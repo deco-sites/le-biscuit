@@ -6,15 +6,14 @@ export interface INavItem {
   label: string;
   href: string;
   children?: INavItem[];
-  image?: { src?: string; alt?: string };
 }
 
 function NavItem({ item }: { item: INavItem }) {
-  const { href, label, children, image } = item;
+  const { href, label, children } = item;
 
   return (
     <li class="group flex items-center">
-      <a href={href} class="px-4 py-3">
+      <a href={href} class="px-4">
         <Text class="group-hover:underline" variant="menu">
           {label}
         </Text>
@@ -26,16 +25,6 @@ function NavItem({ item }: { item: INavItem }) {
             class="fixed hidden hover:flex group-hover:flex bg-base-100 z-50 items-start justify-center gap-6 border-t border-b-2 border-base-200 w-screen"
             style={{ top: "0px", left: "0px", marginTop: headerHeight }}
           >
-            {image?.src && (
-              <Image
-                class="p-6"
-                src={image.src}
-                alt={image.alt}
-                width={300}
-                height={332}
-                loading="lazy"
-              />
-            )}
             <ul class="flex items-start justify-center gap-6">
               {children.map((node) => (
                 <li class="p-6">
