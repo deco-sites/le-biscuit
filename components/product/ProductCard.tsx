@@ -107,21 +107,21 @@ function ProductCard({ product, preload, itemListName }: Props) {
           <Image
             src={front.url!}
             alt={front.alternateName}
-            width={50}
-            height={50}
-            class="rounded h-[100px] w-[100px]  mb-1 wid "
+            width={100}
+            height={100}
+            class="rounded h-[100px] w-[100px]  mb-1 sm:w-[200px] sm:h-[200px]"
             preload={preload}
             loading={preload ? "eager" : "lazy"}
             sizes=" (max-width: 640px) 50vw, 20vw"
           />
         </div>
 
-        <div class="flex flex-col items-center justify-center gap-1 px-3">
+        <div class="flex flex-col w-full  items-center justify-center gap-1 px-3">
           <Text
-            class="overflow-hidden text-ellipsis whitespace-break-spaces text-xs"
+            class="h-[45px] w-full overflow-hidden text-ellipsis text-xs whitespace-break-spaces"
             variant="caption"
           >
-            {name}
+            {name!.length > 0 ? name! : "Sem item no estoque"}
           </Text>
           <div class="flex flex-row w-full gap-1 ">
             <Icon id="Star-Yellow" width={20} height={20} />
