@@ -18,8 +18,8 @@ export default {
       colors: {
         "primary": "#ed1b2f",
         "red-icon": "#f15766",
-        "camp-grey": "#f5f5f5",
-        "grey-icon": "#444444",
+        "camp-gray": "#f5f5f5",
+        "gray-icon": "#444444",
         "bottom-green": "#27ae60",
         "blue-text-discount": "#006ca1",
       },

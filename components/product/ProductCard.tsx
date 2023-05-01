@@ -65,7 +65,7 @@ function ProductCard({ product, preload, itemListName }: Props) {
     <div
       data-deco="view-product"
       id={`product-card-${productID}`}
-      class="flex-col w-[180px] h-[300px] relative py-5 content-center gap-1 text-start rounded-lg border border-camp-grey group sm:h-[430px]  sm:w-[240px]  "
+      class="flex-col w-[180px] h-[300px] relative py-5 content-center gap-1 text-start rounded-lg border border-camp-gray group sm:h-[430px]  sm:w-[240px]  "
     >
       <a href={url} aria-label="product link">
         <div
@@ -137,7 +137,7 @@ function ProductCard({ product, preload, itemListName }: Props) {
                 <Text class="line-through" variant="list-price" tone="base-300">
                   {formatPrice(listPrice, offers!.priceCurrency!)}
                 </Text>
-                <div class="flex flex-row gap-[2px] justify-center items-center bg-camp-grey text-blue-text-discount text-[12px] rounded-[4px] sm:h-[30px] sm:w-[50px] sm:text-xs">
+                <div class="flex flex-row gap-[2px] justify-center items-center bg-camp-gray text-blue-text-discount text-[12px] rounded-[4px] sm:h-[30px] sm:w-[50px] sm:text-xs">
                   <Icon id="ArrowDown" width={10} height={10} strokeWidth={2} />
                   <span class="">
                     {Math.trunc((listPrice! - price!) / listPrice! * 100)}%
