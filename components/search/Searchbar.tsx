@@ -109,31 +109,17 @@ function Searchbar({
     : products;
 
   return (
-    <div class="flex flex-col p-4 md:py-6 md:px-20">
+    <div class="flex flex-col p-4 pr-0 lg:p-0 lg:pl-4">
       <div class="flex items-center gap-4">
         <form
           id="searchbar"
           action={action}
-          class="flex-grow flex gap-3 px-3 py-2 border border-base-200"
+          class="flex-grow flex gap-3 border border-base-200 rounded-lg overflow-hidden"
         >
-          <Button
-            variant="icon"
-            aria-label="Search"
-            htmlFor="searchbar"
-            tabIndex={-1}
-          >
-            <Icon
-              class="text-base-300"
-              id="MagnifyingGlass"
-              width={20}
-              height={20}
-              strokeWidth={0.01}
-            />
-          </Button>
           <input
             ref={searchInputRef}
             id="search-input"
-            class="flex-grow outline-none placeholder-shown:sibling:hidden"
+            class="flex-grow outline-none placeholder-shown:sibling:hidden pl-4"
             name={name}
             defaultValue={query}
             onInput={(e) => {
@@ -154,19 +140,19 @@ function Searchbar({
             autocomplete="off"
           />
           <button
-            type="button"
-            aria-label="Clean search"
-            class="focus:outline-none"
+            type="submit"
+            class="bg-primary h-[40px] w-[37px] flex items-center justify-center"
+            aria-label="Search"
+            htmlFor="searchbar"
             tabIndex={-1}
-            onClick={(e) => {
-              e.stopPropagation();
-              if (searchInputRef.current === null) return;
-
-              searchInputRef.current.value = "";
-              setSearch("");
-            }}
           >
-            <Text variant="caption">limpar</Text>
+            <Icon
+              class="text-white"
+              id="MagnifyingGlass"
+              width={20}
+              height={20}
+              strokeWidth={0.01}
+            />
           </button>
         </form>
         {variant === "desktop" && <CloseButton />}
