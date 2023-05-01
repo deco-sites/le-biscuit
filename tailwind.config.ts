@@ -1,8 +1,11 @@
 // Daisi UI theme
 export const theme = {
   "primary": "#ed1b2f",
-
-
+  "red-icon": "#f15766",
+  "camp-gray": "#f5f5f5",
+  "gray-icon": "#444444",
+  "bottom-green": "#27ae60",
+  "blue-text-discount": "#006ca1",
   "secondary": "hsl(0 39% 39%)",
   "accent": "hsl(150 100% 50%)",
   "neutral": "hsl(0 0% 20%)",
@@ -17,7 +20,6 @@ export default {
   content: ["./**/*.tsx"],
   theme: {
     extend: {
-
       transitionProperty: {
         "height": "max-height",
       },

@@ -20,7 +20,6 @@ export default function ButtonSendEvent<
 >({ event, ...props }: Props<E>) {
   return (
     <Button
-      variant="green"
       {...props}
       {...useSendAnalyticsEvent(event)}
     />
