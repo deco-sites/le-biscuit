@@ -9,7 +9,7 @@ import { useVariantPossibilities } from "deco-sites/fashion/sdk/useVariantPossib
 import type { Product } from "deco-sites/std/commerce/types.ts";
 import ButtonSendEvent from "deco-sites/fashion/components/ButtonSendEvent.tsx";
 import { mapProductToAnalyticsItem } from "deco-sites/std/commerce/utils/productToAnalyticsItem.ts";
-
+import Icon from "deco-sites/fashion/components/ui/Icon.tsx";
 /**
  * A simple, inplace sku selector to be displayed once the user hovers the product card
  * It takes the user to the pdp once the user clicks on a given sku. This is interesting to
@@ -65,12 +65,40 @@ function ProductCard({ product, preload, itemListName }: Props) {
     <div
       data-deco="view-product"
       id={`product-card-${productID}`}
-      class="w-full group"
+      class="flex-col w-[180px] h-[300px] relative py-5 content-center gap-1 text-start rounded-lg border border-camp-gray group sm:h-[430px]  sm:w-[240px]  "
     >
       <a href={url} aria-label="product link">
-        <div class="relative w-full">
-          <div class="absolute top-0 right-0">
+        <div
+          href={url}
+          class="absolute  hidden sm:group-hover:flex flex-col justify-center content-center gap-2 h-[80%] w-full pb-5  px-5"
+        >
+          <Sizes {...product} />
+          {/* FIXME: Understand why fresh breaks rendering this component */}
+          <ButtonSendEvent
+            as="a"
+            href={product.url}
+            event={{
+              name: "select_item",
+              params: {
+                item_list_name: itemListName,
+                items: [
+                  mapProductToAnalyticsItem({
+                    product,
+                    price,
+                    listPrice,
+                  }),
+                ],
+              },
+            }}
+          >
+            Adicionar à sacola
+          </ButtonSendEvent>
+        </div>
+        <div class="flex h-[100px]  w-full justify-center sm:h-[200px]">
+          <div class="absolute top-0 right-0 mr-1 mt-1">
+            {/* icon heart */}
             <WishlistIcon
+              variant="heart"
               productId={isVariantOf?.productGroupID}
               sku={productID}
               title={name}
@@ -79,28 +107,57 @@ function ProductCard({ product, preload, itemListName }: Props) {
           <Image
             src={front.url!}
             alt={front.alternateName}
-            width={200}
-            height={279}
-            class="rounded w-full group-hover:hidden"
+            width={100}
+            height={100}
+            class="rounded h-[100px] w-[100px]  mb-1 sm:w-[200px] sm:h-[200px]"
             preload={preload}
             loading={preload ? "eager" : "lazy"}
-            sizes="(max-width: 640px) 50vw, 20vw"
+            sizes=" (max-width: 640px) 50vw, 20vw"
           />
-          <Image
-            src={back?.url ?? front.url!}
-            alt={back?.alternateName ?? front.alternateName}
-            width={200}
-            height={279}
-            class="rounded w-full hidden group-hover:block"
-            sizes="(max-width: 640px) 50vw, 20vw"
-          />
-          {seller && (
+        </div>
+
+        <div class="flex flex-col w-full  items-center justify-center gap-1 px-3">
+          <Text
+            class="h-[45px] w-full overflow-hidden text-ellipsis text-xs whitespace-break-spaces"
+            variant="caption"
+          >
+            {name!.length > 0 ? name! : "Sem item no estoque"}
+          </Text>
+          <div class="flex flex-row w-full gap-1 ">
+            <Icon id="Star-Yellow" width={20} height={20} />
+            <Icon id="Star-Yellow" width={20} height={20} />
+            <Icon id="Star-Yellow" width={20} height={20} />
+            <Icon id="Star-Yellow" width={20} height={20} />
+            <Icon id="Star-Yellow" width={20} height={20} />
+          </div>
+
+          {price !== listPrice
+            ? (
+              <div class="flex justify-between gap-2 w-full">
+                <Text class="line-through" variant="list-price" tone="base-300">
+                  {formatPrice(listPrice, offers!.priceCurrency!)}
+                </Text>
+                <div class="flex flex-row gap-[2px] justify-center items-center bg-camp-gray text-blue-text-discount text-[12px] rounded-[4px] sm:h-[30px] sm:w-[50px] sm:text-xs">
+                  <Icon id="ArrowDown" width={10} height={10} strokeWidth={2} />
+                  <span class="">
+                    {Math.trunc((listPrice! - price!) / listPrice! * 100)}%
+                  </span>
+                </div>
+              </div>
+            )
+            : ""}
+          <div class="flex flex-col w-full">
+            <span class="text-[12px] sm:text-[18px]">
+              {formatPrice(price, offers!.priceCurrency!)}
+            </span>
+            {/* a verificar */}
+            <span class="text-[8px] sm:text-[12px]">
+              12x {formatPrice(price! / 12, offers!.priceCurrency!)}{" "}
+              s/ juros no cartão de crédito
+            </span>
             <div
-              class="absolute bottom-0 hidden sm:group-hover:flex flex-col gap-2 w-full p-2 bg-opacity-10"
-              style={{
-                backgroundColor: "rgba(255, 255, 255, 0.2)",
-                backdropFilter: "blur(2px)",
-              }}
+              href={url}
+              class="flex flex-col justify-center content-center h-[40px] w-full pb-2 mb-1 mt-3 px-2 sm:hidden "
             >
               <Sizes {...product} />
               {/* FIXME: Understand why fresh breaks rendering this component */}
@@ -121,26 +178,9 @@ function ProductCard({ product, preload, itemListName }: Props) {
                   },
                 }}
               >
-                Visualizar Produto
+                Adicionar
               </ButtonSendEvent>
             </div>
-          )}
-        </div>
-
-        <div class="flex flex-col gap-1 py-2">
-          <Text
-            class="overflow-hidden text-ellipsis whitespace-nowrap"
-            variant="caption"
-          >
-            {name}
-          </Text>
-          <div class="flex items-center gap-2">
-            <Text class="line-through" variant="list-price" tone="base-300">
-              {formatPrice(listPrice, offers!.priceCurrency!)}
-            </Text>
-            <Text variant="caption" tone="secondary">
-              {formatPrice(price, offers!.priceCurrency!)}
-            </Text>
           </div>
         </div>
       </a>
