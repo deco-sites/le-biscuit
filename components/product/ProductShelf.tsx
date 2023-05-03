@@ -32,11 +32,12 @@ function ProductShelf({
 
   return (
     <Container
-      id={id}    
+      id={id}
       class="grid grid-cols-[60px_1fr_60px] grid-rows-[60px_1fr_60px_1fr] py-5 px-2 overflow-y-hidden overflow-x-hidden sm:px-5 "
     >
       <h2 class="text-start row-start-1 col-span-full">
-        <Text variant="heading-2" >{title} </Text><Text variant="heading-2"  class="text-red-700">{titleEmphasis}</Text>
+        <Text variant="heading-2">{title}</Text>
+        <Text variant="heading-2" class="text-red-700">{titleEmphasis}</Text>
       </h2>
 
       <Slider
@@ -54,14 +55,24 @@ function ProductShelf({
         <div class="hidden relative sm:block  z-10  col-start-1  row-start-3">
           <div class="absolute right-1/2 bg-base-100 rounded-full  border-[0.5px] border-[#dadada] ">
             <Button variant="icon" data-slide="prev" aria-label="Previous item">
-              <Icon size={20} id="ChevronLeft" class="text-[#dcdfe2]" strokeWidth={2} />
+              <Icon
+                size={20}
+                id="ChevronLeft"
+                class="text-[#dcdfe2]"
+                strokeWidth={2}
+              />
             </Button>
           </div>
         </div>
         <div class="hidden relative sm:block z-10 col-start-3 row-start-3">
           <div class="absolute left-1/2 bg-base-100 rounded-full  border-[0.5px] border-[#dadada] ">
             <Button variant="icon" data-slide="next" aria-label="Next item">
-              <Icon size={20} id="ChevronRight" class="text-[#dcdfe2]" strokeWidth={2} />
+              <Icon
+                size={20}
+                id="ChevronRight"
+                class="text-[#dcdfe2]"
+                strokeWidth={2}
+              />
             </Button>
           </div>
         </div>
@@ -72,7 +83,7 @@ function ProductShelf({
       <ViewSendEvent
         event={{
           name: "view_item_list",
-            params: {
+          params: {
             item_list_name: title,
             items: products.map((product) =>
               mapProductToAnalyticsItem({
