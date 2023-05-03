@@ -30,7 +30,7 @@ function Highlights({ highlights = [], title }: Props) {
   const open = useSignal(false);
   return (
     <>
-      <div class="md:hidden py-[18px] px-5 bg-camp-gray flex flex-col items-center">
+      <div class="md:hidden py-[18px] bg-camp-gray flex flex-col items-center">
         <Container
           id={id}
           class={`grid grid-cols-1 grid-rows-[48px_1fr] max-w-[1320px] relative transition-height duration-500 ease-in ${
