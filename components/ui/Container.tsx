@@ -5,7 +5,9 @@ type Props = JSX.IntrinsicElements["div"];
 function Container({ class: _class = "", ...props }: Props) {
   return (
     <div
+
       class={`sm:max-w-[1280px] px-4 xl:px-0 mx-auto ${_class}`}
+
       {...props}
     />
   );

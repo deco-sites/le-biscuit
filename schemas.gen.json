@@ -3996,6 +3996,10 @@
           "type": "string",
           "title": "Title"
         },
+        "titleEmphasis": {
+          "type": "string",
+          "title": "Title Emphasis"
+        },
         "products": {
           "$ref": "#/definitions/ZGVjby1zaXRlcy9zdGQvY29tbWVyY2UvdHlwZXMudHM=@Product[]|null",
           "title": "Products"
@@ -4010,6 +4014,7 @@
       },
       "required": [
         "title",
+        "titleEmphasis",
         "products"
       ],
       "title": "deco-sites/le-biscuit/components/product/ProductShelf.tsx@Props"

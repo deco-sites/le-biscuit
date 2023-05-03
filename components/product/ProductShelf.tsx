@@ -14,6 +14,7 @@ import { useOffer } from "deco-sites/fashion/sdk/useOffer.ts";
 
 export interface Props {
   title: string;
+  titleEmphasis: string;
   products: LoaderReturnType<Product[] | null>;
   itemsPerPage?: number;
 }
@@ -21,6 +22,7 @@ export interface Props {
 function ProductShelf({
   title,
   products,
+  titleEmphasis,
 }: Props) {
   const id = useId();
 
@@ -31,35 +33,46 @@ function ProductShelf({
   return (
     <Container
       id={id}
-      class="grid grid-cols-[48px_1fr_48px] grid-rows-[48px_1fr_48px_1fr] py-10 px-0 sm:px-5"
+      class="grid grid-cols-[60px_1fr_60px] grid-rows-[60px_1fr_60px_1fr] py-5 px-2 overflow-y-hidden overflow-x-hidden sm:px-5 "
     >
-      <h2 class="text-center row-start-1 col-span-full">
+      <h2 class="text-start row-start-1 col-span-full">
         <Text variant="heading-2">{title}</Text>
+        <Text variant="heading-2" class="text-red-700">{titleEmphasis}</Text>
       </h2>
 
       <Slider
-        class="gap-6 col-span-full row-start-2 row-end-5"
+        class="grid grid-rows-5 col-span-full sm:grid-rows-none row-start-2 row-end-5 overflow-y-hidden overflow-x-hidden"
         snap="snap-center sm:snap-start block first:ml-6 sm:first:ml-0 last:mr-6 sm:last:mr-0"
       >
         {products?.map((product) => (
-          <div class="min-w-[270px] max-w-[270px] sm:min-w-[292px] sm:max-w-[292px]">
+          <div class="max-w-[270px] sm:min-w-[292px] sm:max-w-[292px]">
             <ProductCard product={product} itemListName={title} />
           </div>
         ))}
       </Slider>
 
       <>
-        <div class="hidden relative sm:block z-10 col-start-1 row-start-3">
-          <div class="absolute right-1/2 bg-base-100 rounded-full border-base-content border">
+        <div class="hidden relative sm:block  z-10  col-start-1  row-start-3">
+          <div class="absolute right-1/2 bg-base-100 rounded-full  border-[0.5px] border-[#dadada] ">
             <Button variant="icon" data-slide="prev" aria-label="Previous item">
-              <Icon size={20} id="ChevronLeft" strokeWidth={3} />
+              <Icon
+                size={20}
+                id="ChevronLeft"
+                class="text-[#dcdfe2]"
+                strokeWidth={2}
+              />
             </Button>
           </div>
         </div>
         <div class="hidden relative sm:block z-10 col-start-3 row-start-3">
-          <div class="absolute left-1/2 bg-base-100 rounded-full border-base-content border">
+          <div class="absolute left-1/2 bg-base-100 rounded-full  border-[0.5px] border-[#dadada] ">
             <Button variant="icon" data-slide="next" aria-label="Next item">
-              <Icon size={20} id="ChevronRight" strokeWidth={3} />
+              <Icon
+                size={20}
+                id="ChevronRight"
+                class="text-[#dcdfe2]"
+                strokeWidth={2}
+              />
             </Button>
           </div>
         </div>

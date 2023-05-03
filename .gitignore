@@ -71,3 +71,7 @@ server/
 
 # Deno.lock
 deno.lock
+
+schemas.gen.json
+
+live.gen.ts
