@@ -36,7 +36,7 @@ function CartItem({ index }: Props) {
     },
   } = item;
 
-  console.log(item);
+  // console.log(item);
 
   const isGift = sellingPrice < 0.01;
 
