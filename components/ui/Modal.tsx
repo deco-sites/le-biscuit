@@ -19,6 +19,7 @@ export type Props = JSX.IntrinsicElements["dialog"] & {
   mode?: "sidebar-right" | "sidebar-left" | "center";
   onClose?: () => Promise<void> | void;
   loading?: "lazy" | "eager";
+  type?: "menu";
   closed?: boolean;
 };
 
@@ -46,6 +47,7 @@ const Modal = ({
   mode = "sidebar-right",
   onClose,
   children,
+  type,
   loading,
   closed = true,
   ...props
@@ -67,6 +69,75 @@ const Modal = ({
       lazy.value = true;
     }
   }, [open]);
+
+  if (type === "menu") {
+    return (
+      <dialog
+        {...props}
+        ref={ref}
+        class={`bg-transparent p-0 m-0 max-w-full w-full max-h-full h-full backdrop-opacity-50 !overflow-hidden ${
+          dialogStyles[mode]
+        } ${props.class ?? ""}`}
+        onClick={(e) =>
+          (e.target as HTMLDialogElement).tagName === "SECTION" && onClose?.()}
+        // @ts-expect-error - This is a bug in types.
+        onClose={onClose}
+      >
+        <section
+          class={`w-full h-[100vh] flex bg-transparent ${sectionStyles[mode]}`}
+        >
+          <div
+            class={`bg-base-100 flex flex-col max-h-full ${
+              containerStyles[mode]
+            }`}
+          >
+            <header class="flex flex-col justify-between ">
+              <div class="flex justify-between">
+                <div class="bg-primary flex items-center w-[300px] px-6 py-4 rounded-br-full gap-4">
+                  <Icon
+                    id="User2"
+                    width={28}
+                    height={24}
+                    strokeWidth={2}
+                    class="!text-white"
+                  />
+                  <a href="#" class="flex items-center gap-1">
+                    <Icon
+                      id="Box"
+                      width={18}
+                      height={18}
+                      strokeWidth={1}
+                      class="!text-white"
+                    />
+                    <Text class="text-white">Meus Pedidos</Text>
+                  </a>
+                </div>
+                <Button
+                  variant="icon"
+                  onClick={onClose}
+                  class="rounded-full shadow-md self-end mr-2"
+                >
+                  <Icon
+                    id="XMark"
+                    width={16}
+                    height={16}
+                    strokeWidth={3}
+                    class="text-gray-border"
+                  />
+                </Button>
+              </div>
+              <h1 class="p-4 text-xl text-gray-icon">
+                <Text variant="heading-2">{title}</Text>
+              </h1>
+            </header>
+            <div class="overflow-y-auto flex-grow flex flex-col">
+              {loading === "lazy" ? lazy.value && children : children}
+            </div>
+          </div>
+        </section>
+      </dialog>
+    );
+  }
 
   return (
     <dialog
