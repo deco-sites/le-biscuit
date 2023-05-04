@@ -65,9 +65,9 @@ function Cart() {
       </ul>
 
       {/* Cart Footer */}
-      <footer>
+      <footer class="shadow-[0_4px_16px_rgba(0,0,0,.08)] m-4">
         {/* Subtotal */}
-        <div class="border-t border-base-200 py-4 flex flex-col gap-4">
+        <div class="border-t border-base-200 py-4 flex flex-col gap-4 ">
           {discounts?.value && (
             <div class="flex justify-between items-center px-4">
               <Text variant="caption">Descontos</Text>
@@ -76,16 +76,16 @@ function Cart() {
               </Text>
             </div>
           )}
-          <Coupon />
+          {/* <Coupon /> */}
         </div>
         {/* Total */}
         {total?.value && (
-          <div class="border-t border-base-200 pt-4 flex flex-col justify-end items-end gap-2 mx-4">
+          <div class="pt-4 flex flex-col justify-end gap-2 mx-4">
             <div class="flex justify-between items-center w-full">
-              <Text variant="body">Total</Text>
-              <Text variant="heading-3">
+              <span class="text-[16px]">Total</span>
+              <span class="text-[16px]">
                 {formatPrice(total.value / 100, currencyCode!, locale)}
-              </Text>
+              </span>
             </div>
             <Text tone="base-300" variant="caption">
               Taxas e fretes serão calculados no checkout
@@ -99,6 +99,7 @@ function Cart() {
             href={`${CHECKOUT_URL}?orderFormId=${cart.value!.orderFormId}`}
           >
             <Button
+              variant="green"
               data-deco="buy-button"
               class="w-full"
               disabled={loading.value || cart.value.items.length === 0}
@@ -119,7 +120,7 @@ function Cart() {
                 });
               }}
             >
-              Finalizar Compra
+              Ver Sacola
             </Button>
           </a>
         </div>
