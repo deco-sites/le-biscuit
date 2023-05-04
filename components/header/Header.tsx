@@ -21,9 +21,14 @@ export interface NavItem {
     }>;
   }>;
   image?: {
-    src?: Image;
-    alt?: string;
+    src: LiveImage;
+    alt: string;
   };
+}
+
+export interface NavItemDesktop {
+  label: string;
+  href: string;
 }
 
 export interface Props {
@@ -35,6 +40,7 @@ export interface Props {
    * @description Navigation items used both on mobile and desktop menus
    */
   navItems?: NavItem[];
+  navItemsDesktop?: NavItemDesktop[];
 
   /**
    * @title Product suggestions
@@ -59,6 +65,7 @@ function Header(
     searchbar: _searchbar,
     products,
     navItems = [],
+    navItemsDesktop = [],
     suggestions,
   }: Props,
 ) {
@@ -67,7 +74,7 @@ function Header(
     <header style={{ height: headerHeight }}>
       <div class="bg-base-100 fixed w-full z-50">
         <Alert image={alert.image} path={alert.path} />
-        <Navbar items={navItems} searchbar={searchbar} image={image} />
+        <Navbar items={navItemsDesktop} searchbar={searchbar} image={image} />
       </div>
       <Modals
         menu={{ items: navItems }}

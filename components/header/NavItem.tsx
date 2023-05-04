@@ -1,8 +1,12 @@
 import Text from "deco-sites/fashion/components/ui/Text.tsx";
-import Image from "deco-sites/std/components/Image.tsx";
+import type { Image as LiveImage } from "deco-sites/std/components/types.ts";
 import { headerHeight } from "./constants.ts";
 
 export interface INavItem {
+  image?: {
+    src: LiveImage;
+    alt: string;
+  };
   label: string;
   href: string;
   children?: INavItem[];
