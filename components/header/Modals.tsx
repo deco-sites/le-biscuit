@@ -48,6 +48,7 @@ function Modals({ menu, searchbar }: Props) {
         onClose={() => {
           displayCart.value = false;
         }}
+        closed={false}
       >
         <Suspense fallback={<Loading />}>
           <Cart />
