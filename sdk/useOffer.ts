@@ -58,6 +58,22 @@ export const useOffer = (aggregateOffer?: AggregateOffer) => {
   const installment = offer?.priceSpecification.reduce(bestInstallment, null);
   const seller = offer?.seller;
   const price = offer?.price;
+  const sellerName = offer?.name;
+
+  const installmentsLists = offer?.priceSpecification.reduce((acc, spec) => {
+    const { name } = spec;
+
+    if (!name) return acc;
+
+    if (!acc[name]) {
+      acc[name] = [spec];
+      return acc;
+    }
+
+    acc[name] = [...acc[name], spec];
+
+    return acc;
+  }, {} as Record<string, UnitPriceSpecification[]>);
 
   return {
     price,
@@ -66,5 +82,7 @@ export const useOffer = (aggregateOffer?: AggregateOffer) => {
     installments: installment && price
       ? installmentToString(installment, price)
       : null,
+    sellerName,
+    installmentsLists,
   };
 };

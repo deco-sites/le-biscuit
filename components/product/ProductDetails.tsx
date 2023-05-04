@@ -22,6 +22,8 @@ import { mapProductToAnalyticsItem } from "deco-sites/std/commerce/utils/product
 import ProductSelector from "./ProductVariantSelector.tsx";
 import ProductImageZoom from "deco-sites/fashion/islands/ProductImageZoom.tsx";
 import WishlistButton from "../wishlist/WishlistButton.tsx";
+import QuantityAddToCartButton from "./QuantityAddToCartButton.tsx";
+import PaymentTables from "deco-sites/le-biscuit/islands/PaymentTables.ts";
 
 export type Variant = "front-back" | "slider" | "auto";
 
@@ -34,8 +36,8 @@ export interface Props {
   variant?: Variant;
 }
 
-const WIDTH = 360;
-const HEIGHT = 500;
+const WIDTH = 358;
+const HEIGHT = 358;
 const ASPECT_RATIO = `${WIDTH} / ${HEIGHT}`;
 
 /**
@@ -64,105 +66,142 @@ function ProductInfo({ page }: { page: ProductDetailsPage }) {
     productID,
     offers,
     name,
+    brand,
     gtin,
     isVariantOf,
   } = product;
-  const { price, listPrice, seller, installments } = useOffer(offers);
+  const { price, listPrice, seller, installments, sellerName } = useOffer(
+    offers,
+  );
+
+  const { model, additionalProperty } = isVariantOf ?? {};
+
+  // console.log(isVariantOf?.model);
+
+  // console.log(additionalProperty);
 
   return (
     <>
-      {/* Breadcrumb */}
-      <Breadcrumb
-        itemListElement={breadcrumbList?.itemListElement.slice(0, -1)}
-      />
-      {/* Code and name */}
-      <div class="mt-4 sm:mt-8">
-        <div>
+      <div class="lg:max-w-[50%] pr-[2rem]">
+        {/* Code and name */}
+        <div class="hidden lg:block">
+          <div class="flex mt-4 sm:mt-8">
+            <h1>
+              <span class="text-[16px] font-bold">{name}</span>
+            </h1>
+            <div>
+              <Icon id="ShareGraph" width={30} height={30} strokeWidth={1} />
+            </div>
+          </div>
+          <div>
+            <Text tone="base-300" variant="caption">
+              (Código: {model})
+            </Text>{" "}
+            <Text tone="base-300" variant="caption">
+              Marca: <span class="text-primary">{brand}</span>
+            </Text>
+          </div>
+        </div>
+        {/* mini Description*/}
+        <div class="hidden lg:flex mt-4 sm:mt-6">
+          <Text variant="caption">
+            {description && (
+              <div>
+                <div class="line-clamp-3 text-[14px]">{description}</div>
+                <a
+                  href="#description"
+                  class="underline text-primary mt-[5px] inline-flex"
+                >
+                  Ler descrição completa
+                </a>
+              </div>
+            )}
+          </Text>
+        </div>
+
+        {/* Sku Selector */}
+        <div class="mt-4 sm:mt-6">
+          <ProductSelector product={product} />
+        </div>
+      </div>
+      <div class="w-full lg:max-w-[50%]">
+        {/* Prices */}
+        <div class="mt-4 border rounded-[10px] p-[16px] shadow-[0_2px_2px_rgb(0_0_0/10%)]">
+          <div class="flex flex-col gap-2 ">
+            <span class="line-through text-base-300 tex-[16px]">
+              de {formatPrice(listPrice, offers!.priceCurrency!)}
+            </span>
+
+            <div class="flex">
+              <span class="text-[20px] font-bold">
+                {formatPrice(price, offers!.priceCurrency!)} a vista
+              </span>
+              <div class="flex flex-row gap-[2px] justify-center items-center bg-camp-gray text-blue-text-discount text-[12px] rounded-[4px] sm:h-[30px] sm:w-[50px] sm:text-xs">
+                <Icon id="ArrowDown" width={10} height={10} strokeWidth={2} />
+                <span class="">
+                  {Math.trunc((listPrice! - price!) / listPrice! * 100)}%
+                </span>
+              </div>
+            </div>
+          </div>
           <Text tone="base-300" variant="caption">
-            Cod. {gtin}
+            {installments}
           </Text>
+          <PaymentTables product={product} />
         </div>
-        <h1>
-          <Text variant="heading-3">{name}</Text>
-        </h1>
-      </div>
-      {/* Prices */}
-      <div class="mt-4">
-        <div class="flex flex-row gap-2 items-center">
-          <Text
-            class="line-through"
-            tone="base-300"
-            variant="list-price"
-          >
-            {formatPrice(listPrice, offers!.priceCurrency!)}
-          </Text>
-          <Text tone="secondary" variant="heading-3">
-            {formatPrice(price, offers!.priceCurrency!)}
-          </Text>
-        </div>
-        <Text tone="base-300" variant="caption">
-          {installments}
-        </Text>
-      </div>
-      {/* Sku Selector */}
-      <div class="mt-4 sm:mt-6">
-        <ProductSelector product={product} />
-      </div>
-      {/* Add to Cart and Favorites button */}
-      <div class="mt-4 sm:mt-10 flex flex-col gap-2">
-        {seller && (
-          <AddToCartButton
-            skuId={productID}
-            sellerId={seller}
-            price={price ?? 0}
-            discount={price && listPrice ? listPrice - price : 0}
-            name={product.name ?? ""}
-            productGroupId={product.isVariantOf?.productGroupID ?? ""}
-          />
-        )}
-        <WishlistButton
-          variant="full"
-          productId={isVariantOf?.productGroupID}
-          sku={productID}
-          title={name}
-        />
-      </div>
-      {/* Shipping Simulation */}
-      <div class="mt-8">
-        <ShippingSimulation
-          items={[{
-            id: Number(product.sku),
-            quantity: 1,
-            seller: seller ?? "1",
-          }]}
-        />
-      </div>
-      {/* Description card */}
-      <div class="mt-4 sm:mt-6">
-        <Text variant="caption">
-          {description && (
-            <details>
-              <summary class="cursor-pointer">Descrição</summary>
-              <div class="ml-2 mt-2">{description}</div>
-            </details>
+        {/* Add to Cart and Favorites button */}
+        <div class="mt-4 sm:mt-10 flex flex-col gap-2">
+          {seller && (
+            <QuantityAddToCartButton
+              skuId={productID}
+              sellerId={seller}
+              price={price ?? 0}
+              discount={price && listPrice ? listPrice - price : 0}
+              name={product.name ?? ""}
+              productGroupId={product.isVariantOf?.productGroupID ?? ""}
+            />
           )}
-        </Text>
+          {
+            /* <WishlistButton
+            variant="full"
+            productId={isVariantOf?.productGroupID}
+            sku={productID}
+            title={name}
+          /> */
+          }
+        </div>
+        <div>
+          <span class="underline text-[12px]">Vendido e entregue por:</span>
+          {" "}
+          {sellerName}
+        </div>
+        {/* Shipping Simulation */}
+        <div class="mt-8 border rounded-[10px] p-[16px] shadow-[0_2px_2px_rgb(0_0_0/10%)]">
+          <ShippingSimulation
+            items={[{
+              id: Number(product.sku),
+              quantity: 1,
+              seller: seller ?? "1",
+            }]}
+          />
+        </div>
+
+        <ViewSendEvent
+          event={{
+            name: "view_item",
+            params: {
+              items: [
+                mapProductToAnalyticsItem({
+                  product,
+                  breadcrumbList,
+                  price,
+                  listPrice,
+                }),
+              ],
+            },
+          }}
+        />
       </div>
-      <ViewSendEvent
-        event={{
-          name: "view_item",
-          params: {
-            items: [
-              mapProductToAnalyticsItem({
-                product,
-                breadcrumbList,
-                price,
-                listPrice,
-              }),
-            ],
-          },
-        }}
-      />
     </>
   );
 }
@@ -172,8 +211,14 @@ function Details({
   variant,
 }: { page: ProductDetailsPage; variant: Variant }) {
   const id = `product-image-gallery:${useId()}`;
-  const { product: { image: images = [] } } = page;
+  const {
+    product: { image: images = [], description, name, isVariantOf, brand },
+    breadcrumbList,
+  } = page;
 
+  const { model } = isVariantOf ?? {};
+
+  console.log(page.product);
   /**
    * Product slider variant
    *
@@ -184,71 +229,161 @@ function Details({
   if (variant === "slider") {
     return (
       <>
-        <div
-          id={id}
-          class={`grid grid-cols-1 gap-4 sm:grid-cols-[max-content_40vw_40vw] sm:grid-rows-1 sm:justify-center sm:max-h-[calc(${
-            (HEIGHT / WIDTH).toFixed(2)
-          }*40vw)]`}
-        >
-          {/* Image Slider */}
-          <div class="relative sm:col-start-2 sm:col-span-1 sm:row-start-1">
-            <Slider class="gap-6">
-              {images.map((img, index) => (
-                <Image
-                  class="snap-center min-w-[100vw] sm:min-w-[40vw]"
-                  sizes="(max-width: 640px) 100vw, 40vw"
-                  style={{ aspectRatio: ASPECT_RATIO }}
-                  src={img.url!}
-                  alt={img.alternateName}
-                  width={WIDTH}
-                  height={HEIGHT}
-                  // Preload LCP image for better web vitals
-                  preload={index === 0}
-                  loading={index === 0 ? "eager" : "lazy"}
-                />
-              ))}
-            </Slider>
-
-            <div class="absolute left-2 top-1/2  bg-base-100 rounded-full border-base-200 border">
-              <Button variant="icon" data-slide="prev" aria-label="Previous">
-                <Icon size={20} id="ChevronLeft" strokeWidth={3} />
-              </Button>
+        <Container class="py-0 sm:py-10">
+          {/* Breadcrumb */}
+          <Breadcrumb
+            itemListElement={breadcrumbList?.itemListElement.slice(0, -1)}
+          />
+          <div class="block lg:hidden">
+            <div class="flex mt-4 sm:mt-8">
+              <h1>
+                <span class="text-[16px] font-bold">{name}</span>
+              </h1>
+              <div>
+                <Icon id="ShareGraph" width={30} height={30} strokeWidth={1} />
+              </div>
             </div>
-            <div class="absolute right-2 top-1/2 bg-base-100 rounded-full border-base-200 border">
-              <Button variant="icon" data-slide="next" aria-label="Next">
-                <Icon size={20} id="ChevronRight" strokeWidth={3} />
-              </Button>
-            </div>
-
-            <div class="absolute top-2 right-2 bg-base-100 rounded-full">
-              <ProductImageZoom
-                images={images}
-                width={1280}
-                height={1280 * HEIGHT / WIDTH}
-              />
+            <div>
+              <Text tone="base-300" variant="caption">
+                (Código: {model})
+              </Text>{" "}
+              <Text tone="base-300" variant="caption">
+                Marca: <span class="text-primary">{brand}</span>
+              </Text>
             </div>
           </div>
+          <div
+            id={id}
+            class={`grid grid-cols-1 gap-4 sm:grid-cols-[33%_66%] sm:grid-rows-1 sm:justify-center sm:max-h-[calc(${
+              (HEIGHT / WIDTH).toFixed(2)
+            }*40vw)]`}
+          >
+            <div class="sm:grid-rows-[max-content_30vw]">
+              {/* Image Slider */}
+              <div class="relative sm:col-start-2 sm:col-span-1 sm:row-start-1">
+                <Slider class="gap-6">
+                  {images.map((img, index) => (
+                    <Image
+                      class="snap-center min-w-[100vw] sm:min-w-[40vw]"
+                      sizes="(max-width: 640px) 100vw, 40vw"
+                      style={{ aspectRatio: ASPECT_RATIO }}
+                      src={img.url!}
+                      alt={img.alternateName}
+                      width={WIDTH}
+                      height={HEIGHT}
+                      // Preload LCP image for better web vitals
+                      preload={index === 0}
+                      loading={index === 0 ? "eager" : "lazy"}
+                    />
+                  ))}
+                </Slider>
 
-          {/* Dots */}
-          <SliderDots class="gap-2 sm:justify-start overflow-auto px-4 sm:px-0 flex-col sm:col-start-1 sm:col-span-1 sm:row-start-1">
-            {images.map((img, _) => (
-              <Image
-                style={{ aspectRatio: ASPECT_RATIO }}
-                class="group-disabled:border-base-300 border rounded min-w-[63px] sm:min-w-[100px]"
-                width={63}
-                height={87.5}
-                src={img.url!}
-                alt={img.alternateName}
-              />
-            ))}
-          </SliderDots>
+                <div class="absolute left-2 top-1/2  bg-base-100 rounded-full border-base-200 border">
+                  <Button
+                    variant="icon"
+                    data-slide="prev"
+                    aria-label="Previous"
+                  >
+                    <Icon size={20} id="ChevronLeft" strokeWidth={3} />
+                  </Button>
+                </div>
+                <div class="absolute right-2 top-1/2 bg-base-100 rounded-full border-base-200 border">
+                  <Button variant="icon" data-slide="next" aria-label="Next">
+                    <Icon size={20} id="ChevronRight" strokeWidth={3} />
+                  </Button>
+                </div>
 
-          {/* Product Info */}
-          <div class="px-4 sm:pr-0 sm:pl-6 sm:col-start-3 sm:col-span-1 sm:row-start-1">
-            <ProductInfo page={page} />
+                <div class="absolute top-2 right-2 bg-base-100 rounded-full">
+                  <ProductImageZoom
+                    images={images}
+                    width={1280}
+                    height={1280 * HEIGHT / WIDTH}
+                  />
+                </div>
+              </div>
+
+              {/* Dots */}
+              <SliderDots class="gap-2 sm:justify-start overflow-auto px-4 sm:px-0 sm:col-start-1 sm:col-span-1 sm:row-start-1">
+                {images.map((img, _) => (
+                  <Image
+                    style={{ aspectRatio: ASPECT_RATIO }}
+                    class="group-disabled:border-base-300 border rounded min-w-[50px] sm:min-w-[50px]"
+                    width={50}
+                    height={50}
+                    src={img.url!}
+                    alt={img.alternateName}
+                  />
+                ))}
+              </SliderDots>
+            </div>
+            {/* Product Info */}
+            <div class="px-4 sm:pr-0 sm:pl-6 sm:col-start-2 sm:col-span-1 sm:row-start-1 flex flex-col lg:flex-row ">
+              <ProductInfo page={page} />
+            </div>
           </div>
+          <SliderJS rootId={id}></SliderJS>
+        </Container>
+        <div class="bg-gray-100 pt-[32px]">
+          <Container>
+            <div class="flex flex-col lg:flex-row gap-[60px]">
+              <div class="w-full lg:max-w-[50%]">
+                <h2 class="text-[20px] font-bold mb-[12px] pl-[23px]">
+                  Especificações
+                </h2>
+                <div class="bg-white rounded-md py-[10px] px-[15px]">
+                  <ul class=" divide-y-2 ">
+                    {page.product.isVariantOf?.additionalProperty.map(
+                      (item) => {
+                        return (
+                          <li class="py-[8px] px-[16px] w-full text-[14px] flex items-center">
+                            <div class="w-[50%] lg:w-[33%]">
+                              <span class="font-bold inline-block">
+                                {item.name}:
+                              </span>
+                            </div>
+                            <div>
+                              <span
+                                dangerouslySetInnerHTML={{
+                                  __html: item.value ?? "",
+                                }}
+                              >
+                              </span>
+                            </div>
+                          </li>
+                        );
+                      },
+                    )}
+                  </ul>
+                </div>
+              </div>
+              <div>
+              </div>
+            </div>
+          </Container>
         </div>
-        <SliderJS rootId={id}></SliderJS>
+        <div class="bg-gray-100">
+          <Container class="py-0 sm:py-10">
+            {/* Description*/}
+            <div class="mt-4 sm:mt-6 " id="description">
+              <Text variant="caption">
+                {description && (
+                  <div>
+                    <h2 class="text-[20px] font-bold mb-[12px]">
+                      Descrição do produto
+                    </h2>
+                    <div>
+                      <span
+                        class="text-[14px] leading-[25px] whitespace-break-spaces"
+                        dangerouslySetInnerHTML={{ __html: description }}
+                      >
+                      </span>
+                    </div>
+                  </div>
+                )}
+              </Text>
+            </div>
+          </Container>
+        </div>
       </>
     );
   }
@@ -300,9 +435,9 @@ function ProductDetails({ page, variant: maybeVar = "auto" }: Props) {
     : maybeVar;
 
   return (
-    <Container class="py-0 sm:py-10">
+    <>
       {page ? <Details page={page} variant={variant} /> : <NotFound />}
-    </Container>
+    </>
   );
 }
 
