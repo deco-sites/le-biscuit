@@ -88,32 +88,53 @@ const Modal = ({
             containerStyles[mode]
           }`}
         >
-          {closed === true ? 
-          <header class="flex px-4 py-6 justify-between items-center border-b border-base-200">
-            <h1>
-              <Text variant="heading-2">{title}</Text>
-            </h1>
-            <div class="bg-base-100 rounded-full  border-[0.5px] border-[#dadada]">
-            <Button variant="icon" class="border-[0.5px] border-[#dadada]" onClick={onClose}>
-              <Icon id="XMark" class="text-[#babcbe]" width={20} height={20} strokeWidth={2} />
-            </Button>
-            </div>
-          </header>
-          :
-          <header class="flex flex-col gap-3 px-4 py-4 justify-between items-start border-base-200">
-            
-            <div class="bg-base-100 rounded-full mb-1 border-[0.5px] border-[#dadada]">
-            <Button variant="icon" class="border-[0.5px] border-[#dadada]" onClick={onClose}>
-              <Icon id="XMark" class="text-[#babcbe]" width={20} height={20} strokeWidth={2} />
-            </Button>
-            </div>
-            <h1>
-              <Text variant="heading-2">{title}</Text>
-            </h1>
-          </header>
-          }
+          {closed === true
+            ? (
+              <header class="flex px-4 py-6 justify-between items-center border-b border-base-200">
+                <h1>
+                  <Text variant="heading-2">{title}</Text>
+                </h1>
+                <div class="bg-base-100 rounded-full  border-[0.5px] border-[#dadada]">
+                  <Button
+                    variant="icon"
+                    class="border-[0.5px] border-[#dadada]"
+                    onClick={onClose}
+                  >
+                    <Icon
+                      id="XMark"
+                      class="text-[#babcbe]"
+                      width={20}
+                      height={20}
+                      strokeWidth={2}
+                    />
+                  </Button>
+                </div>
+              </header>
+            )
+            : (
+              <header class="flex flex-col gap-3 px-4 py-4 justify-between items-start border-base-200">
+                <div class="bg-base-100 rounded-full mb-1 border-[0.5px] border-[#dadada]">
+                  <Button
+                    variant="icon"
+                    class="border-[0.5px] border-[#dadada]"
+                    onClick={onClose}
+                  >
+                    <Icon
+                      id="XMark"
+                      class="text-[#babcbe]"
+                      width={20}
+                      height={20}
+                      strokeWidth={2}
+                    />
+                  </Button>
+                </div>
+                <h1>
+                  <Text variant="heading-2">{title}</Text>
+                </h1>
+              </header>
+            )}
           <div class="overflow-y-auto flex-grow   flex flex-col">
-            {loading === "lazy" ? lazy.value && children : children} 
+            {loading === "lazy" ? lazy.value && children : children}
           </div>
         </div>
       </section>
