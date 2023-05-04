@@ -41,16 +41,17 @@ function Modals({ menu, searchbar }: Props) {
       </Modal>
 
       <Modal
-        title="Minha sacola"
+        title="Carrinho"
         mode="sidebar-right"
         loading="lazy"
         open={displayCart.value}
         onClose={() => {
           displayCart.value = false;
         }}
+        closed = {false}
       >
         <Suspense fallback={<Loading />}>
-          <Cart />
+          <Cart  /> 
         </Suspense>
       </Modal>
     </>
