@@ -3237,172 +3237,19 @@
     "ZGVjby1zaXRlcy9sZS1iaXNjdWl0L2NvbXBvbmVudHMvdWkvRmVhdHVyZXMudHN4@Feature": {
       "type": "object",
       "properties": {
-        "icon": {
-          "anyOf": [
-            {
-              "type": "string",
-              "const": "ChevronLeft"
-            },
-            {
-              "type": "string",
-              "const": "ChevronRight"
-            },
-            {
-              "type": "string",
-              "const": "ChevronUp"
-            },
-            {
-              "type": "string",
-              "const": "ChevronDown"
-            },
-            {
-              "type": "string",
-              "const": "QuestionMarkCircle"
-            },
-            {
-              "type": "string",
-              "const": "User"
-            },
-            {
-              "type": "string",
-              "const": "ShoppingCart"
-            },
-            {
-              "type": "string",
-              "const": "Bars3"
-            },
-            {
-              "type": "string",
-              "const": "Heart"
-            },
-            {
-              "type": "string",
-              "const": "MagnifyingGlass"
-            },
-            {
-              "type": "string",
-              "const": "XMark"
-            },
-            {
-              "type": "string",
-              "const": "Plus"
-            },
-            {
-              "type": "string",
-              "const": "Minus"
-            },
-            {
-              "type": "string",
-              "const": "MapPin"
-            },
-            {
-              "type": "string",
-              "const": "Phone"
-            },
-            {
-              "type": "string",
-              "const": "Elo"
-            },
-            {
-              "type": "string",
-              "const": "Mastercard"
-            },
-            {
-              "type": "string",
-              "const": "Visa"
-            },
-            {
-              "type": "string",
-              "const": "Pix"
-            },
-            {
-              "type": "string",
-              "const": "Logo"
-            },
-            {
-              "type": "string",
-              "const": "Facebook"
-            },
-            {
-              "type": "string",
-              "const": "Instagram"
-            },
-            {
-              "type": "string",
-              "const": "Tiktok"
-            },
-            {
-              "type": "string",
-              "const": "Truck"
-            },
-            {
-              "type": "string",
-              "const": "Discount"
-            },
-            {
-              "type": "string",
-              "const": "Return"
-            },
-            {
-              "type": "string",
-              "const": "CreditCard"
-            },
-            {
-              "type": "string",
-              "const": "Deco"
-            },
-            {
-              "type": "string",
-              "const": "Discord"
-            },
-            {
-              "type": "string",
-              "const": "Trash"
-            },
-            {
-              "type": "string",
-              "const": "FilterList"
-            },
-            {
-              "type": "string",
-              "const": "WhatsApp"
-            },
-            {
-              "type": "string",
-              "const": "ArrowsPointingOut"
-            },
-            {
-              "type": "string",
-              "const": "ArrowDown"
-            },
-            {
-              "type": "string",
-              "const": "Star-Yellow"
-            },
-            {
-              "type": "string",
-              "const": "Bars4"
-            }
-          ],
-          "type": "string",
+        "image": {
+          "$ref": "#/definitions/ZGVjby1zaXRlcy9zdGQvY29tcG9uZW50cy90eXBlcy50cw==@Image",
           "description": "Image src",
-          "title": "Icon"
+          "title": "Image"
         },
-        "title": {
+        "alt": {
           "type": "string",
-          "description": "Title",
-          "title": "Title"
-        },
-        "description": {
-          "type": "string",
-          "description": "Description and Image alt text",
-          "title": "Description"
+          "title": "Alt"
         }
       },
       "required": [
-        "icon",
-        "title",
-        "description"
+        "image",
+        "alt"
       ],
       "title": "Feature"
     },
@@ -3592,6 +3439,10 @@
             {
               "type": "string",
               "const": "Bars4"
+            },
+            {
+              "type": "string",
+              "const": "ShareGraph"
             }
           ],
           "type": "string",
@@ -3996,6 +3847,10 @@
           "type": "string",
           "title": "Title"
         },
+        "titleEmphasis": {
+          "type": "string",
+          "title": "Title Emphasis"
+        },
         "products": {
           "$ref": "#/definitions/ZGVjby1zaXRlcy9zdGQvY29tbWVyY2UvdHlwZXMudHM=@Product[]|null",
           "title": "Products"
@@ -4010,6 +3865,7 @@
       },
       "required": [
         "title",
+        "titleEmphasis",
         "products"
       ],
       "title": "deco-sites/le-biscuit/components/product/ProductShelf.tsx@Props"
@@ -4942,6 +4798,22 @@
         }
       }
     },
+    "Li9pc2xhbmRzL1BheW1lbnRUYWJsZXMudHM=": {
+      "title": "./islands/PaymentTables.ts",
+      "type": "object",
+      "required": [
+        "__resolveType"
+      ],
+      "properties": {
+        "__resolveType": {
+          "type": "string",
+          "enum": [
+            "./islands/PaymentTables.ts"
+          ],
+          "default": "./islands/PaymentTables.ts"
+        }
+      }
+    },
     "Li9pc2xhbmRzL1Byb2R1Y3RJbWFnZVpvb20udHN4": {
       "title": "./islands/ProductImageZoom.tsx",
       "type": "object",
@@ -4955,6 +4827,38 @@
             "./islands/ProductImageZoom.tsx"
           ],
           "default": "./islands/ProductImageZoom.tsx"
+        }
+      }
+    },
+    "Li9pc2xhbmRzL1F1YW50aXR5QWRkVG9DYXJ0QnV0dG9uLnRzeA==": {
+      "title": "./islands/QuantityAddToCartButton.tsx",
+      "type": "object",
+      "required": [
+        "__resolveType"
+      ],
+      "properties": {
+        "__resolveType": {
+          "type": "string",
+          "enum": [
+            "./islands/QuantityAddToCartButton.tsx"
+          ],
+          "default": "./islands/QuantityAddToCartButton.tsx"
+        }
+      }
+    },
+    "Li9pc2xhbmRzL1F1YW50aXR5U2VsZWN0b3IudHN4": {
+      "title": "./islands/QuantitySelector.tsx",
+      "type": "object",
+      "required": [
+        "__resolveType"
+      ],
+      "properties": {
+        "__resolveType": {
+          "type": "string",
+          "enum": [
+            "./islands/QuantitySelector.tsx"
+          ],
+          "default": "./islands/QuantitySelector.tsx"
         }
       }
     },
@@ -6020,7 +5924,16 @@
           "$ref": "#/definitions/Li9pc2xhbmRzL0hpZ2hsaWdodHMudHN4"
         },
         {
+          "$ref": "#/definitions/Li9pc2xhbmRzL1BheW1lbnRUYWJsZXMudHM="
+        },
+        {
           "$ref": "#/definitions/Li9pc2xhbmRzL1Byb2R1Y3RJbWFnZVpvb20udHN4"
+        },
+        {
+          "$ref": "#/definitions/Li9pc2xhbmRzL1F1YW50aXR5QWRkVG9DYXJ0QnV0dG9uLnRzeA=="
+        },
+        {
+          "$ref": "#/definitions/Li9pc2xhbmRzL1F1YW50aXR5U2VsZWN0b3IudHN4"
         },
         {
           "$ref": "#/definitions/Li9pc2xhbmRzL1NlYXJjaENvbnRyb2xzLnRzeA=="

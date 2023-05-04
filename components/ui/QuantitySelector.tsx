@@ -5,6 +5,7 @@ interface Props {
   disabled?: boolean;
   loading?: boolean;
   onChange?: (quantity: number) => void;
+  variant?: "select" | "stepper";
 }
 
 const QUANTITY_MAX_VALUE = 100;
@@ -23,16 +24,37 @@ input[type="number"] {
 }
 `;
 
-function QuantitySelector({ onChange, quantity, disabled, loading }: Props) {
+function QuantitySelector(
+  { onChange, quantity, disabled, loading, variant = "stepper" }: Props,
+) {
   const decrement = () => onChange?.(Math.max(0, quantity - 1));
 
   const increment = () =>
     onChange?.(Math.min(quantity + 1, QUANTITY_MAX_VALUE));
 
+  if (variant == "select") {
+    const options = [];
+
+    // Adiciona 10 elementos option ao array
+    for (let i = 1; i < 10; i++) {
+      options.push(
+        <option key={i} value={i} selected={i === quantity}>{i}</option>,
+      );
+    }
+
+    return (
+      <div class="flex items-center">
+        <select name="quantity" id="quantity" class="w-[72px] border">
+          {options}
+        </select>
+      </div>
+    );
+  }
+
   return (
-    <div class="flex border border-solid border-base-200">
+    <div class="flex items-center">
       <Button
-        class="h-9 w-9"
+        class="h-9 w-9 border border-base-200"
         variant="icon"
         onClick={decrement}
         disabled={disabled}
@@ -42,7 +64,7 @@ function QuantitySelector({ onChange, quantity, disabled, loading }: Props) {
       </Button>
       <style dangerouslySetInnerHTML={{ __html: innerStyle }} />
       <input
-        class="text-center text-base-content text-body font-body bg-transparent outline-none disabled:opacity-50"
+        class="text-center text-base-content text-body font-body bg-transparent outline-none disabled:opacity-50 border border-base-200 rounded"
         type="number"
         inputMode="numeric"
         pattern="[0-9]*"
@@ -53,7 +75,7 @@ function QuantitySelector({ onChange, quantity, disabled, loading }: Props) {
         onBlur={(e) => onChange?.(e.currentTarget.valueAsNumber)}
       />
       <Button
-        class="h-9 w-9"
+        class="h-9 w-9 border border-base-200"
         variant="icon"
         onClick={increment}
         disabled={disabled}

@@ -31,7 +31,12 @@ function CartItem({ index }: Props) {
     listPrice,
     name,
     quantity,
+    additionalInfo: {
+      brandName,
+    },
   } = item;
+
+  console.log(item);
 
   const isGift = sellingPrice < 0.01;
 
@@ -40,28 +45,49 @@ function CartItem({ index }: Props) {
       <Image
         src={imageUrl}
         alt={skuName}
-        width={108}
-        height={150}
+        width={54}
+        height={54}
         class="object-cover object-center"
       />
       <div class="flex-grow">
-        <Text variant="body">
-          {name}
-        </Text>
-        <div class="flex items-center gap-2">
-          <Text class="line-through" tone="base-300" variant="list-price">
-            {formatPrice(listPrice / 100, currencyCode!, locale)}
-          </Text>
-          <Text tone="secondary" variant="caption">
-            {isGift
-              ? "Grátis"
-              : formatPrice(sellingPrice / 100, currencyCode!, locale)}
-          </Text>
+        <div class="flex">
+          <div class="flex-grow flex flex-col items-start">
+            <div class="leading-none">
+              <span class="text-primary text-[12px] font-bold">
+                {brandName}
+              </span>
+            </div>
+            <span class="text-[12px] font-bold">
+              {name}
+            </span>
+          </div>
+          <Button
+            onClick={() => {
+              updateItems({ orderItems: [{ index, quantity: 0 }] });
+              if (!cart.value) return;
+              window.DECO_SITES_STD.sendAnalyticsEvent({
+                name: "remove_from_cart",
+                params: {
+                  items: mapItemsToAnalyticsItems({
+                    items: [item],
+                    marketingData: cart.value.marketingData,
+                  }),
+                },
+              });
+            }}
+            disabled={loading.value || isGift}
+            loading={loading.value}
+            variant="icon"
+            class="text-primary"
+          >
+            <Icon id="Trash" width={20} height={20} />
+          </Button>
         </div>
-        <div class="mt-6 max-w-min">
+        <div class="mt-6 w-full flex justify-between">
           <QuantitySelector
             disabled={loading.value || isGift}
             quantity={quantity}
+            variant="select"
             onChange={(quantity) => {
               updateItems({ orderItems: [{ index, quantity }] });
               const quantityDiff = quantity - item.quantity;
@@ -82,28 +108,19 @@ function CartItem({ index }: Props) {
               });
             }}
           />
+
+          <div class="flex flex-col items-end">
+            <span class="line-through text-base-300 text-[10px]">
+              {formatPrice(listPrice / 100, currencyCode!, locale)}
+            </span>
+            <span class="text-[16px] font-bold">
+              {isGift
+                ? "Grátis"
+                : formatPrice(sellingPrice / 100, currencyCode!, locale)}
+            </span>
+          </div>
         </div>
       </div>
-      <Button
-        onClick={() => {
-          updateItems({ orderItems: [{ index, quantity: 0 }] });
-          if (!cart.value) return;
-          window.DECO_SITES_STD.sendAnalyticsEvent({
-            name: "remove_from_cart",
-            params: {
-              items: mapItemsToAnalyticsItems({
-                items: [item],
-                marketingData: cart.value.marketingData,
-              }),
-            },
-          });
-        }}
-        disabled={loading.value || isGift}
-        loading={loading.value}
-        variant="icon"
-      >
-        <Icon id="Trash" width={20} height={20} />
-      </Button>
     </div>
   );
 }
