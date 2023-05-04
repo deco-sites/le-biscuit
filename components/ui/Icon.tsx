@@ -37,7 +37,10 @@ export type AvailableIcons =
   | "ArrowsPointingOut"
   | "ArrowDown"
   | "Star-Yellow"
-  | "Bars4";
+  | "Bars4"
+  | "User2"
+  | "Box"
+  | "Newspaper";
 
 interface Props extends JSX.SVGAttributes<SVGSVGElement> {
   /**

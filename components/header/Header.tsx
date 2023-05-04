@@ -21,8 +21,8 @@ export interface NavItem {
     }>;
   }>;
   image?: {
-    src?: Image;
-    alt?: string;
+    src: LiveImage;
+    alt: string;
   };
 }
 
