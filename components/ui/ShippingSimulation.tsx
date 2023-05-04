@@ -10,6 +10,7 @@ import type {
   SKU,
   Sla,
 } from "deco-sites/std/commerce/vtex/types.ts";
+import Icon from "./Icon.tsx";
 
 export interface Props {
   items: Array<SKU>;
@@ -54,27 +55,22 @@ function ShippingContent(
   }
 
   return (
-    <ul class="flex flex-col gap-4 p-4 bg-base-200 rounded-[4px]">
+    <ul class="flex flex-col gap-2 rounded-[4px] border-y py-2">
       {methods.map((method) => (
-        <li class="flex justify-between items-center border-base-200 not-first-child:border-t">
-          <Text variant="body" class="text-button text-center">
-            Entrega {method.name}
+        <li class="flex justify-between items-center border border-base-200 not-first-child:border-t p-4 rounded-md h-[80px]">
+          <Text variant="body" class="text-button">
+            {method.name}
           </Text>
           <Text variant="body" class="text-button">
-            até {handleShippingTime(method.shippingEstimate)}
+            Em até {handleShippingTime(method.shippingEstimate)}
           </Text>
-          <Text variant="body" class="text-base font-semibold text-right">
+          <span class="text-base text-[14px] text-right border-l">
             {method.price === 0 ? "Grátis" : (
               formatPrice(method.price / 100, currencyCode!, locale)
             )}
-          </Text>
+          </span>
         </li>
       ))}
-      <Text class="text-base-300">
-        Os prazos de entrega começam a contar a partir da confirmação do
-        pagamento e podem variar de acordo com a quantidade de produtos na
-        sacola.
-      </Text>
     </ul>
   );
 }
@@ -107,54 +103,70 @@ function ShippingSimulation({ items }: Props) {
   }, []);
 
   return (
-    <div class="flex flex-col gap-2">
-      <div class="flex flex-col">
-        <Text>Calcular frete</Text>
-        <Text variant="body">
-          Informe seu CEP para consultar os prazos de entrega
-        </Text>
-      </div>
-      <div>
-        <form
-          class="flex gap-2"
-          onSubmit={(e) => {
-            e.preventDefault();
-            handleSimulation();
-          }}
-        >
-          <Input
-            as="input"
-            type="text"
-            variant="input"
-            class="w-[120px] p-2 rounded-[4px] border border-solid border-base-200"
-            placeholder="Seu cep aqui"
-            onChange={(e: { currentTarget: { value: string } }) => {
-              postalCode.value = e.currentTarget.value;
-            }}
-            value={postalCode.value}
-            maxlength={8}
-          >
-          </Input>
-          <Button
-            type="submit"
-            loading={loading.value}
-          >
-            Calcular
-          </Button>
-        </form>
-      </div>
-      <div>
-        {simulateResult.value && (
-          <div>
-            <ShippingContent
-              simulation={simulateResult.value}
-              locale={locale}
-              currencyCode={currencyCode}
+    <>
+      <div class="flex flex-col gap-2">
+        <div class="flex">
+          <Text variant="body" class="inline-flex">
+            <Icon
+              id="Truck"
+              width={22}
+              height={22}
+              strokeWidth={1}
+              class="mr-[10px]"
             />
-          </div>
-        )}
+            Taxa e prazo de entrega
+          </Text>
+        </div>
+        <div>
+          <form
+            class="flex gap-2"
+            onSubmit={(e) => {
+              e.preventDefault();
+              handleSimulation();
+            }}
+          >
+            <Input
+              as="input"
+              type="text"
+              variant="input"
+              class="w-full p-2 max-w-[220px] rounded-[4px] border border-solid border-base-200 h-[40px]"
+              placeholder="Seu cep aqui"
+              onChange={(e: { currentTarget: { value: string } }) => {
+                postalCode.value = e.currentTarget.value;
+              }}
+              value={postalCode.value}
+              maxlength={8}
+            >
+            </Input>
+            <Button
+              type="submit"
+              loading={loading.value}
+            >
+              Calcular
+            </Button>
+          </form>
+        </div>
+        <a
+          href="https://buscacepinter.correios.com.br/app/endereco/index.php?t"
+          class="underline"
+          target="_blank"
+        >
+          Não sei meu cep
+        </a>
+
+        <div>
+          {simulateResult.value && (
+            <div>
+              <ShippingContent
+                simulation={simulateResult.value}
+                locale={locale}
+                currencyCode={currencyCode}
+              />
+            </div>
+          )}
+        </div>
       </div>
-    </div>
+    </>
   );
 }
 
