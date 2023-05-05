@@ -1,6 +1,8 @@
 import { Product } from "deco-sites/std/commerce/types.ts";
+import { useUI } from "../../sdk/useUI.ts";
 
 import ProductCard from "./ProductCard.tsx";
+import ProductCardHorizontal from "./ProductCardHorizontal.tsx";
 
 export interface Columns {
   mobile?: number;
@@ -12,13 +14,24 @@ export interface Props {
 }
 
 function ProductGallery({ products }: Props) {
-  return (
-    <div class="grid grid-cols-2 gap-2 items-center sm:grid-cols-4 sm:gap-10">
-      {products?.map((product, index) => (
-        <ProductCard product={product} preload={index === 0} />
-      ))}
-    </div>
-  );
+  const { listingType } = useUI();
+  if (listingType.value === "grid") {
+    return (
+      <div class="flex flex-wrap gap-2 lg:gap-4 pt-4 justify-center">
+        {products?.map((product, index) => (
+          <ProductCard product={product} preload={index === 0} />
+        ))}
+      </div>
+    );
+  } else {
+    return (
+      <div class="flex flex-col gap-4 pt-4">
+        {products?.map((product, index) => (
+          <ProductCardHorizontal product={product} preload={index === 0} />
+        ))}
+      </div>
+    );
+  }
 }
 
 export default ProductGallery;
