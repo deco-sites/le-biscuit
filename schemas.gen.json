@@ -2951,6 +2951,19 @@
       "required": [],
       "title": "deco-sites/le-biscuit/components/ui/BannerPLP.tsx@Props"
     },
+    "ZGVjby1zaXRlcy9sZS1iaXNjdWl0L2NvbXBvbmVudHMvcHJvZHVjdC9CdXlUb2dldGhlci50c3g=@Props": {
+      "type": "object",
+      "properties": {
+        "products": {
+          "$ref": "#/definitions/ZGVjby1zaXRlcy9zdGQvY29tbWVyY2UvdHlwZXMudHM=@Product[]|null",
+          "title": "Products"
+        }
+      },
+      "required": [
+        "products"
+      ],
+      "title": "deco-sites/le-biscuit/components/product/BuyTogether.tsx@Props"
+    },
     "ZGVjby1zaXRlcy9sZS1iaXNjdWl0L2NvbXBvbmVudHMvdWkvQmFubmVyQ2Fyb3VzZWwudHN4@Banner": {
       "type": "object",
       "properties": {
@@ -3442,6 +3455,18 @@
             },
             {
               "type": "string",
+              "const": "User2"
+            },
+            {
+              "type": "string",
+              "const": "Box"
+            },
+            {
+              "type": "string",
+              "const": "Newspaper"
+            },
+            {
+              "type": "string",
               "const": "ShareGraph"
             }
           ],
@@ -3623,14 +3648,14 @@
               "title": "Src"
             },
             "alt": {
-              "type": [
-                "string",
-                "null"
-              ],
+              "type": "string",
               "title": "Alt"
             }
           },
-          "required": [],
+          "required": [
+            "src",
+            "alt"
+          ],
           "title": "Image"
         }
       },
@@ -3646,6 +3671,31 @@
         "$ref": "#/definitions/ZGVjby1zaXRlcy9sZS1iaXNjdWl0L2NvbXBvbmVudHMvaGVhZGVyL0hlYWRlci50c3g=@NavItem"
       },
       "title": "NavItem[]"
+    },
+    "ZGVjby1zaXRlcy9sZS1iaXNjdWl0L2NvbXBvbmVudHMvaGVhZGVyL0hlYWRlci50c3g=@NavItemDesktop": {
+      "type": "object",
+      "properties": {
+        "label": {
+          "type": "string",
+          "title": "Label"
+        },
+        "href": {
+          "type": "string",
+          "title": "Href"
+        }
+      },
+      "required": [
+        "label",
+        "href"
+      ],
+      "title": "NavItemDesktop"
+    },
+    "ZGVjby1zaXRlcy9sZS1iaXNjdWl0L2NvbXBvbmVudHMvaGVhZGVyL0hlYWRlci50c3g=@NavItemDesktop[]": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/ZGVjby1zaXRlcy9sZS1iaXNjdWl0L2NvbXBvbmVudHMvaGVhZGVyL0hlYWRlci50c3g=@NavItemDesktop"
+      },
+      "title": "NavItemDesktop[]"
     },
     "ZGVjby1zaXRlcy9sZS1iaXNjdWl0L2NvbXBvbmVudHMvaGVhZGVyL0hlYWRlci50c3g=@Props": {
       "type": "object",
@@ -3676,6 +3726,10 @@
           "$ref": "#/definitions/ZGVjby1zaXRlcy9sZS1iaXNjdWl0L2NvbXBvbmVudHMvaGVhZGVyL0hlYWRlci50c3g=@NavItem[]",
           "title": "Nav Items",
           "description": "Navigation items used both on mobile and desktop menus"
+        },
+        "navItemsDesktop": {
+          "$ref": "#/definitions/ZGVjby1zaXRlcy9sZS1iaXNjdWl0L2NvbXBvbmVudHMvaGVhZGVyL0hlYWRlci50c3g=@NavItemDesktop[]",
+          "title": "Nav Items Desktop"
         },
         "products": {
           "$ref": "#/definitions/ZGVjby1zaXRlcy9zdGQvY29tbWVyY2UvdHlwZXMudHM=@Product[]|null",
@@ -4862,6 +4916,22 @@
         }
       }
     },
+    "Li9pc2xhbmRzL1Njcm9sbFRyYWNrSlMudHN4": {
+      "title": "./islands/ScrollTrackJS.tsx",
+      "type": "object",
+      "required": [
+        "__resolveType"
+      ],
+      "properties": {
+        "__resolveType": {
+          "type": "string",
+          "enum": [
+            "./islands/ScrollTrackJS.tsx"
+          ],
+          "default": "./islands/ScrollTrackJS.tsx"
+        }
+      }
+    },
     "Li9pc2xhbmRzL1NlYXJjaENvbnRyb2xzLnRzeA==": {
       "title": "./islands/SearchControls.tsx",
       "type": "object",
@@ -5138,6 +5208,27 @@
             "deco-sites/le-biscuit/sections/BannerPLP.tsx"
           ],
           "default": "deco-sites/le-biscuit/sections/BannerPLP.tsx"
+        }
+      }
+    },
+    "ZGVjby1zaXRlcy9sZS1iaXNjdWl0L3NlY3Rpb25zL0J1eVRvZ2V0aGVyLnRzeA==": {
+      "title": "deco-sites/le-biscuit/sections/BuyTogether.tsx",
+      "type": "object",
+      "allOf": [
+        {
+          "$ref": "#/definitions/ZGVjby1zaXRlcy9sZS1iaXNjdWl0L2NvbXBvbmVudHMvcHJvZHVjdC9CdXlUb2dldGhlci50c3g=@Props"
+        }
+      ],
+      "required": [
+        "__resolveType"
+      ],
+      "properties": {
+        "__resolveType": {
+          "type": "string",
+          "enum": [
+            "deco-sites/le-biscuit/sections/BuyTogether.tsx"
+          ],
+          "default": "deco-sites/le-biscuit/sections/BuyTogether.tsx"
         }
       }
     },
@@ -5936,6 +6027,9 @@
           "$ref": "#/definitions/Li9pc2xhbmRzL1F1YW50aXR5U2VsZWN0b3IudHN4"
         },
         {
+          "$ref": "#/definitions/Li9pc2xhbmRzL1Njcm9sbFRyYWNrSlMudHN4"
+        },
+        {
           "$ref": "#/definitions/Li9pc2xhbmRzL1NlYXJjaENvbnRyb2xzLnRzeA=="
         },
         {
@@ -6000,6 +6094,9 @@
         },
         {
           "$ref": "#/definitions/ZGVjby1zaXRlcy9sZS1iaXNjdWl0L3NlY3Rpb25zL0Jhbm5lclBMUC50c3g="
+        },
+        {
+          "$ref": "#/definitions/ZGVjby1zaXRlcy9sZS1iaXNjdWl0L3NlY3Rpb25zL0J1eVRvZ2V0aGVyLnRzeA=="
         },
         {
           "$ref": "#/definitions/ZGVjby1zaXRlcy9sZS1iaXNjdWl0L3NlY3Rpb25zL0Nhcm91c2VsLnRzeA=="

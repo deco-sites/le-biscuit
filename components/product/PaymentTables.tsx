@@ -24,7 +24,7 @@ function PaymentTables(
     product.offers,
   );
 
-  console.log(installmentsLists);
+  // console.log(installmentsLists);
 
   return (
     <div class="flex w-full gap-2 ">
