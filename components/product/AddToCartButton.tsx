@@ -10,10 +10,11 @@ interface Props extends UseAddToCartProps {
    */
   sellerId: string;
   quantity?: number;
+  variant?: string;
 }
 
 function AddToCartButton(
-  { skuId, sellerId, discount, price, productGroupId, name, quantity }: Props,
+  { skuId, sellerId, discount, price, productGroupId, name, variant,quantity }: Props,
 ) {
   const props = useAddToCart({
     skuId,
