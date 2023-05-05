@@ -82,11 +82,12 @@ function Navbar({ items, searchbar, image }: {
                   aria-label="Store logo"
                   class="block px-4 py-3 w-[160px] "
                 >
-                  <Image
-                    src={image.desktop}
+                  <Icon
+                    id="Logo"
                     alt="logo"
                     width={129}
                     height={22}
+                    class="text-primary"
                   />
                 </a>
               </div>
