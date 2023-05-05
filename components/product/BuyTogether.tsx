@@ -57,7 +57,7 @@ function BuyTogether({ products }: Props) {
               );
             })}
           </ul>
-          <button class="h-[48px] w-full min-w-[230px] bg-[#444] flex rounded text-white items-center justify-center">
+          <button class="h-[48px] w-full min-w-[230px] lg:max-w-[230px]  bg-[#444] flex rounded text-white items-center justify-center">
             Quero esses produtos{" "}
             <Icon id="ShoppingCart" width={20} height={20} />
           </button>
