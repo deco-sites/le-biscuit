@@ -9,31 +9,37 @@ import * as $$$$1 from "./routes/api/[...catchall].tsx";
 import * as $$$$$0 from "./islands/ShippingSimulation.tsx";
 import * as $$$$$1 from "./islands/WishlistButton.tsx";
 import * as $$$$$2 from "./islands/AddToCartButton.tsx";
-import * as $$$$$3 from "./islands/HeaderButton.tsx";
-import * as $$$$$4 from "./islands/Highlights.tsx";
-import * as $$$$$5 from "./islands/QuantitySelector.tsx";
-import * as $$$$$6 from "./islands/PaymentTables.ts";
-import * as $$$$$7 from "./islands/SliderJS.tsx";
-import * as $$$$$8 from "./islands/HeaderSearchMenu.tsx";
-import * as $$$$$9 from "./islands/HeaderModals.tsx";
-import * as $$$$$10 from "./islands/ProductImageZoom.tsx";
-import * as $$$$$11 from "./islands/SearchControls.tsx";
-import * as $$$$$12 from "./islands/QuantityAddToCartButton.tsx";
+import * as $$$$$3 from "./islands/ProductGallery.tsx";
+import * as $$$$$4 from "./islands/HeaderButton.tsx";
+import * as $$$$$5 from "./islands/Highlights.tsx";
+import * as $$$$$6 from "./islands/QuantitySelector.tsx";
+import * as $$$$$7 from "./islands/PaymentTables.ts";
+import * as $$$$$8 from "./islands/SliderJS.tsx";
+import * as $$$$$9 from "./islands/HeaderSearchMenu.tsx";
+import * as $$$$$10 from "./islands/HeaderModals.tsx";
+import * as $$$$$11 from "./islands/ProductImageZoom.tsx";
+import * as $$$$$12 from "./islands/SearchControls.tsx";
+import * as $$$$$13 from "./islands/ScrollTrackJS.tsx";
+import * as $$$$$14 from "./islands/ProductDescription.tsx";
+import * as $$$$$15 from "./islands/QuantityAddToCartButton.tsx";
 import * as $$$$$$$$0 from "./sections/Carousel.tsx";
 import * as $$$$$$$$1 from "./sections/LinkTree.tsx";
 import * as $$$$$$$$2 from "./sections/BannerGrid.tsx";
 import * as $$$$$$$$3 from "./sections/CookieConsent.tsx";
-import * as $$$$$$$$4 from "./sections/Highlights.tsx";
-import * as $$$$$$$$5 from "./sections/DesignSystem.tsx";
-import * as $$$$$$$$6 from "./sections/Footer.tsx";
-import * as $$$$$$$$7 from "./sections/WishlistGallery.tsx";
-import * as $$$$$$$$8 from "./sections/Features.tsx";
-import * as $$$$$$$$9 from "./sections/SearchResult.tsx";
-import * as $$$$$$$$10 from "./sections/BannerPLP.tsx";
-import * as $$$$$$$$11 from "./sections/Header.tsx";
-import * as $$$$$$$$12 from "./sections/ProductDetails.tsx";
-import * as $$$$$$$$13 from "./sections/ProductShelf.tsx";
-import * as $$$$$$$$14 from "./sections/WhatsApp.tsx";
+import * as $$$$$$$$4 from "./sections/ProductSpecifications.tsx";
+import * as $$$$$$$$5 from "./sections/Highlights.tsx";
+import * as $$$$$$$$6 from "./sections/DesignSystem.tsx";
+import * as $$$$$$$$7 from "./sections/Footer.tsx";
+import * as $$$$$$$$8 from "./sections/WishlistGallery.tsx";
+import * as $$$$$$$$9 from "./sections/BuyTogether.tsx";
+import * as $$$$$$$$10 from "./sections/Features.tsx";
+import * as $$$$$$$$11 from "./sections/SearchResult.tsx";
+import * as $$$$$$$$12 from "./sections/BannerPLP.tsx";
+import * as $$$$$$$$13 from "./sections/Header.tsx";
+import * as $$$$$$$$14 from "./sections/ProductDetails.tsx";
+import * as $$$$$$$$15 from "./sections/ProductShelf.tsx";
+import * as $$$$$$$$16 from "./sections/ProductDescription.tsx";
+import * as $$$$$$$$17 from "./sections/WhatsApp.tsx";
 import * as $live_middleware from "$live/routes/_middleware.ts";
 import * as $live_workbench from "$live/routes/live/workbench.ts";
 import * as $live_invoke from "$live/routes/live/invoke/index.ts";
@@ -108,17 +114,20 @@ const manifest = {
   },
   "islands": {
     "./islands/AddToCartButton.tsx": $$$$$2,
-    "./islands/HeaderButton.tsx": $$$$$3,
-    "./islands/HeaderModals.tsx": $$$$$9,
-    "./islands/HeaderSearchMenu.tsx": $$$$$8,
-    "./islands/Highlights.tsx": $$$$$4,
-    "./islands/PaymentTables.ts": $$$$$6,
-    "./islands/ProductImageZoom.tsx": $$$$$10,
-    "./islands/QuantityAddToCartButton.tsx": $$$$$12,
-    "./islands/QuantitySelector.tsx": $$$$$5,
-    "./islands/SearchControls.tsx": $$$$$11,
+    "./islands/HeaderButton.tsx": $$$$$4,
+    "./islands/HeaderModals.tsx": $$$$$10,
+    "./islands/HeaderSearchMenu.tsx": $$$$$9,
+    "./islands/Highlights.tsx": $$$$$5,
+    "./islands/PaymentTables.ts": $$$$$7,
+    "./islands/ProductDescription.tsx": $$$$$14,
+    "./islands/ProductGallery.tsx": $$$$$3,
+    "./islands/ProductImageZoom.tsx": $$$$$11,
+    "./islands/QuantityAddToCartButton.tsx": $$$$$15,
+    "./islands/QuantitySelector.tsx": $$$$$6,
+    "./islands/ScrollTrackJS.tsx": $$$$$13,
+    "./islands/SearchControls.tsx": $$$$$12,
     "./islands/ShippingSimulation.tsx": $$$$$0,
-    "./islands/SliderJS.tsx": $$$$$7,
+    "./islands/SliderJS.tsx": $$$$$8,
     "./islands/WishlistButton.tsx": $$$$$1,
   },
   "sections": {
@@ -126,20 +135,23 @@ const manifest = {
     "$live/sections/Slot.tsx": i2$$$1,
     "$live/sections/UseSlot.tsx": i2$$$2,
     "deco-sites/le-biscuit/sections/BannerGrid.tsx": $$$$$$$$2,
-    "deco-sites/le-biscuit/sections/BannerPLP.tsx": $$$$$$$$10,
+    "deco-sites/le-biscuit/sections/BannerPLP.tsx": $$$$$$$$12,
+    "deco-sites/le-biscuit/sections/BuyTogether.tsx": $$$$$$$$9,
     "deco-sites/le-biscuit/sections/Carousel.tsx": $$$$$$$$0,
     "deco-sites/le-biscuit/sections/CookieConsent.tsx": $$$$$$$$3,
-    "deco-sites/le-biscuit/sections/DesignSystem.tsx": $$$$$$$$5,
-    "deco-sites/le-biscuit/sections/Features.tsx": $$$$$$$$8,
-    "deco-sites/le-biscuit/sections/Footer.tsx": $$$$$$$$6,
-    "deco-sites/le-biscuit/sections/Header.tsx": $$$$$$$$11,
-    "deco-sites/le-biscuit/sections/Highlights.tsx": $$$$$$$$4,
+    "deco-sites/le-biscuit/sections/DesignSystem.tsx": $$$$$$$$6,
+    "deco-sites/le-biscuit/sections/Features.tsx": $$$$$$$$10,
+    "deco-sites/le-biscuit/sections/Footer.tsx": $$$$$$$$7,
+    "deco-sites/le-biscuit/sections/Header.tsx": $$$$$$$$13,
+    "deco-sites/le-biscuit/sections/Highlights.tsx": $$$$$$$$5,
     "deco-sites/le-biscuit/sections/LinkTree.tsx": $$$$$$$$1,
-    "deco-sites/le-biscuit/sections/ProductDetails.tsx": $$$$$$$$12,
-    "deco-sites/le-biscuit/sections/ProductShelf.tsx": $$$$$$$$13,
-    "deco-sites/le-biscuit/sections/SearchResult.tsx": $$$$$$$$9,
-    "deco-sites/le-biscuit/sections/WhatsApp.tsx": $$$$$$$$14,
-    "deco-sites/le-biscuit/sections/WishlistGallery.tsx": $$$$$$$$7,
+    "deco-sites/le-biscuit/sections/ProductDescription.tsx": $$$$$$$$16,
+    "deco-sites/le-biscuit/sections/ProductDetails.tsx": $$$$$$$$14,
+    "deco-sites/le-biscuit/sections/ProductShelf.tsx": $$$$$$$$15,
+    "deco-sites/le-biscuit/sections/ProductSpecifications.tsx": $$$$$$$$4,
+    "deco-sites/le-biscuit/sections/SearchResult.tsx": $$$$$$$$11,
+    "deco-sites/le-biscuit/sections/WhatsApp.tsx": $$$$$$$$17,
+    "deco-sites/le-biscuit/sections/WishlistGallery.tsx": $$$$$$$$8,
     "deco-sites/std/sections/Analytics.tsx": i2$$$3,
     "deco-sites/std/sections/configOCC.global.tsx": i2$$$4,
     "deco-sites/std/sections/configShopify.global.tsx": i2$$$5,

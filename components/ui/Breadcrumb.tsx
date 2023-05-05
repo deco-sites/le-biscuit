@@ -12,11 +12,11 @@ function Item({ name, item }: { name?: string; item?: string }) {
   }
 
   return (
-    <li class="whitespace-nowrap overflow-hidden text-ellipsis">
+    <li class="whitespace-nowrap overflow-hidden text-ellipsis  last-of-type:text-primary hover:text-primary">
       <a href={item} class="hover:underline">
-        <Text variant="caption">
+        <span class="text-[12px] ">
           {name}
-        </Text>
+        </span>
       </a>
     </li>
   );
@@ -24,12 +24,12 @@ function Item({ name, item }: { name?: string; item?: string }) {
 
 function Breadcrumb({ itemListElement = [] }: Props) {
   return (
-    <ul class="flex flex-row gap-2 items-center w-full">
-      <Item name="Home" item="/" />
+    <ul class="flex flex-row gap-2 items-center w-full ">
+      <Item name="Le Biscuit" item="/" />
       {itemListElement.map((item) => (
         <>
           <li class="mt-0.5">
-            <Icon id="ChevronRight" width={16} height={16} strokeWidth={2} />
+            |
           </li>
           <Item {...item} />
         </>

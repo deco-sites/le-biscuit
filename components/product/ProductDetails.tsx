@@ -90,7 +90,7 @@ function ProductInfo({ page }: { page: ProductDetailsPage }) {
               <span class="text-[16px] font-bold">{name}</span>
             </h1>
             <div>
-              <Icon id="ShareGraph" width={30} height={30} strokeWidth={1} />
+              <Icon id="ShareGraph" width={24} height={24} strokeWidth={1} />
             </div>
           </div>
           <div>
@@ -128,13 +128,14 @@ function ProductInfo({ page }: { page: ProductDetailsPage }) {
         {/* Prices */}
         <div class="mt-4 border rounded-[10px] p-[16px] shadow-[0_2px_2px_rgb(0_0_0/10%)]">
           <div class="flex flex-col gap-2 ">
-            <span class="line-through text-base-300 tex-[16px]">
+            <span class="line-through text-base-200 text-[16px]">
               de {formatPrice(listPrice, offers!.priceCurrency!)}
             </span>
 
             <div class="flex">
-              <span class="text-[20px] font-bold">
-                {formatPrice(price, offers!.priceCurrency!)} a vista
+              <span class="text-[20px] font-bold pr-8">
+                {formatPrice(price, offers!.priceCurrency!)}{" "}
+                <span class="text-[14px] font-normal">a vista</span>
               </span>
               <div class="flex flex-row gap-[2px] justify-center items-center bg-camp-gray text-blue-text-discount text-[12px] rounded-[4px] sm:h-[30px] sm:w-[50px] sm:text-xs">
                 <Icon id="ArrowDown" width={10} height={10} strokeWidth={2} />
@@ -218,7 +219,7 @@ function Details({
 
   const { model } = isVariantOf ?? {};
 
-  console.log(page.product);
+  // console.log(page.product);
   /**
    * Product slider variant
    *
@@ -232,7 +233,7 @@ function Details({
         <Container class="py-0 sm:py-10">
           {/* Breadcrumb */}
           <Breadcrumb
-            itemListElement={breadcrumbList?.itemListElement.slice(0, -1)}
+            itemListElement={breadcrumbList?.itemListElement}
           />
           <div class="block lg:hidden">
             <div class="flex mt-4 sm:mt-8">
@@ -240,7 +241,7 @@ function Details({
                 <span class="text-[16px] font-bold">{name}</span>
               </h1>
               <div>
-                <Icon id="ShareGraph" width={30} height={30} strokeWidth={1} />
+                <Icon id="ShareGraph" width={24} height={24} strokeWidth={1} />
               </div>
             </div>
             <div>
@@ -264,7 +265,7 @@ function Details({
                 <Slider class="gap-6">
                   {images.map((img, index) => (
                     <Image
-                      class="snap-center min-w-[100vw] sm:min-w-[40vw]"
+                      class="snap-center min-w-[100vw] sm:min-w-[30vw]"
                       sizes="(max-width: 640px) 100vw, 40vw"
                       style={{ aspectRatio: ASPECT_RATIO }}
                       src={img.url!}
@@ -278,7 +279,7 @@ function Details({
                   ))}
                 </Slider>
 
-                <div class="absolute left-2 top-1/2  bg-base-100 rounded-full border-base-200 border">
+                <div class="absolute left-2 bottom-[-50px] rounded-full">
                   <Button
                     variant="icon"
                     data-slide="prev"
@@ -287,7 +288,7 @@ function Details({
                     <Icon size={20} id="ChevronLeft" strokeWidth={3} />
                   </Button>
                 </div>
-                <div class="absolute right-2 top-1/2 bg-base-100 rounded-full border-base-200 border">
+                <div class="absolute right-2 bottom-[-50px] rounded-full">
                   <Button variant="icon" data-slide="next" aria-label="Next">
                     <Icon size={20} id="ChevronRight" strokeWidth={3} />
                   </Button>
@@ -323,67 +324,6 @@ function Details({
           </div>
           <SliderJS rootId={id}></SliderJS>
         </Container>
-        <div class="bg-gray-100 pt-[32px]">
-          <Container>
-            <div class="flex flex-col lg:flex-row gap-[60px]">
-              <div class="w-full lg:max-w-[50%]">
-                <h2 class="text-[20px] font-bold mb-[12px] pl-[23px]">
-                  Especificações
-                </h2>
-                <div class="bg-white rounded-md py-[10px] px-[15px]">
-                  <ul class=" divide-y-2 ">
-                    {page.product.isVariantOf?.additionalProperty.map(
-                      (item) => {
-                        return (
-                          <li class="py-[8px] px-[16px] w-full text-[14px] flex items-center">
-                            <div class="w-[50%] lg:w-[33%]">
-                              <span class="font-bold inline-block">
-                                {item.name}:
-                              </span>
-                            </div>
-                            <div>
-                              <span
-                                dangerouslySetInnerHTML={{
-                                  __html: item.value ?? "",
-                                }}
-                              >
-                              </span>
-                            </div>
-                          </li>
-                        );
-                      },
-                    )}
-                  </ul>
-                </div>
-              </div>
-              <div>
-              </div>
-            </div>
-          </Container>
-        </div>
-        <div class="bg-gray-100">
-          <Container class="py-0 sm:py-10">
-            {/* Description*/}
-            <div class="mt-4 sm:mt-6 " id="description">
-              <Text variant="caption">
-                {description && (
-                  <div>
-                    <h2 class="text-[20px] font-bold mb-[12px]">
-                      Descrição do produto
-                    </h2>
-                    <div>
-                      <span
-                        class="text-[14px] leading-[25px] whitespace-break-spaces"
-                        dangerouslySetInnerHTML={{ __html: description }}
-                      >
-                      </span>
-                    </div>
-                  </div>
-                )}
-              </Text>
-            </div>
-          </Container>
-        </div>
       </>
     );
   }

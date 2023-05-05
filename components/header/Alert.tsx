@@ -8,8 +8,16 @@ export interface Props {
 
 function Alert({ image, path }: Props) {
   return (
-    <a href={path} class="hidden lg:block w-full group-[.micro]:hidden">
-      <Image src={image} width={1430} height={80} class="w-full" />
+    <a
+      href={path}
+      class="hidden lg:block w-full bg-primary group-[.micro]:hidden "
+    >
+      <Image
+        src={image}
+        width={1280}
+        height={34}
+        class="w-full max-w-[1280px] mx-auto"
+      />
     </a>
   );
 }

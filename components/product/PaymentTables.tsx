@@ -26,58 +26,74 @@ function PaymentTables(
 
   // console.log(installmentsLists);
 
+  const creditCard = installmentsLists?.["American Express"];
+
+  console.log(creditCard);
+
   return (
-    <div class="flex w-full gap-2 ">
+    <div class="flex w-full gap-2 relative">
       <button onClick={() => open.value = true}>
         <span class="text-[12px] underline">Mais formas de pagamento</span>
       </button>
-      <Modal
+      {
+        /* <Modal
         mode="center"
         loading="lazy"
         open={open.value}
         onClose={() => {
           open.value = false;
         }}
+      > */
+      }
+      <div
+        class={`fixed inset-0 ${
+          open.value == true ? "" : "opacity-0 pointer-events-none"
+        }`}
+        onClick={() => open.value = false}
       >
-        <div class="">
-          {Object.keys(installmentsLists ?? {}).map((key) => (
-            <input
-              type="radio"
-              id={`tab${key}`}
-              name="css-tabs"
-              class="hidden peer/one"
-            />
-          ))}
+      </div>
+      <div
+        class={`absolute top-5 w-full bg-white p-4 border rounded-md ${
+          open.value == true ? "" : "opacity-0 pointer-events-none"
+        }`}
+      >
+        {creditCard && (
+          <input
+            type="radio"
+            id={`tabCard`}
+            name="css-tabs"
+            class="hidden peer/card"
+            checked
+          />
+        )}
 
-          <ul class="tabs flex w-full sm:justify-center overflow-x-auto gap-x-1">
-            {Object.keys(installmentsLists ?? {}).map((key) => (
-              <li class="tab p-[10px] border-b-[4px] border-default bg-gray-300 rounded">
-                <label for={`tab${key}`} class="px-[24px] whitespace-nowrap">
-                  {key}
-                </label>
-              </li>
-            ))}
-          </ul>
-          {Object.entries(installmentsLists ?? {}).map(([_name, values]) => (
-            <div class="tab-content hidden peer-checked/one:block">
-              <ul>
-                {values.map((entry) => (
-                  <li class="flex even:bg-slate-200 ">
-                    <span class="w-[25%]">{entry.billingDuration}x</span>
-                    <span class="w-[25%]">de R$ {entry.billingIncrement}</span>
-                    <span class="w-[25%]">s/ juros</span>
-                    <span class="w-[25%]">R$ {entry.price}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          ))}
-
-          <div class="tab-content hidden peer-checked/two:block">
-            pagamentos 2
+        <ul class="tabs flex w-full gap-1 p-[5px]">
+          {creditCard && (
+            <li class="tab p-[10px] border-default bg-gray-300 rounded peer-checked/card:bg-primary">
+              <label for={`tabCard`} class="whitespace-nowrap leading-none">
+                Cartão de Credito
+              </label>
+            </li>
+          )}
+        </ul>
+        {creditCard && (
+          <div class="tab-content hidden peer-checked/card:block">
+            <ul>
+              {creditCard.map((entry) => (
+                <li class="flex justify-between even:bg-gray-200 px-[5px]">
+                  <span class="text-[14px]">{entry.billingDuration}x</span>
+                  <span class="text-[14px]">
+                    de R$ {entry.billingIncrement}
+                  </span>
+                  <span class="text-[14px]">s/ juros</span>
+                  <span class="text-[14px]">R$ {entry.price}</span>
+                </li>
+              ))}
+            </ul>
           </div>
-        </div>
-      </Modal>
+        )}
+      </div>
+      {/* </Modal> */}
     </div>
   );
 }
