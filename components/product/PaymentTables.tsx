@@ -27,8 +27,7 @@ function PaymentTables(
   // console.log(installmentsLists);
 
   const creditCard = installmentsLists?.["American Express"];
-
-  console.log(creditCard);
+  const pix = installmentsLists?.["Pix"];
 
   return (
     <div class="flex w-full gap-2 relative">
@@ -67,17 +66,33 @@ function PaymentTables(
           />
         )}
 
-        <ul class="tabs flex w-full gap-1 p-[5px]">
-          {creditCard && (
-            <li class="tab p-[10px] border-default bg-gray-300 rounded peer-checked/card:bg-primary">
-              <label for={`tabCard`} class="whitespace-nowrap leading-none">
-                Cartão de Credito
-              </label>
-            </li>
-          )}
-        </ul>
+        {pix && (
+          <input
+            type="radio"
+            id={`tabPix`}
+            name="css-tabs"
+            class="hidden peer/pix"
+          />
+        )}
+
         {creditCard && (
-          <div class="tab-content hidden peer-checked/card:block">
+          <div class="tab p-[10px] h-min border-default bg-gray-300 rounded peer-checked/card:bg-primary peer-checked/card:text-white inline-block mr-4">
+            <label for={`tabCard`} class="whitespace-nowrap leading-none">
+              Cartão de Credito
+            </label>
+          </div>
+        )}
+
+        {pix && (
+          <div class="tab p-[10px] h-min border-default bg-gray-300 rounded peer-checked/pix:bg-primary peer-checked/pix:text-white inline-block">
+            <label for={`tabPix`} class="whitespace-nowrap leading-none">
+              Pix
+            </label>
+          </div>
+        )}
+
+        {creditCard && (
+          <div class="tab-content hidden peer-checked/card:block py-4">
             <ul>
               {creditCard.map((entry) => (
                 <li class="flex justify-between even:bg-gray-200 px-[5px]">
@@ -86,6 +101,18 @@ function PaymentTables(
                     de R$ {entry.billingIncrement}
                   </span>
                   <span class="text-[14px]">s/ juros</span>
+                  <span class="text-[14px]">R$ {entry.price}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
+
+        {pix && (
+          <div class="tab-content hidden peer-checked/pix:block py-4">
+            <ul>
+              {pix.map((entry) => (
+                <li class="flex justify-between even:bg-gray-200 px-[5px]">
                   <span class="text-[14px]">R$ {entry.price}</span>
                 </li>
               ))}

@@ -1,5 +1,4 @@
 import { useId } from "preact/hooks";
-import AddToCartButton from "deco-sites/fashion/islands/AddToCartButton.tsx";
 import ShippingSimulation from "deco-sites/fashion/islands/ShippingSimulation.tsx";
 import Container from "deco-sites/fashion/components/ui/Container.tsx";
 import Text from "deco-sites/fashion/components/ui/Text.tsx";
@@ -24,6 +23,7 @@ import ProductImageZoom from "deco-sites/fashion/islands/ProductImageZoom.tsx";
 import WishlistButton from "../wishlist/WishlistButton.tsx";
 import QuantityAddToCartButton from "./QuantityAddToCartButton.tsx";
 import PaymentTables from "deco-sites/le-biscuit/islands/PaymentTables.ts";
+import { Runtime } from "deco-sites/le-biscuit/runtime.ts";
 
 export type Variant = "front-back" | "slider" | "auto";
 

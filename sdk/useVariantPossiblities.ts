@@ -8,6 +8,8 @@ export const useVariantPossibilities = ({ isVariantOf }: Product) => {
     .filter((x) => x.url)
     .sort((a, b) => a.url! < b.url! ? -1 : a.url === b.url ? 0 : 1);
 
+  // console.log(allProperties);
+
   const possibilities = allProperties.reduce((acc, { property, url }) => {
     const { name = "", value = "" } = property;
 
