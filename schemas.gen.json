@@ -2360,6 +2360,32 @@
       ],
       "title": "deco-sites/le-biscuit/components/ui/Highlights.tsx@Props"
     },
+    "ZGVjby1zaXRlcy9sZS1iaXNjdWl0L2NvbXBvbmVudHMvcHJvZHVjdC9Qcm9kdWN0RGVzY3JpcHRpb24udHN4@Props": {
+      "type": "object",
+      "properties": {
+        "page": {
+          "$ref": "#/definitions/ZGVjby1zaXRlcy9zdGQvY29tbWVyY2UvdHlwZXMudHM=@ProductDetailsPage|null",
+          "title": "Page"
+        }
+      },
+      "required": [
+        "page"
+      ],
+      "title": "deco-sites/le-biscuit/components/product/ProductDescription.tsx@Props"
+    },
+    "ZGVjby1zaXRlcy9sZS1iaXNjdWl0L2NvbXBvbmVudHMvcHJvZHVjdC9Qcm9kdWN0R2FsbGVyeS50c3g=@Props": {
+      "type": "object",
+      "properties": {
+        "products": {
+          "$ref": "#/definitions/ZGVjby1zaXRlcy9zdGQvY29tbWVyY2UvdHlwZXMudHM=@Product[]|null",
+          "title": "Products"
+        }
+      },
+      "required": [
+        "products"
+      ],
+      "title": "deco-sites/le-biscuit/components/product/ProductGallery.tsx@Props"
+    },
     "ZGVjby1zaXRlcy9zdGQvY29tbWVyY2UvdnRleC90eXBlcy50cw==@SKU": {
       "type": "object",
       "properties": {
@@ -2951,6 +2977,19 @@
       "required": [],
       "title": "deco-sites/le-biscuit/components/ui/BannerPLP.tsx@Props"
     },
+    "ZGVjby1zaXRlcy9sZS1iaXNjdWl0L2NvbXBvbmVudHMvcHJvZHVjdC9CdXlUb2dldGhlci50c3g=@Props": {
+      "type": "object",
+      "properties": {
+        "products": {
+          "$ref": "#/definitions/ZGVjby1zaXRlcy9zdGQvY29tbWVyY2UvdHlwZXMudHM=@Product[]|null",
+          "title": "Products"
+        }
+      },
+      "required": [
+        "products"
+      ],
+      "title": "deco-sites/le-biscuit/components/product/BuyTogether.tsx@Props"
+    },
     "ZGVjby1zaXRlcy9sZS1iaXNjdWl0L2NvbXBvbmVudHMvdWkvQmFubmVyQ2Fyb3VzZWwudHN4@Banner": {
       "type": "object",
       "properties": {
@@ -3442,7 +3481,27 @@
             },
             {
               "type": "string",
+              "const": "User2"
+            },
+            {
+              "type": "string",
+              "const": "Box"
+            },
+            {
+              "type": "string",
+              "const": "Newspaper"
+            },
+            {
+              "type": "string",
               "const": "ShareGraph"
+            },
+            {
+              "type": "string",
+              "const": "Grid"
+            },
+            {
+              "type": "string",
+              "const": "List"
             }
           ],
           "type": "string",
@@ -3623,14 +3682,14 @@
               "title": "Src"
             },
             "alt": {
-              "type": [
-                "string",
-                "null"
-              ],
+              "type": "string",
               "title": "Alt"
             }
           },
-          "required": [],
+          "required": [
+            "src",
+            "alt"
+          ],
           "title": "Image"
         }
       },
@@ -3646,6 +3705,31 @@
         "$ref": "#/definitions/ZGVjby1zaXRlcy9sZS1iaXNjdWl0L2NvbXBvbmVudHMvaGVhZGVyL0hlYWRlci50c3g=@NavItem"
       },
       "title": "NavItem[]"
+    },
+    "ZGVjby1zaXRlcy9sZS1iaXNjdWl0L2NvbXBvbmVudHMvaGVhZGVyL0hlYWRlci50c3g=@NavItemDesktop": {
+      "type": "object",
+      "properties": {
+        "label": {
+          "type": "string",
+          "title": "Label"
+        },
+        "href": {
+          "type": "string",
+          "title": "Href"
+        }
+      },
+      "required": [
+        "label",
+        "href"
+      ],
+      "title": "NavItemDesktop"
+    },
+    "ZGVjby1zaXRlcy9sZS1iaXNjdWl0L2NvbXBvbmVudHMvaGVhZGVyL0hlYWRlci50c3g=@NavItemDesktop[]": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/ZGVjby1zaXRlcy9sZS1iaXNjdWl0L2NvbXBvbmVudHMvaGVhZGVyL0hlYWRlci50c3g=@NavItemDesktop"
+      },
+      "title": "NavItemDesktop[]"
     },
     "ZGVjby1zaXRlcy9sZS1iaXNjdWl0L2NvbXBvbmVudHMvaGVhZGVyL0hlYWRlci50c3g=@Props": {
       "type": "object",
@@ -3676,6 +3760,10 @@
           "$ref": "#/definitions/ZGVjby1zaXRlcy9sZS1iaXNjdWl0L2NvbXBvbmVudHMvaGVhZGVyL0hlYWRlci50c3g=@NavItem[]",
           "title": "Nav Items",
           "description": "Navigation items used both on mobile and desktop menus"
+        },
+        "navItemsDesktop": {
+          "$ref": "#/definitions/ZGVjby1zaXRlcy9sZS1iaXNjdWl0L2NvbXBvbmVudHMvaGVhZGVyL0hlYWRlci50c3g=@NavItemDesktop[]",
+          "title": "Nav Items Desktop"
         },
         "products": {
           "$ref": "#/definitions/ZGVjby1zaXRlcy9zdGQvY29tbWVyY2UvdHlwZXMudHM=@Product[]|null",
@@ -3869,6 +3957,19 @@
         "products"
       ],
       "title": "deco-sites/le-biscuit/components/product/ProductShelf.tsx@Props"
+    },
+    "ZGVjby1zaXRlcy9sZS1iaXNjdWl0L2NvbXBvbmVudHMvcHJvZHVjdC9Qcm9kdWN0U3BlY2lmaWNhdGlvbnMudHN4@Props": {
+      "type": "object",
+      "properties": {
+        "page": {
+          "$ref": "#/definitions/ZGVjby1zaXRlcy9zdGQvY29tbWVyY2UvdHlwZXMudHM=@ProductDetailsPage|null",
+          "title": "Page"
+        }
+      },
+      "required": [
+        "page"
+      ],
+      "title": "deco-sites/le-biscuit/components/product/ProductSpecifications.tsx@Props"
     },
     "ZGVjby1zaXRlcy9sZS1iaXNjdWl0L2NvbXBvbmVudHMvcHJvZHVjdC9Qcm9kdWN0R2FsbGVyeS50c3g=@Columns": {
       "type": "object",
@@ -4814,6 +4915,48 @@
         }
       }
     },
+    "Li9pc2xhbmRzL1Byb2R1Y3REZXNjcmlwdGlvbi50c3g=": {
+      "title": "./islands/ProductDescription.tsx",
+      "type": "object",
+      "allOf": [
+        {
+          "$ref": "#/definitions/ZGVjby1zaXRlcy9sZS1iaXNjdWl0L2NvbXBvbmVudHMvcHJvZHVjdC9Qcm9kdWN0RGVzY3JpcHRpb24udHN4@Props"
+        }
+      ],
+      "required": [
+        "__resolveType"
+      ],
+      "properties": {
+        "__resolveType": {
+          "type": "string",
+          "enum": [
+            "./islands/ProductDescription.tsx"
+          ],
+          "default": "./islands/ProductDescription.tsx"
+        }
+      }
+    },
+    "Li9pc2xhbmRzL1Byb2R1Y3RHYWxsZXJ5LnRzeA==": {
+      "title": "./islands/ProductGallery.tsx",
+      "type": "object",
+      "allOf": [
+        {
+          "$ref": "#/definitions/ZGVjby1zaXRlcy9sZS1iaXNjdWl0L2NvbXBvbmVudHMvcHJvZHVjdC9Qcm9kdWN0R2FsbGVyeS50c3g=@Props"
+        }
+      ],
+      "required": [
+        "__resolveType"
+      ],
+      "properties": {
+        "__resolveType": {
+          "type": "string",
+          "enum": [
+            "./islands/ProductGallery.tsx"
+          ],
+          "default": "./islands/ProductGallery.tsx"
+        }
+      }
+    },
     "Li9pc2xhbmRzL1Byb2R1Y3RJbWFnZVpvb20udHN4": {
       "title": "./islands/ProductImageZoom.tsx",
       "type": "object",
@@ -4859,6 +5002,22 @@
             "./islands/QuantitySelector.tsx"
           ],
           "default": "./islands/QuantitySelector.tsx"
+        }
+      }
+    },
+    "Li9pc2xhbmRzL1Njcm9sbFRyYWNrSlMudHN4": {
+      "title": "./islands/ScrollTrackJS.tsx",
+      "type": "object",
+      "required": [
+        "__resolveType"
+      ],
+      "properties": {
+        "__resolveType": {
+          "type": "string",
+          "enum": [
+            "./islands/ScrollTrackJS.tsx"
+          ],
+          "default": "./islands/ScrollTrackJS.tsx"
         }
       }
     },
@@ -5141,6 +5300,27 @@
         }
       }
     },
+    "ZGVjby1zaXRlcy9sZS1iaXNjdWl0L3NlY3Rpb25zL0J1eVRvZ2V0aGVyLnRzeA==": {
+      "title": "deco-sites/le-biscuit/sections/BuyTogether.tsx",
+      "type": "object",
+      "allOf": [
+        {
+          "$ref": "#/definitions/ZGVjby1zaXRlcy9sZS1iaXNjdWl0L2NvbXBvbmVudHMvcHJvZHVjdC9CdXlUb2dldGhlci50c3g=@Props"
+        }
+      ],
+      "required": [
+        "__resolveType"
+      ],
+      "properties": {
+        "__resolveType": {
+          "type": "string",
+          "enum": [
+            "deco-sites/le-biscuit/sections/BuyTogether.tsx"
+          ],
+          "default": "deco-sites/le-biscuit/sections/BuyTogether.tsx"
+        }
+      }
+    },
     "ZGVjby1zaXRlcy9sZS1iaXNjdWl0L3NlY3Rpb25zL0Nhcm91c2VsLnRzeA==": {
       "title": "deco-sites/le-biscuit/sections/Carousel.tsx",
       "type": "object",
@@ -5304,6 +5484,27 @@
         }
       }
     },
+    "ZGVjby1zaXRlcy9sZS1iaXNjdWl0L3NlY3Rpb25zL1Byb2R1Y3REZXNjcmlwdGlvbi50c3g=": {
+      "title": "deco-sites/le-biscuit/sections/ProductDescription.tsx",
+      "type": "object",
+      "allOf": [
+        {
+          "$ref": "#/definitions/ZGVjby1zaXRlcy9sZS1iaXNjdWl0L2NvbXBvbmVudHMvcHJvZHVjdC9Qcm9kdWN0RGVzY3JpcHRpb24udHN4@Props"
+        }
+      ],
+      "required": [
+        "__resolveType"
+      ],
+      "properties": {
+        "__resolveType": {
+          "type": "string",
+          "enum": [
+            "deco-sites/le-biscuit/sections/ProductDescription.tsx"
+          ],
+          "default": "deco-sites/le-biscuit/sections/ProductDescription.tsx"
+        }
+      }
+    },
     "ZGVjby1zaXRlcy9sZS1iaXNjdWl0L3NlY3Rpb25zL1Byb2R1Y3REZXRhaWxzLnRzeA==": {
       "title": "deco-sites/le-biscuit/sections/ProductDetails.tsx",
       "type": "object",
@@ -5343,6 +5544,27 @@
             "deco-sites/le-biscuit/sections/ProductShelf.tsx"
           ],
           "default": "deco-sites/le-biscuit/sections/ProductShelf.tsx"
+        }
+      }
+    },
+    "ZGVjby1zaXRlcy9sZS1iaXNjdWl0L3NlY3Rpb25zL1Byb2R1Y3RTcGVjaWZpY2F0aW9ucy50c3g=": {
+      "title": "deco-sites/le-biscuit/sections/ProductSpecifications.tsx",
+      "type": "object",
+      "allOf": [
+        {
+          "$ref": "#/definitions/ZGVjby1zaXRlcy9sZS1iaXNjdWl0L2NvbXBvbmVudHMvcHJvZHVjdC9Qcm9kdWN0U3BlY2lmaWNhdGlvbnMudHN4@Props"
+        }
+      ],
+      "required": [
+        "__resolveType"
+      ],
+      "properties": {
+        "__resolveType": {
+          "type": "string",
+          "enum": [
+            "deco-sites/le-biscuit/sections/ProductSpecifications.tsx"
+          ],
+          "default": "deco-sites/le-biscuit/sections/ProductSpecifications.tsx"
         }
       }
     },
@@ -5927,6 +6149,12 @@
           "$ref": "#/definitions/Li9pc2xhbmRzL1BheW1lbnRUYWJsZXMudHM="
         },
         {
+          "$ref": "#/definitions/Li9pc2xhbmRzL1Byb2R1Y3REZXNjcmlwdGlvbi50c3g="
+        },
+        {
+          "$ref": "#/definitions/Li9pc2xhbmRzL1Byb2R1Y3RHYWxsZXJ5LnRzeA=="
+        },
+        {
           "$ref": "#/definitions/Li9pc2xhbmRzL1Byb2R1Y3RJbWFnZVpvb20udHN4"
         },
         {
@@ -5934,6 +6162,9 @@
         },
         {
           "$ref": "#/definitions/Li9pc2xhbmRzL1F1YW50aXR5U2VsZWN0b3IudHN4"
+        },
+        {
+          "$ref": "#/definitions/Li9pc2xhbmRzL1Njcm9sbFRyYWNrSlMudHN4"
         },
         {
           "$ref": "#/definitions/Li9pc2xhbmRzL1NlYXJjaENvbnRyb2xzLnRzeA=="
@@ -6002,6 +6233,9 @@
           "$ref": "#/definitions/ZGVjby1zaXRlcy9sZS1iaXNjdWl0L3NlY3Rpb25zL0Jhbm5lclBMUC50c3g="
         },
         {
+          "$ref": "#/definitions/ZGVjby1zaXRlcy9sZS1iaXNjdWl0L3NlY3Rpb25zL0J1eVRvZ2V0aGVyLnRzeA=="
+        },
+        {
           "$ref": "#/definitions/ZGVjby1zaXRlcy9sZS1iaXNjdWl0L3NlY3Rpb25zL0Nhcm91c2VsLnRzeA=="
         },
         {
@@ -6026,10 +6260,16 @@
           "$ref": "#/definitions/ZGVjby1zaXRlcy9sZS1iaXNjdWl0L3NlY3Rpb25zL0xpbmtUcmVlLnRzeA=="
         },
         {
+          "$ref": "#/definitions/ZGVjby1zaXRlcy9sZS1iaXNjdWl0L3NlY3Rpb25zL1Byb2R1Y3REZXNjcmlwdGlvbi50c3g="
+        },
+        {
           "$ref": "#/definitions/ZGVjby1zaXRlcy9sZS1iaXNjdWl0L3NlY3Rpb25zL1Byb2R1Y3REZXRhaWxzLnRzeA=="
         },
         {
           "$ref": "#/definitions/ZGVjby1zaXRlcy9sZS1iaXNjdWl0L3NlY3Rpb25zL1Byb2R1Y3RTaGVsZi50c3g="
+        },
+        {
+          "$ref": "#/definitions/ZGVjby1zaXRlcy9sZS1iaXNjdWl0L3NlY3Rpb25zL1Byb2R1Y3RTcGVjaWZpY2F0aW9ucy50c3g="
         },
         {
           "$ref": "#/definitions/ZGVjby1zaXRlcy9sZS1iaXNjdWl0L3NlY3Rpb25zL1NlYXJjaFJlc3VsdC50c3g="
