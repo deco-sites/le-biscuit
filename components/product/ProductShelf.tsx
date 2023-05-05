@@ -53,7 +53,7 @@ function ProductShelf({
 
       <>
         <div class="hidden relative sm:block  z-10  col-start-1  row-start-3">
-          <div class="absolute right-1/2 bg-base-100 rounded-full  border-[0.5px] border-[#dadada] ">
+          <div class="absolute right-[30%] bg-base-100 rounded-full  border-[0.5px] border-[#dadada] ">
             <Button variant="icon" data-slide="prev" aria-label="Previous item">
               <Icon
                 size={20}
@@ -64,8 +64,8 @@ function ProductShelf({
             </Button>
           </div>
         </div>
-        <div class="hidden relative sm:block z-10 col-start-3 row-start-3">
-          <div class="absolute left-1/2 bg-base-100 rounded-full  border-[0.5px] border-[#dadada] ">
+        <div class="hidden relative sm:block z-10 col-start-3 row-start-3 ">
+          <div class="absolute left-[30%]  bg-base-100 rounded-full  border-[0.5px] border-[#dadada] ">
             <Button variant="icon" data-slide="next" aria-label="Next item">
               <Icon
                 size={20}
