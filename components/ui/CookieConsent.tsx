@@ -36,21 +36,29 @@ function CookieConsent() {
         id={id}
         class="transform-gpu translate-y-[200%] transition fixed bottom-0 sm:bottom-4 w-screen z-50"
       >
-        <Container class="px-4 py-4 rounded border border-base-200 flex flex-col sm:flex-row gap-4 items-start sm:items-center shadow bg-base-100">
-          <Text class="flex-grow" variant="caption">
-            Utilizamos cookies em nosso site para melhorar seu desempenho,
-            segurança e personalizar conteúdo e anúncios.
-          </Text>
-
-          <a href="https://www.deco.cx">
-            <Text class="underline" variant="caption">
-              Nossa política de privacidade
+        <Container class="px-8 py-4 rounded border border-base-200 flex flex-col sm:flex-row gap-3 items-start sm:items-center shadow bg-base-100">
+          <div class="sm:w-full px-5 flex flex-col sm:flex-row items-start sm:items-center">
+            <Text class="flex-grow " variant="caption">
+              Cookies Le Biscuit. Para oferecer uma navegação personalizada e
+              melhorar sua experiência no nosso site, nós utilizamos cookies. Ao
+              continuar navegando você concorda com a nossa
+              <a
+                href="https://www.deco.cx"
+                class="text-dark-red font-caption text-caption no-underline ml-1"
+              >
+                Política de privacidade
+              </a>
             </Text>
-          </a>
 
-          <div class="flex flex-col sm:flex-row gap-2 w-full sm:w-auto">
-            <Button data-button-cc-accept variant="primary">Aceitar</Button>
-            <Button data-button-cc-close variant="outline">Fechar</Button>
+            <div class="flex flex-col sm:flex-row gap-2 w-full sm:w-auto">
+              <Button
+                data-button-cc-accept
+                variant="primary"
+                class="text-white w-[240px]  px-0 rounded-[25px]"
+              >
+                ACEITAR E CONTINUAR
+              </Button>
+            </div>
           </div>
         </Container>
       </div>
