@@ -2360,6 +2360,19 @@
       ],
       "title": "deco-sites/le-biscuit/components/ui/Highlights.tsx@Props"
     },
+    "ZGVjby1zaXRlcy9sZS1iaXNjdWl0L2NvbXBvbmVudHMvcHJvZHVjdC9Qcm9kdWN0R2FsbGVyeS50c3g=@Props": {
+      "type": "object",
+      "properties": {
+        "products": {
+          "$ref": "#/definitions/ZGVjby1zaXRlcy9zdGQvY29tbWVyY2UvdHlwZXMudHM=@Product[]|null",
+          "title": "Products"
+        }
+      },
+      "required": [
+        "products"
+      ],
+      "title": "deco-sites/le-biscuit/components/product/ProductGallery.tsx@Props"
+    },
     "ZGVjby1zaXRlcy9zdGQvY29tbWVyY2UvdnRleC90eXBlcy50cw==@SKU": {
       "type": "object",
       "properties": {
@@ -3468,6 +3481,14 @@
             {
               "type": "string",
               "const": "ShareGraph"
+            },
+            {
+              "type": "string",
+              "const": "Grid"
+            },
+            {
+              "type": "string",
+              "const": "List"
             }
           ],
           "type": "string",
@@ -4894,6 +4915,27 @@
         }
       }
     },
+    "Li9pc2xhbmRzL1Byb2R1Y3RHYWxsZXJ5LnRzeA==": {
+      "title": "./islands/ProductGallery.tsx",
+      "type": "object",
+      "allOf": [
+        {
+          "$ref": "#/definitions/ZGVjby1zaXRlcy9sZS1iaXNjdWl0L2NvbXBvbmVudHMvcHJvZHVjdC9Qcm9kdWN0R2FsbGVyeS50c3g=@Props"
+        }
+      ],
+      "required": [
+        "__resolveType"
+      ],
+      "properties": {
+        "__resolveType": {
+          "type": "string",
+          "enum": [
+            "./islands/ProductGallery.tsx"
+          ],
+          "default": "./islands/ProductGallery.tsx"
+        }
+      }
+    },
     "Li9pc2xhbmRzL1Byb2R1Y3RJbWFnZVpvb20udHN4": {
       "title": "./islands/ProductImageZoom.tsx",
       "type": "object",
@@ -6084,6 +6126,9 @@
         },
         {
           "$ref": "#/definitions/Li9pc2xhbmRzL1BheW1lbnRUYWJsZXMudHM="
+        },
+        {
+          "$ref": "#/definitions/Li9pc2xhbmRzL1Byb2R1Y3RHYWxsZXJ5LnRzeA=="
         },
         {
           "$ref": "#/definitions/Li9pc2xhbmRzL1Byb2R1Y3RJbWFnZVpvb20udHN4"
