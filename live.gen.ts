@@ -18,7 +18,8 @@ import * as $$$$$8 from "./islands/HeaderSearchMenu.tsx";
 import * as $$$$$9 from "./islands/HeaderModals.tsx";
 import * as $$$$$10 from "./islands/ProductImageZoom.tsx";
 import * as $$$$$11 from "./islands/SearchControls.tsx";
-import * as $$$$$12 from "./islands/QuantityAddToCartButton.tsx";
+import * as $$$$$12 from "./islands/ScrollTrackJS.tsx";
+import * as $$$$$13 from "./islands/QuantityAddToCartButton.tsx";
 import * as $$$$$$$$0 from "./sections/Carousel.tsx";
 import * as $$$$$$$$1 from "./sections/LinkTree.tsx";
 import * as $$$$$$$$2 from "./sections/BannerGrid.tsx";
@@ -115,8 +116,9 @@ const manifest = {
     "./islands/Highlights.tsx": $$$$$4,
     "./islands/PaymentTables.ts": $$$$$6,
     "./islands/ProductImageZoom.tsx": $$$$$10,
-    "./islands/QuantityAddToCartButton.tsx": $$$$$12,
+    "./islands/QuantityAddToCartButton.tsx": $$$$$13,
     "./islands/QuantitySelector.tsx": $$$$$5,
+    "./islands/ScrollTrackJS.tsx": $$$$$12,
     "./islands/SearchControls.tsx": $$$$$11,
     "./islands/ShippingSimulation.tsx": $$$$$0,
     "./islands/SliderJS.tsx": $$$$$7,

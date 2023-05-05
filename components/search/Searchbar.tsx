@@ -114,7 +114,7 @@ function Searchbar({
         <form
           id="searchbar"
           action={action}
-          class="flex-grow flex gap-3 border border-base-200 rounded-lg overflow-hidden"
+          class="flex-grow flex gap-3 border border-base-200 rounded-lg overflow-hidden max-w-[600px]"
         >
           <input
             ref={searchInputRef}
