@@ -55,7 +55,7 @@ function ProductCardHorizontal({ product, preload, itemListName }: Props) {
   const {
     url,
     productID,
-    name,
+    // name,
     image: images,
     offers,
     inProductGroupWithID,
@@ -64,11 +64,13 @@ function ProductCardHorizontal({ product, preload, itemListName }: Props) {
   const [front, back] = images ?? [];
   const { listPrice, price, seller } = useOffer(offers);
 
+  const { name } = isVariantOf ?? {};
+
   return (
     <div
       data-deco="view-product"
       id={`product-card-${productID}`}
-      class="flex flex-row relative py-2 content-center  gap-1 text-start rounded-lg border border-camp-gray group shadow-lg"
+      class="flex flex-row relative content-center  gap-1 text-start rounded-lg border border-camp-gray group shadow-lg p-4"
     >
       <a href={url} aria-label="product link" class="flex relative flex-grow">
         <div class="absolute top-0.5 left-1 flex flex-row gap-[2px] justify-center items-center bg-bottom-green text-white text-[12px] rounded-bl-2xl rounded-tr-xl sm:text-xs p-2">
@@ -76,7 +78,7 @@ function ProductCardHorizontal({ product, preload, itemListName }: Props) {
             -{Math.trunc((listPrice! - price!) / listPrice! * 100)}% Off
           </span>
         </div>
-        <div class="flex justify-center">
+        <div class="flex justify-center pr-[2rem]">
           <Image
             src={front.url!}
             alt={front.alternateName}
@@ -89,51 +91,49 @@ function ProductCardHorizontal({ product, preload, itemListName }: Props) {
           />
         </div>
 
-        <div class="flex flex-col w-full  items-center justify-center gap-1 px-3 flex-grow">
-          <Text
-            class="h-[45px] w-full overflow-hidden text-ellipsis text-xs whitespace-break-spaces"
-            variant="caption"
-          >
+        <div class="flex flex-col lg:flex-row w-full  items-center lg:items-start justify-center gap-1 px-3 flex-grow">
+          <span class="h-[45px] w-full overflow-hidden text-ellipsis whitespace-break-spaces text-[16px] font-bold">
             {name!.length > 0 ? name! : "Sem item no estoque"}
-          </Text>
-          <div class="flex flex-row w-full gap-1 ">
-            <Icon id="Star-Yellow" width={20} height={20} />
-            <Icon id="Star-Yellow" width={20} height={20} />
-            <Icon id="Star-Yellow" width={20} height={20} />
-            <Icon id="Star-Yellow" width={20} height={20} />
-            <Icon id="Star-Yellow" width={20} height={20} />
-          </div>
-          <div class="flex justify-start self-start">
-            {price !== listPrice
-              ? (
-                <div class="flex justify-between gap-2 w-full">
-                  <Text
-                    class="line-through"
-                    variant="list-price"
-                    tone="base-300"
-                  >
-                    {formatPrice(listPrice, offers!.priceCurrency!)}
-                  </Text>
-                </div>
-              )
-              : ""}
-            <span class="text-[12px] sm:text-[18px]">
-              {formatPrice(price, offers!.priceCurrency!)}
-            </span>
-          </div>
-          <div class="flex flex-col w-full">
-            {/* a verificar */}
-            <span class="text-[8px] sm:text-[12px]">
-              12x {formatPrice(price! / 12, offers!.priceCurrency!)}{" "}
-              s/ juros no cartão de crédito
-            </span>
-            <div
-              href={url}
-              class=""
-            >
-              {/* FIXME: Understand why fresh breaks rendering this component */}
-              {
-                /* <ButtonSendEvent
+          </span>
+          <div class="flex-grow">
+            <div class="flex flex-row w-full gap-1 ">
+              <Icon id="Star-Yellow" width={20} height={20} />
+              <Icon id="Star-Yellow" width={20} height={20} />
+              <Icon id="Star-Yellow" width={20} height={20} />
+              <Icon id="Star-Yellow" width={20} height={20} />
+              <Icon id="Star-Yellow" width={20} height={20} />
+            </div>
+            <div class="flex flex-col justify-start self-start">
+              {price !== listPrice
+                ? (
+                  <div class="flex justify-between gap-2 w-full">
+                    <Text
+                      class="line-through"
+                      variant="list-price"
+                      tone="base-300"
+                    >
+                      {formatPrice(listPrice, offers!.priceCurrency!)}
+                    </Text>
+                  </div>
+                )
+                : ""}
+              <span class="text-[12px] sm:text-[18px]">
+                {formatPrice(price, offers!.priceCurrency!)}
+              </span>
+            </div>
+            <div class="flex flex-col w-full">
+              {/* a verificar */}
+              <span class="text-[8px] sm:text-[12px]">
+                12x {formatPrice(price! / 12, offers!.priceCurrency!)}{" "}
+                s/ juros no cartão de crédito
+              </span>
+              <div
+                href={url}
+                class=""
+              >
+                {/* FIXME: Understand why fresh breaks rendering this component */}
+                {
+                  /* <ButtonSendEvent
                 as="a"
                 href={product.url}
                 event={{
@@ -152,17 +152,18 @@ function ProductCardHorizontal({ product, preload, itemListName }: Props) {
               >
                 Adicionar
               </ButtonSendEvent> */
-              }
-              {seller && (
-                <AddToCartButton
-                  skuId={productID}
-                  sellerId={seller}
-                  price={listPrice!}
-                  name={name!}
-                  discount={price!}
-                  productGroupId={inProductGroupWithID!}
-                />
-              )}
+                }
+                {seller && (
+                  <AddToCartButton
+                    skuId={productID}
+                    sellerId={seller}
+                    price={listPrice!}
+                    name={name!}
+                    discount={price!}
+                    productGroupId={inProductGroupWithID!}
+                  />
+                )}
+              </div>
             </div>
           </div>
         </div>

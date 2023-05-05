@@ -11,6 +11,7 @@ import ProductGallery from "deco-sites/le-biscuit/islands/ProductGallery.tsx";
 import { Columns } from "../product/ProductGallery.tsx";
 import type { LoaderReturnType } from "$live/types.ts";
 import type { ProductListingPage } from "deco-sites/std/commerce/types.ts";
+import Breadcrumb from "deco-sites/fashion/components/ui/Breadcrumb.tsx";
 
 export interface Props {
   page: LoaderReturnType<ProductListingPage | null>;
@@ -40,21 +41,28 @@ function Result({
 
   return (
     <>
-      <Container class="px-4 sm:py-10">
-        <SearchControls
-          sortOptions={sortOptions}
-          filters={filters}
-          breadcrumb={breadcrumb}
-          displayFilter={variant === "drawer"}
-        />
+      <Container class="px-4  sm:py-10">
+        <div class="flex flex-row items-center sm:p-0 mb-2">
+          <Breadcrumb itemListElement={breadcrumb?.itemListElement} />
+        </div>
 
         <div class="flex flex-row">
           {variant === "aside" && filters.length > 0 && (
-            <aside class="hidden sm:block w-min min-w-[250px]">
+            <aside class="hidden sm:block w-min min-w-[250px] mr-[47px]">
+              <div class="border-b pb-5 w-full mb-5">
+                <span class="text-[20px] font-bold ">
+                  Filtrar Por
+                </span>
+              </div>
               <Filters filters={filters} />
             </aside>
           )}
           <div class="flex-grow">
+            <SearchControls
+              sortOptions={sortOptions}
+              filters={filters}
+              displayFilter={variant === "drawer"}
+            />
             <ProductGallery products={products} />
           </div>
         </div>

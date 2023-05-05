@@ -52,7 +52,7 @@ function ProductCard({ product, preload, itemListName }: Props) {
   const {
     url,
     productID,
-    name,
+    // name,
     image: images,
     offers,
     inProductGroupWithID,
@@ -60,6 +60,8 @@ function ProductCard({ product, preload, itemListName }: Props) {
   } = product;
   const [front, back] = images ?? [];
   const { listPrice, price, seller } = useOffer(offers);
+
+  const { name } = isVariantOf ?? {};
 
   return (
     <div
