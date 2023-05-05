@@ -7,9 +7,8 @@ import { useOffer } from "deco-sites/fashion/sdk/useOffer.ts";
 import { formatPrice } from "deco-sites/fashion/sdk/format.ts";
 import { useVariantPossibilities } from "deco-sites/fashion/sdk/useVariantPossiblities.ts";
 import type { Product } from "deco-sites/std/commerce/types.ts";
-import ButtonSendEvent from "deco-sites/fashion/components/ButtonSendEvent.tsx";
-import { mapProductToAnalyticsItem } from "deco-sites/std/commerce/utils/productToAnalyticsItem.ts";
 import Icon from "deco-sites/fashion/components/ui/Icon.tsx";
+import AddToCartButton from "./AddToCartButton.tsx";
 /**
  * A simple, inplace sku selector to be displayed once the user hovers the product card
  * It takes the user to the pdp once the user clicks on a given sku. This is interesting to
@@ -56,6 +55,7 @@ function ProductCard({ product, preload, itemListName }: Props) {
     name,
     image: images,
     offers,
+    inProductGroupWithID,
     isVariantOf,
   } = product;
   const [front, back] = images ?? [];
@@ -94,9 +94,16 @@ function ProductCard({ product, preload, itemListName }: Props) {
             Adicionar à sacola
           </ButtonSendEvent> */
           }
-          <Button variant="green">
-            Adicionar à sacola
-          </Button>
+          {seller && (
+            <AddToCartButton
+              skuId={productID}
+              sellerId={seller}
+              price={listPrice!}
+              name={name!}
+              discount={price!}
+              productGroupId={inProductGroupWithID!}
+            />
+          )}
         </div>
         <div class="flex h-[100px]  w-full justify-center sm:h-[200px]">
           <div class="absolute top-0 right-0 mr-1 mt-1">

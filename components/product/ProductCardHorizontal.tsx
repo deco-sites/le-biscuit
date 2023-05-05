@@ -10,6 +10,8 @@ import type { Product } from "deco-sites/std/commerce/types.ts";
 import ButtonSendEvent from "deco-sites/fashion/components/ButtonSendEvent.tsx";
 import { mapProductToAnalyticsItem } from "deco-sites/std/commerce/utils/productToAnalyticsItem.ts";
 import Icon from "deco-sites/fashion/components/ui/Icon.tsx";
+import AddToCartButton from "./AddToCartButton.tsx";
+
 /**
  * A simple, inplace sku selector to be displayed once the user hovers the product card
  * It takes the user to the pdp once the user clicks on a given sku. This is interesting to
@@ -56,6 +58,7 @@ function ProductCardHorizontal({ product, preload, itemListName }: Props) {
     name,
     image: images,
     offers,
+    inProductGroupWithID,
     isVariantOf,
   } = product;
   const [front, back] = images ?? [];
@@ -150,9 +153,16 @@ function ProductCardHorizontal({ product, preload, itemListName }: Props) {
                 Adicionar
               </ButtonSendEvent> */
               }
-              <Button variant="green" class="w-full">
-                Adicionar
-              </Button>
+              {seller && (
+                <AddToCartButton
+                  skuId={productID}
+                  sellerId={seller}
+                  price={listPrice!}
+                  name={name!}
+                  discount={price!}
+                  productGroupId={inProductGroupWithID!}
+                />
+              )}
             </div>
           </div>
         </div>
