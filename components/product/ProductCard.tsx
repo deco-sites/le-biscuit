@@ -161,13 +161,19 @@ function ProductCard({ product, preload, itemListName }: Props) {
             : ""}
           <div class="flex flex-col w-full">
             <span class="text-[12px] sm:text-[18px]">
-              {formatPrice(price, offers!.priceCurrency!)}
+              {price! > 0
+                ? formatPrice(price, offers!.priceCurrency!)
+                : "Item sem estoque"}
             </span>
             {/* a verificar */}
-            <span class="text-[8px] sm:text-[12px]">
-              12x {formatPrice(price! / 12, offers!.priceCurrency!)}{" "}
-              s/ juros no cartão de crédito
-            </span>
+            {price! > 0
+              ? (
+                <span class="text-[8px] sm:text-[12px]">
+                  12x {formatPrice(price! / 12, offers!.priceCurrency!)}{" "}
+                  s/ juros no cartão de crédito
+                </span>
+              )
+              : ""}
             <div
               href={url}
               class="flex flex-col justify-center content-center h-[40px] w-full pb-2 mb-1 mt-3 px-2 sm:hidden "
