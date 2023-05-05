@@ -265,7 +265,7 @@ function Details({
                 <Slider class="gap-6">
                   {images.map((img, index) => (
                     <Image
-                      class="snap-center min-w-[100vw] sm:min-w-[40vw]"
+                      class="snap-center min-w-[100vw] sm:min-w-[30vw]"
                       sizes="(max-width: 640px) 100vw, 40vw"
                       style={{ aspectRatio: ASPECT_RATIO }}
                       src={img.url!}
@@ -279,7 +279,7 @@ function Details({
                   ))}
                 </Slider>
 
-                <div class="absolute left-2 top-1/2  bg-base-100 rounded-full border-base-200 border">
+                <div class="absolute left-2 bottom-[-50px] rounded-full">
                   <Button
                     variant="icon"
                     data-slide="prev"
@@ -288,7 +288,7 @@ function Details({
                     <Icon size={20} id="ChevronLeft" strokeWidth={3} />
                   </Button>
                 </div>
-                <div class="absolute right-2 top-1/2 bg-base-100 rounded-full border-base-200 border">
+                <div class="absolute right-2 bottom-[-50px] rounded-full">
                   <Button variant="icon" data-slide="next" aria-label="Next">
                     <Icon size={20} id="ChevronRight" strokeWidth={3} />
                   </Button>
