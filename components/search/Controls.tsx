@@ -7,6 +7,7 @@ import Modal from "deco-sites/fashion/components/ui/Modal.tsx";
 import Breadcrumb from "deco-sites/fashion/components/ui/Breadcrumb.tsx";
 import { useSignal } from "@preact/signals";
 import type { ProductListingPage } from "deco-sites/std/commerce/types.ts";
+import GridListToggle from "./GridListToggle.tsx";
 
 type Props =
   & Pick<ProductListingPage, "filters" | "breadcrumb" | "sortOptions">
@@ -37,6 +38,7 @@ function SearchControls(
           <Icon id="FilterList" width={16} height={16} />
         </Button>
         {sortOptions.length > 0 && <Sort sortOptions={sortOptions} />}
+        <GridListToggle />
       </div>
 
       <Modal
