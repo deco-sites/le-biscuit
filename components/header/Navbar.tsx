@@ -60,10 +60,10 @@ function Navbar({ items, searchbar, image }: {
       </div>
 
       {/* Desktop Version */}
-      <div class="hidden lg:flex border-b border-base-200">
+      <div class="hidden lg:flex border-b border-base-200 bg-white">
         <div class="hidden lg:flex flex-col border-b border-base-200 w-full pr-3 max-w-[1320px] mx-auto">
-          <div class="h-[70px] flex flex-row items-center isolate">
-            <div class="flex-none w-44 bg-primary h-[55px] flex items-center self-start rounded-br-full after:w-screen after:h-[55px] after:absolute after:z-[-1] after:right-0  after:bg-[linear-gradient(90deg,#ed1b2f_10%,#fff_0)]  group-[.micro]:hidden">
+          <div class="h-[70px] flex flex-row items-center  bg-white isolate">
+            <div class="flex-none w-44 bg-primary h-[55px] flex items-center self-start rounded-br-full after:w-screen after:h-[55px] after:absolute after:z-[-1] after:right-0  after:bg-[linear-gradient(90deg,#ed1b2f_17%,#fff_0)]  group-[.micro]:hidden">
               <a
                 href="/"
                 aria-label="Store logo"
@@ -72,7 +72,7 @@ function Navbar({ items, searchbar, image }: {
                 <Image src={image.desktop} alt="logo" width={129} height={22} />
               </a>
             </div>
-            <div class="hidden group-[.micro]:block">
+            <div class="hidden bg-white group-[.micro]:block">
               <div class="flex items-center gap-[10px]">
                 <div class="!bg-[#ed1b2f] rounded h-[32px] w-[32px] flex items-center justify-center">
                   <HeaderButton variant="menu" />
