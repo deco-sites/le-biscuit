@@ -4,10 +4,12 @@ import type { EditableProps as SearchbarProps } from "deco-sites/fashion/compone
 import type { LoaderReturnType } from "$live/types.ts";
 import type { Product, Suggestion } from "deco-sites/std/commerce/types.ts";
 import type { Image as LiveImage } from "deco-sites/std/components/types.ts";
+import { useId } from "preact/hooks";
 
 import Alert from "./Alert.tsx";
 import Navbar from "./Navbar.tsx";
 import { headerHeight } from "./constants.ts";
+import ScrollTrackJS from "../../islands/ScrollTrackJS.tsx";
 
 export interface NavItem {
   label: string;
@@ -70,11 +72,14 @@ function Header(
   }: Props,
 ) {
   const searchbar = { ..._searchbar, products, suggestions };
+  const id = useId();
+
   return (
     <header style={{ height: headerHeight }}>
-      <div class="bg-base-100 fixed w-full z-50">
+      <div id={id} class="bg-base-100 fixed w-full z-50 group">
         <Alert image={alert.image} path={alert.path} />
         <Navbar items={navItemsDesktop} searchbar={searchbar} image={image} />
+        <ScrollTrackJS rootId={id} />
       </div>
       <Modals
         menu={{ items: navItems }}
