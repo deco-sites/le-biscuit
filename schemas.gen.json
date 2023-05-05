@@ -3862,6 +3862,19 @@
       "required": [],
       "title": "deco-sites/le-biscuit/components/ui/LinkTree.tsx@Props"
     },
+    "ZGVjby1zaXRlcy9sZS1iaXNjdWl0L2NvbXBvbmVudHMvcHJvZHVjdC9Qcm9kdWN0RGVzY3JpcHRpb24udHN4@Props": {
+      "type": "object",
+      "properties": {
+        "page": {
+          "$ref": "#/definitions/ZGVjby1zaXRlcy9zdGQvY29tbWVyY2UvdHlwZXMudHM=@ProductDetailsPage|null",
+          "title": "Page"
+        }
+      },
+      "required": [
+        "page"
+      ],
+      "title": "deco-sites/le-biscuit/components/product/ProductDescription.tsx@Props"
+    },
     "ZGVjby1zaXRlcy9sZS1iaXNjdWl0L2NvbXBvbmVudHMvcHJvZHVjdC9Qcm9kdWN0RGV0YWlscy50c3g=@Props": {
       "type": "object",
       "properties": {
@@ -3923,6 +3936,19 @@
         "products"
       ],
       "title": "deco-sites/le-biscuit/components/product/ProductShelf.tsx@Props"
+    },
+    "ZGVjby1zaXRlcy9sZS1iaXNjdWl0L2NvbXBvbmVudHMvcHJvZHVjdC9Qcm9kdWN0U3BlY2lmaWNhdGlvbnMudHN4@Props": {
+      "type": "object",
+      "properties": {
+        "page": {
+          "$ref": "#/definitions/ZGVjby1zaXRlcy9zdGQvY29tbWVyY2UvdHlwZXMudHM=@ProductDetailsPage|null",
+          "title": "Page"
+        }
+      },
+      "required": [
+        "page"
+      ],
+      "title": "deco-sites/le-biscuit/components/product/ProductSpecifications.tsx@Props"
     },
     "ZGVjby1zaXRlcy9sZS1iaXNjdWl0L2NvbXBvbmVudHMvcHJvZHVjdC9Qcm9kdWN0R2FsbGVyeS50c3g=@Columns": {
       "type": "object",
@@ -5395,6 +5421,27 @@
         }
       }
     },
+    "ZGVjby1zaXRlcy9sZS1iaXNjdWl0L3NlY3Rpb25zL1Byb2R1Y3REZXNjcmlwdGlvbi50c3g=": {
+      "title": "deco-sites/le-biscuit/sections/ProductDescription.tsx",
+      "type": "object",
+      "allOf": [
+        {
+          "$ref": "#/definitions/ZGVjby1zaXRlcy9sZS1iaXNjdWl0L2NvbXBvbmVudHMvcHJvZHVjdC9Qcm9kdWN0RGVzY3JpcHRpb24udHN4@Props"
+        }
+      ],
+      "required": [
+        "__resolveType"
+      ],
+      "properties": {
+        "__resolveType": {
+          "type": "string",
+          "enum": [
+            "deco-sites/le-biscuit/sections/ProductDescription.tsx"
+          ],
+          "default": "deco-sites/le-biscuit/sections/ProductDescription.tsx"
+        }
+      }
+    },
     "ZGVjby1zaXRlcy9sZS1iaXNjdWl0L3NlY3Rpb25zL1Byb2R1Y3REZXRhaWxzLnRzeA==": {
       "title": "deco-sites/le-biscuit/sections/ProductDetails.tsx",
       "type": "object",
@@ -5434,6 +5481,27 @@
             "deco-sites/le-biscuit/sections/ProductShelf.tsx"
           ],
           "default": "deco-sites/le-biscuit/sections/ProductShelf.tsx"
+        }
+      }
+    },
+    "ZGVjby1zaXRlcy9sZS1iaXNjdWl0L3NlY3Rpb25zL1Byb2R1Y3RTcGVjaWZpY2F0aW9ucy50c3g=": {
+      "title": "deco-sites/le-biscuit/sections/ProductSpecifications.tsx",
+      "type": "object",
+      "allOf": [
+        {
+          "$ref": "#/definitions/ZGVjby1zaXRlcy9sZS1iaXNjdWl0L2NvbXBvbmVudHMvcHJvZHVjdC9Qcm9kdWN0U3BlY2lmaWNhdGlvbnMudHN4@Props"
+        }
+      ],
+      "required": [
+        "__resolveType"
+      ],
+      "properties": {
+        "__resolveType": {
+          "type": "string",
+          "enum": [
+            "deco-sites/le-biscuit/sections/ProductSpecifications.tsx"
+          ],
+          "default": "deco-sites/le-biscuit/sections/ProductSpecifications.tsx"
         }
       }
     },
@@ -6123,10 +6191,16 @@
           "$ref": "#/definitions/ZGVjby1zaXRlcy9sZS1iaXNjdWl0L3NlY3Rpb25zL0xpbmtUcmVlLnRzeA=="
         },
         {
+          "$ref": "#/definitions/ZGVjby1zaXRlcy9sZS1iaXNjdWl0L3NlY3Rpb25zL1Byb2R1Y3REZXNjcmlwdGlvbi50c3g="
+        },
+        {
           "$ref": "#/definitions/ZGVjby1zaXRlcy9sZS1iaXNjdWl0L3NlY3Rpb25zL1Byb2R1Y3REZXRhaWxzLnRzeA=="
         },
         {
           "$ref": "#/definitions/ZGVjby1zaXRlcy9sZS1iaXNjdWl0L3NlY3Rpb25zL1Byb2R1Y3RTaGVsZi50c3g="
+        },
+        {
+          "$ref": "#/definitions/ZGVjby1zaXRlcy9sZS1iaXNjdWl0L3NlY3Rpb25zL1Byb2R1Y3RTcGVjaWZpY2F0aW9ucy50c3g="
         },
         {
           "$ref": "#/definitions/ZGVjby1zaXRlcy9sZS1iaXNjdWl0L3NlY3Rpb25zL1NlYXJjaFJlc3VsdC50c3g="
