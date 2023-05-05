@@ -5,6 +5,7 @@ import type {
   FilterToggle,
   ProductListingPage,
 } from "deco-sites/std/commerce/types.ts";
+import Icon from "../ui/Icon.tsx";
 
 interface Props {
   filters: ProductListingPage["filters"];
@@ -19,7 +20,7 @@ function FilterValues({ key, values }: FilterToggle) {
     : "flex-col";
 
   return (
-    <ul class={`flex flex-wrap gap-2 ${flexDirection}`}>
+    <ul class={`flex flex-wrap gap-2 p-4 ${flexDirection}`}>
       {values.map(({ label, value, url, selected, quantity }) => {
         if (key === "cor") {
           return (
@@ -48,11 +49,13 @@ function FilterValues({ key, values }: FilterToggle) {
 
         return (
           <a href={url} class="flex items-center gap-2">
-            <input type="checkbox" checked={selected} class="hidden" />
-            <Text variant="caption">{label}</Text>
-            <Text tone="base-300" variant="caption">
+            <input type="checkbox" checked={selected} />
+            <span class="text-[16px]">{label}</span>
+            {
+              /* <Text tone="base-300" variant="caption">
               ({quantity})
-            </Text>
+            </Text> */
+            }
           </a>
         );
       })}
@@ -62,13 +65,24 @@ function FilterValues({ key, values }: FilterToggle) {
 
 function Filters({ filters }: Props) {
   return (
-    <ul class="flex flex-col gap-6 p-4">
+    <ul class="flex flex-col gap-6 mt-6 lg:mt-0">
       {filters
         .filter(isToggle)
         .map((filter) => (
-          <li class="flex flex-col gap-4">
-            <Text variant="body">{filter.label}</Text>
-            <FilterValues {...filter} />
+          <li class="flex flex-col gap-4 px-4 lg:px-0">
+            <details class="group">
+              <summary class="list-none flex w-full justify-between">
+                <span class="text-[16px] font-bold">{filter.label}</span>
+                <Icon
+                  id="ChevronDown"
+                  width={20}
+                  height={20}
+                  strokeWidth={2}
+                  class="text-primary transition-all group-open:rotate-180"
+                />
+              </summary>
+              <FilterValues {...filter} />
+            </details>
           </li>
         ))}
     </ul>
