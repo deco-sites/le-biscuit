@@ -262,7 +262,7 @@ function Details({
             <div class="sm:grid-rows-[max-content_30vw]">
               {/* Image Slider */}
               <div class="relative sm:col-start-2 sm:col-span-1 sm:row-start-1">
-                <Slider class="gap-6">
+                <Slider class="gap-6 scrollbar-none">
                   {images.map((img, index) => (
                     <Image
                       class="snap-center min-w-[100vw] sm:min-w-[30vw]"
@@ -304,7 +304,7 @@ function Details({
               </div>
 
               {/* Dots */}
-              <SliderDots class="gap-2 sm:justify-start overflow-auto px-4 sm:px-0 sm:col-start-1 sm:col-span-1 sm:row-start-1">
+              <SliderDots class="gap-2 sm:justify-start scrollbar-none overflow-auto px-4 sm:px-0 mx-8 sm:col-start-1 sm:col-span-1 sm:row-start-1">
                 {images.map((img, _) => (
                   <Image
                     style={{ aspectRatio: ASPECT_RATIO }}

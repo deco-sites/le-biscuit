@@ -58,13 +58,14 @@ function ShippingContent(
     <ul class="flex flex-col gap-2 rounded-[4px] border-y py-2">
       {methods.map((method) => (
         <li class="flex justify-between items-center border border-base-200 not-first-child:border-t p-4 rounded-md h-[80px]">
-          <Text variant="body" class="text-button">
-            {method.name}
+          <Text variant="body" class="text-button max-w-[30%] line-clamp-3">
+            {method.pickupStoreInfo.friendlyName ||
+              method.name}
           </Text>
           <Text variant="body" class="text-button">
             Em até {handleShippingTime(method.shippingEstimate)}
           </Text>
-          <span class="text-base text-[14px] text-right border-l">
+          <span class="text-[14px] text-right border-l pl-1">
             {method.price === 0 ? "Grátis" : (
               formatPrice(method.price / 100, currencyCode!, locale)
             )}
