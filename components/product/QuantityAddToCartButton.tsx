@@ -11,7 +11,7 @@ interface Props extends UseAddToCartProps {
    */
   sellerId: string;
   text?: string;
-  variant?: "secondary" | "icon" | "primary" | "tertiary";
+  variant?: "secondary" | "icon" | "primary" | "tertiary" | "green";
 }
 
 function QuantityAddToCartButton(
