@@ -28,7 +28,7 @@ function ProductSpecification({ page }: Props) {
                             {item.name}:
                           </span>
                         </div>
-                        <div>
+                        <div class="max-w-[50%] lg:max-w=[66%]">
                           <span
                             dangerouslySetInnerHTML={{
                               __html: item.value ?? "",
