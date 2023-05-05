@@ -38,6 +38,9 @@ export type AvailableIcons =
   | "ArrowDown"
   | "Star-Yellow"
   | "Bars4"
+  | "User2"
+  | "Box"
+  | "Newspaper"
   | "ShareGraph";
 
 interface Props extends JSX.SVGAttributes<SVGSVGElement> {

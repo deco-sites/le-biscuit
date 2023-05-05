@@ -45,7 +45,6 @@ function QuantityAddToCartButton(
         name={name}
         productGroupId={productGroupId}
         quantity={quantity.value}
-        variant={"green"}
       />
     </div>
   );
